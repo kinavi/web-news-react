@@ -1,9 +1,11 @@
 import React from "react";
 import '../styles/App.css';
 import { Form } from './React/Form/Form'
-import ListNews from './React/List/ListNews'
+//import ListNews from './React/List/ListNews'
 import { connect } from 'react-redux'
 import { Load } from './Redux/Actions/List/Load'
+import AddNewLayer from './React/cms/AddNewPage/AddNewLayer'
+import ListNews from './React/cms/ListNews/ListNews'
 
 // const App = ({News}) =>
 //     <div>
@@ -21,20 +23,22 @@ class App extends React.Component {
     //     onLoad()
     // }
 
-    componentDidUpdate(){
-        const {state} = this.props
-        // console.log(`state - ${state}`)
-        // console.dir(state)
-        // console.log(`List`)
-        //console.dir(state.List)
-    }
+    // componentDidUpdate(){
+    //     //const {state} = this.props
+    //     // console.log(`state - ${state}`)
+    //     // console.dir(state)
+    //     // console.log(`List`)
+    //     //console.dir(state.List)
+    // }
 
     render() {
         const { News } = this.props
         return (
         <div>
-            <Form/>
-            <ListNews News={News}/>
+            <AddNewLayer/>
+            <ListNews/>
+            {/* <Form/>
+            <ListNews News={News}/> */}
         </div>
         )
         
