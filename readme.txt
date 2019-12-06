@@ -11,8 +11,6 @@ npm install webpack webpack-cli --save-dev
 
 npx webpack
 
-
-
 npm install --save-dev @babel/preset-react 
 
 npm install -D babel-loader @babel/core @babel/preset-env webpack  -  https://webpack.js.org/loaders/babel-loader/
