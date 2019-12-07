@@ -1,16 +1,16 @@
 import React from "react";
 import { connect } from 'react-redux'
-import { cmsPage } from '../../Template/cmsPage'
+import  CmsPage  from '../../Template/CmsPage'
 
 const ListNews = ({ News }) =>
-    <cmsPage>
-        <ul>
+    <CmsPage className='nav'>
+        <ul className="list-group">
             {(News.length)?
                 News.map((_new, i)=>
-                <li key={i} >
-                    <p>Заголовок</p>
+                <li key={i} className="list-list-group-item" >
+                    <div>Заголовок</div>
                     <div>{_new.title}</div>
-                    <p>Описание</p>
+                    <div>Описание</div>
                     <div>{_new.description}</div>
                 </li>
                 )
@@ -18,7 +18,7 @@ const ListNews = ({ News }) =>
                 <div>Новостей нет!</div>
             }
         </ul>
-    </cmsPage>
+    </CmsPage>
     
 
 const mapStateToProps = state =>({

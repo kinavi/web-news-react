@@ -35,3 +35,9 @@ npm install --save react-redux
 npm install react-router-dom --save
 ---------------
 npm install babel-cli babel-loader babel-preset-env babel-preset-react --save
+
+
+npm install --save-dev jest
+
+
+npm install react-bootstrap bootstrap

@@ -1,5 +1,5 @@
 import { TypeActions } from '../TypeActions'
-import { List } from './List'
+import { New } from './New'
 
 export const App_R = (state = {}, action) =>
 {
@@ -7,7 +7,12 @@ export const App_R = (state = {}, action) =>
     {
         case TypeActions.LOAD_LIST:
             return {...state,
-                News:action.value//List([],action)
+                News:action.value
+            }
+        case TypeActions.ADD_NEW:
+            return {
+                ...state,
+                News:[...state.News, New({},action)]
             }
         default:
             return state
