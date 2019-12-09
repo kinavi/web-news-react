@@ -3,8 +3,8 @@ import '../styles/App.css';
 import { Form } from './React/Form/Form'
 //import ListNews from './React/List/ListNews'
 import { connect } from 'react-redux'
-import { Load } from './Redux/Actions/List/Load'
-import AddNewLayer from './React/cms/AddNewPage/AddNewLayer'
+import { LoadNews } from './Redux/Actions/List/LoadNews'
+import AddNewLayer from './React/cms/AddNewPage/AddNewsLayer'
 import ListNews from './React/cms/ListNews/ListNews'
 
 // const App = ({News}) =>

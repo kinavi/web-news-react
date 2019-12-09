@@ -1,15 +1,17 @@
 import { TypeActions } from '../TypeActions'
 
-export const New = (state = {}, action) =>
+export const News = (state = {}, action) =>
 {
     switch(action.type)
     {
-        // case TypeActions.LOAD_LIST:
-        //     return {...state,
-        //         News:action.value//List([],action)
-        //     }
-        case TypeActions.ADD_NEW:
+        case TypeActions.ADD_NEWS:
             return {
+                id:action.id,
+                title:action.title,
+                description:action.description
+            }
+        case TypeActions.EDIT_NEWS:
+            return{
                 id:action.id,
                 title:action.title,
                 description:action.description

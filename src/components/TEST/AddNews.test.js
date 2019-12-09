@@ -6,7 +6,7 @@ describe("addCell", () => {
     let store;
 
     let initialState = {
-        News:[
+        ListNews:[
             {
                 id:1,
                 title:"Новость №1",
@@ -28,7 +28,7 @@ describe("addCell", () => {
         store.dispatch(AddNew(5,'title', 'description'))
     })
 
-    it("Текущее состояние ",()=> expect(store.getState().News).toEqual(
+    it("Текущее состояние ",()=> expect(store.getState().ListNews).toEqual(
         [
             {
                 id:1,

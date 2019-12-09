@@ -1,28 +1,24 @@
 import React from "react";
 import { connect } from 'react-redux'
 import  CmsPage  from '../../Template/CmsPage'
+import News from '../News'
 
-const ListNews = ({ News }) =>
+const ListNews = ({ listNews }) =>//list-group
     <CmsPage className='nav'>
-        <ul className="list-group">
-            {(News.length)?
-                News.map((_new, i)=>
-                <li key={i} className="list-list-group-item" >
-                    <div>Заголовок</div>
-                    <div>{_new.title}</div>
-                    <div>Описание</div>
-                    <div>{_new.description}</div>
-                </li>
+        <div className="">
+            {(listNews.length)?
+                listNews.map((news, i)=>
+                    <News key={i} {...news}/>
                 )
                 :
                 <div>Новостей нет!</div>
             }
-        </ul>
+        </div>
     </CmsPage>
     
 
 const mapStateToProps = state =>({
-    News: state.News
+    listNews: state.ListNews
 })
 
 const mapDispatchToProps = dispatch =>({

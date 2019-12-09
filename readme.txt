@@ -41,3 +41,8 @@ npm install --save-dev jest
 
 
 npm install react-bootstrap bootstrap
+
+npm install image-webpack-loader --save-dev
+npm install file-loader --save-dev
+
+adobe xh
