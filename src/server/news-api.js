@@ -23,19 +23,19 @@ router.post("/news", (req, res) =>
     })
 )
 
-router.put("/color/:id", (req, res) =>
+router.put("/news", (req, res) =>
     dispatchAndRespond(req, res, {
         type: TypeActions.EDIT_NEWS,
-        id: req.params.id,
+        id: req.body.id,
         title: req.body.title,
         description: req.body.description
     })
 )
 
-router.delete("/color/:id", (req, res) =>
+router.delete("/news", (req, res) =>
     dispatchAndRespond(req, res, {
         type: TypeActions.REMOVE_NEWS,
-        id: req.params.id
+        id: req.body.id
     })
 )
 

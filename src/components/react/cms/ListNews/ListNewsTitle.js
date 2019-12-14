@@ -4,6 +4,7 @@ import { Button } from "react-bootstrap";
 import { RemoveNews } from '../../../redux/Actions/List/RemoveNews'
 import EditNewsLayerModal from '../AddNewPage/EditNewsLayerModal'
 import NewsTitle from './NewsTitle'
+import {removeNews} from '../../../actions'
 
 const ListNewsTitle = ({ ListNews, onRemove, onEdit}) =>{
     
@@ -22,7 +23,7 @@ const mapStateToProps = state =>({
 
 const mapDispatchToProps = dispatch =>({
     onRemove(id){
-        dispatch(RemoveNews(id))
+        dispatch(removeNews(id))
     }
 })
 

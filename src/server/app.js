@@ -32,11 +32,9 @@ const buildHTMLPage = ({html, state, css}) => `
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="shortcut icon" href="">
         <meta name="viewport" content="minimum-scale=1.0, width=device-width, maximum-scale=1.0, user-scalable=no" />
         <meta charset="utf-8">
         <title>Web News</title>
-        
     </head>
     <body>
         <div id="react-container">${html}</div>
@@ -95,5 +93,5 @@ export default express()
     .use(logger)
     .use(fileAssets)
     .use(addStoreToRequestPipeline)
-    //.use('/', api)
+    .use('/api', api)
     .use(respond)

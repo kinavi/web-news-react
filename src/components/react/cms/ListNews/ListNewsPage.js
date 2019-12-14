@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from 'react-redux'
 import  CmsPage  from '../../Template/CmsPage'
-import News from '../News'
+import News from './News'
 
 const ListNewsPage = ({ listNews }) =>//list-group
     <CmsPage className='nav'>

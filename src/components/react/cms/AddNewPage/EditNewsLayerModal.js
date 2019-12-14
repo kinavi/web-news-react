@@ -3,7 +3,7 @@ import CmsPage from '../../Template/CmsPage'
 import { connect } from 'react-redux'
 import { Modal, Button, ButtonToolbar } from 'react-bootstrap';
 import { EditNews } from '../../../redux/Actions/List/EditNews'
-
+import {editNews} from '../../../actions'
 
 
 function EditNewsLayerModal(props) {
@@ -55,7 +55,7 @@ function clearObj(source, target){
 
 const mapDispatchToProps = dispatch =>({
     onEdit(id, title, description){
-        dispatch(EditNews(id, title, description))
+        dispatch(editNews(id, title, description))
     }
 })
 

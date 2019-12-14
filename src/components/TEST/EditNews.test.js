@@ -1,6 +1,6 @@
 import { createStore } from 'redux' 
-import { EditNews } from '../Redux/Actions/List/EditNews'
-import { App_R } from '../Redux/Reducers/App_R'
+import { EditNews } from '../redux/Actions/List/EditNews'
+import { App_R } from '../redux/Reducers/App_R'
 
 describe("editCell", () => {
     let store;

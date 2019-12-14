@@ -1,6 +1,6 @@
 import { createStore } from 'redux' 
-import { AddNew } from '../Redux/Actions/List/AddNew'
-import { App_R } from '../Redux/Reducers/App_R'
+import { AddNew } from '../redux/Actions/List/AddNew'
+import { App_R } from '../redux/Reducers/App_R'
 
 describe("addCell", () => {
     let store;

@@ -33,7 +33,7 @@ function AddNewLayerModal(props) {
                 </div>
             </Modal.Body>
             <Modal.Footer>
-                <Button variant="success" onClick={()=>{onAdd(10, titleInput.value, descriptionInput.value); onHide()}}>Добавить</Button>
+                <Button variant="success" onClick={()=>{onAdd(titleInput.value, descriptionInput.value); onHide()}}>Добавить</Button>
                 <Button onClick={onHide}>Close</Button>
             </Modal.Footer>
       </Modal>
