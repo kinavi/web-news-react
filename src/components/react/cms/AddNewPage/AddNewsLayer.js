@@ -1,8 +1,8 @@
 import React from "react"
 import CmsPage from '../../Template/CmsPage'
 import { connect } from 'react-redux'
-import { AddNew } from '../../../Redux/Actions/List/AddNew'
-import ListNews from '../ListNews/ListNews'
+import { AddNew } from '../../../redux/Actions/List/AddNew'
+import ListNews from '../ListNews/ListNewsPage'
 import { withRouter } from 'react-router'
 import { Modal, Button, ButtonToolbar } from 'react-bootstrap'
 import AddNewsLayerModal from './AddNewsLayerModal'

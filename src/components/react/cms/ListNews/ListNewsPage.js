@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import  CmsPage  from '../../Template/CmsPage'
 import News from '../News'
 
-const ListNews = ({ listNews }) =>//list-group
+const ListNewsPage = ({ listNews }) =>//list-group
     <CmsPage className='nav'>
         <div className="">
             {(listNews.length)?
@@ -28,4 +28,4 @@ const mapDispatchToProps = dispatch =>({
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(ListNews)
+)(ListNewsPage)

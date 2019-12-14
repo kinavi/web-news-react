@@ -2,7 +2,7 @@ import React,{ useState, Component }  from "react";
 import CmsPage from '../../Template/CmsPage'
 import { connect } from 'react-redux'
 import { Modal, Button, ButtonToolbar } from 'react-bootstrap';
-import { EditNews } from '../../../Redux/Actions/List/EditNews'
+import { EditNews } from '../../../redux/Actions/List/EditNews'
 
 
 

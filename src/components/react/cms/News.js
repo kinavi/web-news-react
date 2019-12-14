@@ -1,8 +1,8 @@
 import React from "react";
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
-import { RemoveNews } from '../../Redux/Actions/List/RemoveNews'
-import test from '../../Media/test.jpg'
+import { RemoveNews } from '../../redux/Actions/List/RemoveNews'
+import test from '../../media/test.jpg'
 
 const News = ({ id, title, description, onRemove}) =>//list-list-group-item d-flex
     <div className="card rounded mb-5">

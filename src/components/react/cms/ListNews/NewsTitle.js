@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from 'react-redux'
 import { Button } from "react-bootstrap";
-import { RemoveNews } from '../../../Redux/Actions/List/RemoveNews'
+import { RemoveNews } from '../../../redux/Actions/List/RemoveNews'
 import EditNewsLayerModal from '../AddNewPage/EditNewsLayerModal'
 
 const ListNewsTitle = ({id, title, description, onRemove}) =>{
