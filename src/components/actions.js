@@ -18,6 +18,14 @@ export const addNews = (title, description) => dispatch =>
         JSON.stringify({title, description})
     )
 
+// export const loadFile = (files) => dispatch =>
+//     fetchThenDispatch(
+//         dispatch,
+//         '/api/uploads',
+//         'POST',
+//         JSON.stringify({files})
+//     )
+
 export const removeNews = id => dispatch =>
     fetchThenDispatch(
         dispatch,

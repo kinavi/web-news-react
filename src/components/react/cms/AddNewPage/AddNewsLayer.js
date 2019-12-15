@@ -6,7 +6,7 @@ import ListNews from '../ListNews/ListNewsPage'
 import { withRouter } from 'react-router'
 import { Modal, Button, ButtonToolbar } from 'react-bootstrap'
 import AddNewsLayerModal from './AddNewsLayerModal'
-import {addNews} from '../../../actions'
+import { addNews, loadFile } from '../../../actions'
 
 const AddNewLayer = ({onAdd})=>{
     const [modalShow, setModalShow] = React.useState(false);
@@ -27,9 +27,10 @@ const AddNewLayer = ({onAdd})=>{
     )
 }
 const mapDispatchToProps = dispatch =>({
-    onAdd(title, description){
-        console.log(`title - ${title}, description - ${description}`)
+    onAdd(title, description, files){
         dispatch(addNews(title, description))
+        //console.dir(files)
+        //dispatch(loadFile(files))
     }
 })
 

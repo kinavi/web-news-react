@@ -57,6 +57,7 @@ npm install file-loader --save-dev
 adobe xh
 
 npm install serve-favicon
+install express multer
 -----
 old 
 "start": "webpack-dev-server --mode development --open --hot",

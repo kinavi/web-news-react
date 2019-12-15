@@ -2,12 +2,13 @@ import React from "react";
 import CmsPage from '../../Template/CmsPage'
 import { connect } from 'react-redux'
 import { Modal, Button, ButtonToolbar } from 'react-bootstrap';
-
+//import { LoadFile } from '../../test/loadFile'
 
 function AddNewLayerModal(props) {
 
     let titleInput
     let descriptionInput
+    let fileInput
     const { onAdd, onHide } = props
     
     return (
@@ -31,9 +32,10 @@ function AddNewLayerModal(props) {
                     <label className="exampleInputPassword1">Описание</label>
                     <textarea ref={node=>descriptionInput=node} className="form-control" rows="10"></textarea>
                 </div>
+                <input ref={node=>fileInput=node} type="file" name="filedata" />
             </Modal.Body>
             <Modal.Footer>
-                <Button variant="success" onClick={()=>{onAdd(titleInput.value, descriptionInput.value); onHide()}}>Добавить</Button>
+                <Button variant="success" onClick={()=>{onAdd(titleInput.value, descriptionInput.value, fileInput.files); onHide()}}>Добавить</Button>
                 <Button onClick={onHide}>Close</Button>
             </Modal.Footer>
       </Modal>
