@@ -1,12 +1,12 @@
 import React from "react";
 import { connect } from 'react-redux'
-import { withRouter } from 'react-router'
+//import { withRouter } from 'react-router'
 import { RemoveNews } from '../../../redux/Actions/List/RemoveNews'
-import test from '../../../media/test.jpg'
+//import test from '../../../media/test.jpg'
 
-const News = ({ id, title, description, onRemove}) =>//list-list-group-item d-flex
+const News = ({ id, title, description, fileName ,onRemove}) =>//list-list-group-item d-flex
     <div className="card rounded mb-5">
-        <img src={test} className=" card-img-top" />
+        <img src={fileName} className=" card-img-top" />
         <div className="card-body">
             <div className="card-title h3">{title}</div>
             <div className="card-text text-muted">{description}</div>

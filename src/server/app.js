@@ -17,6 +17,7 @@ import favicon from 'serve-favicon'
 
 //const staticCSS = fs.readFileSync(path.join(__dirname, '../../dist/assets/bundle.css')) <style>${staticCSS}</style>
 const fileAssets = express.static(path.join(__dirname, '../../dist/'))
+const imageFileAssets = express.static(path.join(__dirname, '../../uploads/'))
 
 const serverStore = storeFactory(true, initialState)
 
@@ -92,6 +93,7 @@ export default express()
     .use(favicon(path.join(__dirname, 'favicon.png')))
     .use(logger)
     .use(fileAssets)
+    .use(imageFileAssets)
     .use(addStoreToRequestPipeline)
     .use('/api', api)
     .use(respond)

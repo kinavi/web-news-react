@@ -27,10 +27,15 @@ const AddNewLayer = ({onAdd})=>{
     )
 }
 const mapDispatchToProps = dispatch =>({
-    onAdd(title, description, files){
-        dispatch(addNews(title, description))
-        //console.dir(files)
-        //dispatch(loadFile(files))
+    onAdd(title, description, file){
+        //console.log(`onAdd>file:${file}`)
+        dispatch(addNews(title, description, file.name))
+
+        var data = new FormData()
+        data.append('file', file)
+        data.append('user', 'hubot')
+
+        loadFile(data)
     }
 })
 

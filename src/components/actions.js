@@ -10,21 +10,25 @@ const fetchThenDispatch = (dispatch, url, method, body) =>
         .then(dispatch)
         .catch(logError)
 
-export const addNews = (title, description) => dispatch =>
+const onlyFetch = ( url, method, body, )=>
+    fetch(url, {method, body})
+        .then(parseResponse)
+        .catch(logError)
+
+export const addNews = (title, description, fileName) => dispatch =>
     fetchThenDispatch(
         dispatch,
         '/api/news',
         'POST',
-        JSON.stringify({title, description})
+        JSON.stringify({title, description, fileName})
     )
 
-// export const loadFile = (files) => dispatch =>
-//     fetchThenDispatch(
-//         dispatch,
-//         '/api/uploads',
-//         'POST',
-//         JSON.stringify({files})
-//     )
+export const loadFile = (data) => 
+    onlyFetch(
+        '/api/upload',
+        'POST',
+        data
+    )
 
 export const removeNews = id => dispatch =>
     fetchThenDispatch(

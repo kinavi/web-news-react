@@ -10,7 +10,7 @@ export const ListNews = (state = [], action) =>
         case TypeActions.REMOVE_NEWS:
             return state.filter(n=>n.id!==action.id)
         case TypeActions.EDIT_NEWS:
-            return state.map(n=>(n.id!=action.id)?n:News({},action))
+            return state.map(n=>(n.id!=action.id)?n:News(n,action))
         default:
             return state
     }

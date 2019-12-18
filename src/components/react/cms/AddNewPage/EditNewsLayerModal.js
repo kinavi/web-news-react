@@ -14,7 +14,7 @@ function EditNewsLayerModal(props) {
 
     const [titleFeild, setTitleFeild] = useState(title);
     const [descriptionFeild, setDescriptionFeild] = useState(description);
-    
+
     return (
         <Modal
             {...props}
@@ -37,7 +37,6 @@ function EditNewsLayerModal(props) {
                     <label className="exampleInputPassword1">Описание</label>
                     <textarea onChange={()=>setDescriptionFeild(descriptionInput.value)} value={descriptionFeild} ref={node=>descriptionInput=node} className="form-control" rows="10"></textarea>
                 </div>
-                
             </Modal.Body>
             <Modal.Footer>
                 <Button variant="success" onClick={()=>{onEdit(id, titleInput.value, descriptionInput.value); onHide()}}>Сохранить</Button>

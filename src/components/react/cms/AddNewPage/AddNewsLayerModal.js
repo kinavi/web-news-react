@@ -1,4 +1,4 @@
-import React from "react";
+import React,{ useState, Component }  from "react";
 import CmsPage from '../../Template/CmsPage'
 import { connect } from 'react-redux'
 import { Modal, Button, ButtonToolbar } from 'react-bootstrap';
@@ -11,6 +11,8 @@ function AddNewLayerModal(props) {
     let fileInput
     const { onAdd, onHide } = props
     
+    const [file, setFile] = useState('qwe');
+
     return (
         <Modal
             {...props}
@@ -32,14 +34,33 @@ function AddNewLayerModal(props) {
                     <label className="exampleInputPassword1">Описание</label>
                     <textarea ref={node=>descriptionInput=node} className="form-control" rows="10"></textarea>
                 </div>
-                <input ref={node=>fileInput=node} type="file" name="filedata" />
+                <input type="file" name="filedata" onChange={(event)=>setFile(event.target.files[0])}/>
+                {/* {(fileShow)?
+                    <input ref={node=>fileInput=node} type="file" name="filedata" onChange={()=>{setFile(fileInput.files);setFileShow(false)}}/>
+                :
+                    <div>
+                        {console.dir(file.toString())}
+                        {file.toString()}
+                    </div>
+                } */}
+                
+                {/* <form action="/upload" method="post" enctype="multipart/form-data">
+                    <input type="file" name="filedata" />
+                    <input ref={node=>fileInput=node} type="file" name="filedata" />
+                    <input type="submit" value="Send"/>
+                </form> */}
+                
             </Modal.Body>
             <Modal.Footer>
-                <Button variant="success" onClick={()=>{onAdd(titleInput.value, descriptionInput.value, fileInput.files); onHide()}}>Добавить</Button>
+                <Button variant="success" onClick={()=>{onAdd(titleInput.value, descriptionInput.value, file); onHide(); console.log(file)}}>Добавить</Button>
                 <Button onClick={onHide}>Close</Button>
             </Modal.Footer>
       </Modal>
     );
 }
+
+// AddNewLayerModal.onChangeHandler = event => {
+//     setFile(event.target.files[0]); console.log(event.target.files[0])
+// }
 
 export default AddNewLayerModal

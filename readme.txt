@@ -68,3 +68,20 @@ old
       template: "./src/index.html"
     })
   ]
+
+
+
+npm install -g strongloop
+
+$ cd my-app
+$ slc start
+
+$ slc ctl ls
+
+$ slc ctl stop my-app
+
+$ slc ctl restart my-app
+
+$ slc ctl soft-restart my-app
+
+$ slc ctl remove my-app

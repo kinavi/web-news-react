@@ -8,10 +8,12 @@ export const News = (state = {}, action) =>
             return {
                 id:action.id,
                 title:action.title,
-                description:action.description
+                description:action.description,
+                fileName:action.fileName
             }
         case TypeActions.EDIT_NEWS:
             return{
+                ...state,
                 id:action.id,
                 title:action.title,
                 description:action.description
