@@ -18,7 +18,7 @@ const onlyFetch = ( url, method, body, )=>
 export const addNews = (title, description, fileName) => dispatch =>
     fetchThenDispatch(
         dispatch,
-        '/api/news',
+        '/api/cms',
         'POST',
         JSON.stringify({title, description, fileName})
     )
@@ -33,7 +33,7 @@ export const loadFile = (data) =>
 export const removeNews = id => dispatch =>
     fetchThenDispatch(
         dispatch,
-        `/api/news`,
+        `/api/cms`,
         'DELETE',
         JSON.stringify({id})
     )
@@ -41,7 +41,7 @@ export const removeNews = id => dispatch =>
 export const editNews = (id, title, description) => dispatch =>
     fetchThenDispatch(
         dispatch,
-        `/api/news`,
+        `/api/cms`,
         'PUT',
         JSON.stringify({id, title, description})
     )

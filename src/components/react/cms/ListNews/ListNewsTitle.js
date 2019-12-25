@@ -6,13 +6,18 @@ import EditNewsLayerModal from '../AddNewPage/EditNewsLayerModal'
 import NewsTitle from './NewsTitle'
 import {removeNews} from '../../../actions'
 
-const ListNewsTitle = ({ ListNews, onRemove, onEdit}) =>{
+const ListNewsTitle = ({ ListNews, onEdit}) =>{
     
     return(
         <div className="">
-            {ListNews.map((n,i)=>
-                <NewsTitle key={i} {...n} onRemove={onRemove}/>
-                )}
+            {(!!ListNews)?
+                ListNews.map((n,i)=>
+                    <NewsTitle key={i} {...n} />
+                    )
+                :
+                <div>Новостей нет</div>
+            }
+            
         </div>
     )
 }
@@ -22,9 +27,9 @@ const mapStateToProps = state =>({
 })
 
 const mapDispatchToProps = dispatch =>({
-    onRemove(id){
-        dispatch(removeNews(id))
-    }
+    // onRemove(id){
+    //     dispatch(removeNews(id))
+    // }
 })
 
 export default connect(

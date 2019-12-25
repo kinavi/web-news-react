@@ -85,3 +85,10 @@ $ slc ctl restart my-app
 $ slc ctl soft-restart my-app
 
 $ slc ctl remove my-app
+
+,
+  plugins: [new HtmlWebpackPlugin({
+    title: 'Custom template',
+    template: 'src/index.html'
+  })]
+

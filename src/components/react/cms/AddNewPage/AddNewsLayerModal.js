@@ -1,8 +1,10 @@
-import React,{ useState, Component }  from "react";
+import React,{ useState, useEffect, Component }  from "react";
 import CmsPage from '../../Template/CmsPage'
 import { connect } from 'react-redux'
 import { Modal, Button, ButtonToolbar } from 'react-bootstrap';
 //import { LoadFile } from '../../test/loadFile'
+import IMG from './IMG'
+import { IoIosArrowDropleft } from "react-icons/io";
 
 function AddNewLayerModal(props) {
 
@@ -11,8 +13,8 @@ function AddNewLayerModal(props) {
     let fileInput
     const { onAdd, onHide } = props
     
-    const [file, setFile] = useState('qwe');
-
+    const [file, setFile] = useState();
+    const [refFileInp, setRefFileInp] = useState();
     return (
         <Modal
             {...props}
@@ -34,21 +36,16 @@ function AddNewLayerModal(props) {
                     <label className="exampleInputPassword1">Описание</label>
                     <textarea ref={node=>descriptionInput=node} className="form-control" rows="10"></textarea>
                 </div>
-                <input type="file" name="filedata" onChange={(event)=>setFile(event.target.files[0])}/>
-                {/* {(fileShow)?
-                    <input ref={node=>fileInput=node} type="file" name="filedata" onChange={()=>{setFile(fileInput.files);setFileShow(false)}}/>
-                :
-                    <div>
-                        {console.dir(file.toString())}
-                        {file.toString()}
+                <input ref={node=>setRefFileInp(node)} style={{display:"none"}} type="file" name="filedata" onChange={(event)=>setFile(event.target.files[0])}/>
+                <div className="form-group">
+                    <label className="exampleInputPassword1">Картинка</label>
+                    <div className='d-flex flex-row '>
+                        {!!file?<IMG file={file}/>:<div></div>}
+                        <Button onClick={()=>refFileInp.click()}><IoIosArrowDropleft size="100" /></Button>
+                    
                     </div>
-                } */}
+                </div>
                 
-                {/* <form action="/upload" method="post" enctype="multipart/form-data">
-                    <input type="file" name="filedata" />
-                    <input ref={node=>fileInput=node} type="file" name="filedata" />
-                    <input type="submit" value="Send"/>
-                </form> */}
                 
             </Modal.Body>
             <Modal.Footer>

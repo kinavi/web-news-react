@@ -18,7 +18,7 @@ export const Whoops404 = ({ location }) =>
 
 const App = () =>
     <Switch>
-        <Route exact path="/news" component={AddNewsPage} />
+        <Route path="/cms" component={AddNewsPage} />
         <Route path="/" component={ListNewsPage} />
         <Route component={Whoops404} />
     </Switch>

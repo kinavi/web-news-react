@@ -6,7 +6,7 @@ export const ListNews = (state = [], action) =>
     switch(action.type)
     {
         case TypeActions.ADD_NEWS:
-            return [...state, News({},action)]
+            return [News({},action), ...state]
         case TypeActions.REMOVE_NEWS:
             return state.filter(n=>n.id!==action.id)
         case TypeActions.EDIT_NEWS:

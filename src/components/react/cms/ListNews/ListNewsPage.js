@@ -6,12 +6,12 @@ import News from './News'
 const ListNewsPage = ({ listNews }) =>//list-group
     <CmsPage className='nav'>
         <div className="">
-            {(listNews.length)?
+            {(!!listNews)?
                 listNews.map((news, i)=>
                     <News key={i} {...news}/>
                 )
                 :
-                <div>Новостей нет!</div>
+                <div>Новостей нет</div>
             }
         </div>
     </CmsPage>

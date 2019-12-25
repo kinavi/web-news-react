@@ -20,13 +20,15 @@ const dispatchAndRespond = (req, res, action) => {
     res.status(200).json(action)
 }
 
-router.get("/news", (req, res) =>{
+router.get("/cms", (req, res) =>{
     res.status(200).json(req.store.getState().ListNews)
     })
 
+router.get("/", (req, res) =>{
+    res.status(200).json(req.store.getState().ListNews)
+    })
 
-
-router.post("/news", (req, res) =>
+router.post("/cms", (req, res) =>
     dispatchAndRespond(req, res, {
         type: TypeActions.ADD_NEWS,
         id: v4(),
@@ -47,7 +49,7 @@ router.post('/upload', (req, res, next)=>{
         res.send("Файл загружен");
 })
 
-router.put("/news", (req, res) =>
+router.put("/cms", (req, res) =>
     dispatchAndRespond(req, res, {
         type: TypeActions.EDIT_NEWS,
         id: req.body.id,
@@ -56,7 +58,7 @@ router.put("/news", (req, res) =>
     })
 )
 
-router.delete("/news", (req, res) =>
+router.delete("/cms", (req, res) =>
     dispatchAndRespond(req, res, {
         type: TypeActions.REMOVE_NEWS,
         id: req.body.id

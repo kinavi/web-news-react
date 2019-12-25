@@ -43,6 +43,7 @@ const buildHTMLPage = ({html, state, css}) => `
             window.__INITIAL_STATE__ = ${JSON.stringify(state)}
         </script>
         <script src="/index_bundle.js"></script>
+        <p>Server edit</p>
     </body>
 </html>
 `
@@ -85,8 +86,6 @@ const addStoreToRequestPipeline = (req, res, next) => {
     req.store = serverStore
     next()
 }
-
-
 
 export default express()
     .use(bodyParser.json())
