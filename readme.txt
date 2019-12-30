@@ -92,3 +92,8 @@ $ slc ctl remove my-app
     template: 'src/index.html'
   })]
 
+    "test": "jest",
+    "start": "babel-node ./src/server",
+    "build": "webpack --mode production",
+    "preload": "webpack-dev-server --mode development --open --hot",
+    "final": "webpack --mode production babel-node ./src/server"
