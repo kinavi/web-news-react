@@ -8,15 +8,13 @@ import { removeNews } from '../../../actions'
 import { MainDraftEditor } from '../../DraftEditor/DraftEditor'
 import { convertToHTML, convertFromHTML } from 'draft-convert'
 
-import {Editor, EditorState, RichUtils, CompositeDecorator, ContentState} from 'draft-js';
+import {Editor, EditorState, RichUtils, CompositeDecorator, ContentState, convertFromRaw} from 'draft-js';
 
 const NewsTitle = ({id, title, description, onRemove, onEdit}) =>{
 
-    const [editorState, setEditorState] = React.useState(EditorState.createWithContent(convertFromHTML(description)))
-
+    const [editorState, setEditorState] = React.useState(EditorState.createWithContent(convertFromHTML(description)) )
 
     //if(description!==undefined){ setEditorState(EditorState.push(convertFromHTML(description)) } 
-        
     
     //EditorState.createWithContent(state)| EditorState.createEmpty() | EditorState.createWithContent(convertFromHTML(description)) 
     const [isHide,setHide] = useState(true)
@@ -61,34 +59,42 @@ const NewsTitle = ({id, title, description, onRemove, onEdit}) =>{
         return setEditorState
     }
 
-    const getHtml = () => {
-        return html = convertToHTML({
-            styleToHTML: (style) => {
-              if (style === 'BOLD') {
-                return <span style={{color: 'blue'}} />;
-              }
-            },
-            blockToHTML: (block) => {
-              if (block.type === 'PARAGRAPH') {
-                return <p />;
-              }
-            },
-            entityToHTML: (entity, originalText) => {
-              if (entity.type === 'LINK') {
-                return <a href={entity.data.url}>{originalText}</a>;
-              }
-              return originalText;
-            }
-          })(editorState.getCurrentContent());
-    } 
-//convertToHTML(editorState.getCurrentContent())
+
+    const convertToEditorState = (editorContent) => {
+        const content = convertFromRaw(editorContent);
+        const editorState = EditorState.createWithContent(content, decorator);
+        return editorState;
+      };
+
+    // const getHtml = () => {
+    //     return html = convertToHTML({
+    //         styleToHTML: (style) => {
+    //           if (style === 'BOLD') {
+    //             return <span style={{color: 'blue'}} />;
+    //           }
+    //         },
+    //         blockToHTML: (block) => {
+    //           if (block.type === 'PARAGRAPH') {
+    //             return <p />;
+    //           }
+    //         },
+    //         entityToHTML: (entity, originalText) => {
+    //           if (entity.type === 'LINK') {
+    //             return <a href={entity.data.url}>{originalText}</a>;
+    //           }
+    //           return originalText;
+    //         }
+    //       })(editorState.getCurrentContent());
+    // } 
+    //convertToHTML(editorState.getCurrentContent())
+    //convertToRaw(editorState.getCurrentContent())
 
     return(
         <div  className="shadow mb-2">
             
             <div style={{background:"#af9b79"}} className="d-flex rounded" onMouseDown={(e)=>{setHide(!isHide)}}>
                 <div className="align-self-center ml-2 rounded text-white flex-fill">{title}</div>
-                <Button className="m-2" disabled={!isChange} variant="success" onClick={(e)=>{e.stopPropagation(); onEdit(id, titleFeild, getHtml()); setChange(!isChange) }}>Сохранить</Button>
+                <Button className="m-2" disabled={!isChange} variant="success" onClick={(e)=>{e.stopPropagation(); onEdit(id, titleFeild, convertToHTML(editorState.getCurrentContent())); setChange(!isChange) }}>Сохранить</Button>
                 <Button onClick={() => onRemove(id)} variant="danger" size="sm" className="m-2">Удалить</Button>
             </div>
             {isHide?
@@ -117,7 +123,7 @@ const NewsTitle = ({id, title, description, onRemove, onEdit}) =>{
                             placeholder="Здесь можно печатать..."
                         />
                     </div>
-                    {/* <MainDraftEditor description={description}/> */}
+                    {/*convertToEditorState(description) <MainDraftEditor description={description}/> */}
                     {/* <textarea onChange={(e)=>{setDescriptionFeild(e.target.value);setChange(true)}} value={descriptionFeild} className="form-control" rows="10"></textarea> */}
                 </div>
             </div>
