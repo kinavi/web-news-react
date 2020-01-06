@@ -4,6 +4,7 @@ import App from "./old/components/App.js";
 import Routes from './Routes';
 import { Provider } from 'react-redux'
 import { BrowserRouter } from 'react-router-dom'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 ReactDOM.render(
 

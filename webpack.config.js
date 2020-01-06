@@ -15,6 +15,9 @@ const clientConfig = {
               test: /\.(js|jsx)$/,
               exclude: /node_modules/,
               use: 'babel-loader'
+          },
+          {
+
           }
       ]
   }
@@ -35,6 +38,9 @@ const serverConfig = {
               test: /\.(js|jsx)$/,
               exclude: /node_modules/,
               use: 'babel-loader'
+          },
+          {
+              
           }
       ]
   },
