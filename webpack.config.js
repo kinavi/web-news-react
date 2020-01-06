@@ -1,46 +1,50 @@
 const path = require('path');
-const HtmlWebpackPlugin = require("html-webpack-plugin");
 
-module.exports = {
-  mode: 'development',
-  entry: './src/index.js',
-  devtool: 'inline-source-map',
+const webpack = require('webpack');
+const nodeExternals = require('webpack-node-externals');
+
+const clientConfig = {
+  entry: './src/client.js',
   output: {
-    filename: "index_bundle.js",
-    path: path.resolve(__dirname, 'dist'),
+      path: path.resolve(__dirname, 'dist'),
+      filename: 'public/client.bundle.js'
   },
   module: {
-    rules: [
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: {
-          loader: "babel-loader"
-        },
-      },
-      {
-        test: /\.css$/,
-        use: ["style-loader", "css-loader"]
-      },
-      {
-        test: /\.(gif|png|jpe?g|svg)$/i,
-        use: [
-          'file-loader',
+      rules: [
           {
-            loader: 'image-webpack-loader',
-            options: {
-              bypassOnDebug: true, // webpack@1.x
-              disable: true, // webpack@2.x and newer
-            },
-          },
-        ],
-      }
-    ]
+              test: /\.(js|jsx)$/,
+              exclude: /node_modules/,
+              use: 'babel-loader'
+          }
+      ]
+  }
+};
+
+const serverConfig = {
+  entry: './server.js',
+  target: "node",
+  devtool: "source-map",
+  externals: [nodeExternals()],
+  output: {
+      path: path.resolve(__dirname, 'dist'),
+      filename: 'server.bundle.js'
+  },
+  module: {
+      rules: [
+          {
+              test: /\.(js|jsx)$/,
+              exclude: /node_modules/,
+              use: 'babel-loader'
+          }
+      ]
   },
   plugins: [
-    new HtmlWebpackPlugin({
-    title: 'Custom template',
-    template: 'src/index.html'
-    })
+      new webpack.BannerPlugin({
+          banner: 'require("source-map-support").install();',
+          raw: true,
+          entryOnly: false
+      })
   ]
 };
+
+module.exports = [clientConfig, serverConfig];

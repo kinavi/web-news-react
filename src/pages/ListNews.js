@@ -1,17 +1,15 @@
 import React from 'react'
 import { Header } from '../components/Header'
 
-const CMS = () =>{
+const ListNews = () =>{
     return(
         <div>
             <Header/>
-            <div>Тут Редоктируются новости</div>
+            <div> Тут выводится список новостей </div>
         </div>
-        
     )
-    
 }
 
 export default {
-    component:CMS
+    component:ListNews
 }

@@ -1,24 +1,20 @@
 import App from './App'
-//import 
+import ListNews from './pages/ListNews'
+import News from './pages/News'
+import CMS from './pages/CMS'
 
-const routes = [
+export default [
     {
       ...App,
       routes: [
         {
+          ...ListNews,
           path: "/",
-          exact: true,
-          component: Home
+          exact: true
         },
         {
-          path: "/child/:id",
-          component: Child,
-          routes: [
-            {
-              path: "/child/:id/grand-child",
-              component: GrandChild
-            }
-          ]
+          ...CMS,
+          path: "/cms",
         }
       ]
     }

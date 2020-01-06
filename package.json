@@ -8,8 +8,7 @@
   },
   "scripts": {
     "start": "node ./dist/server.js",
-    "build:client": "webpack -p --config ./webpack.config.client.js --mode production",
-    "build:server": "webpack -p --config ./webpack.config.server.js --mode production"
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
