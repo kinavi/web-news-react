@@ -12,7 +12,7 @@ ReactDOM.render(
         <div>{renderRoutes(Routes)}</div>
       </BrowserRouter>
     ,
-    document.querySelector('#root')
+    document.getElementById("root")
   );
 
 

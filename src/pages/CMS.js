@@ -1,12 +1,12 @@
 import React from 'react'
-import { Header } from '../components/Header'
+import { Page } from '../components/Page'
+//import 'bootstrap/dist/css/bootstrap.min.css';
 
 const CMS = () =>{
     return(
-        <div>
-            <Header/>
+        <Page>
             <div>Тут Редоктируются новости</div>
-        </div>
+        </Page>
         
     )
     

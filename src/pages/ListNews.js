@@ -1,12 +1,14 @@
 import React from 'react'
-import { Header } from '../components/Header'
+import { Page } from '../components/Page'
+//import 'bootstrap/dist/css/bootstrap.min.css';
+//import '../styles/App.css'
 
 const ListNews = () =>{
     return(
-        <div>
-            <Header/>
+        <Page>
+            <div>Hello</div>
             <div> Тут выводится список новостей </div>
-        </div>
+        </Page>
     )
 }
 

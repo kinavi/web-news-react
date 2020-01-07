@@ -2,12 +2,18 @@ const path = require('path');
 
 const webpack = require('webpack');
 const nodeExternals = require('webpack-node-externals');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const { StatsWriterPlugin } = require('webpack-stats-plugin');
+const HtmlWebPackPlugin = require('html-webpack-plugin');
+const CompressionPlugin = require('compression-webpack-plugin');
 
 const clientConfig = {
+  mode: 'production',
   entry: './src/client.js',
   output: {
       path: path.resolve(__dirname, 'dist'),
-      filename: 'public/client.bundle.js'
+      filename: 'public/client.[chunkhash].js'
   },
   module: {
       rules: [
@@ -17,17 +23,47 @@ const clientConfig = {
               use: 'babel-loader'
           },
           {
-
-          }
+            test: /\.css$/,
+            use:[
+                {
+                    loader:MiniCssExtractPlugin.loader,
+                    options:{
+                        publicPath:'/public'
+                    },
+                },                
+                'css-loader']
+            }
+          
       ]
-  }
+  },
+  plugins: [
+    new CompressionPlugin(),
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify('production')
+      }
+    }),
+    new StatsWriterPlugin({
+        // filename: 'stats.json',
+        stats: {
+          all: false,
+          assets: true
+        }
+      }),
+    new MiniCssExtractPlugin({
+        filename:'public/style.[chunkhash].css'
+    }),
+
+  ]
 };
 
 const serverConfig = {
   entry: './server.js',
   target: "node",
   devtool: "source-map",
-  externals: [nodeExternals()],
+  externals: [nodeExternals({
+      whitelist:[/\.(?!(?:jsx?|json)$).{1,5}$/i],
+  })],
   output: {
       path: path.resolve(__dirname, 'dist'),
       filename: 'server.bundle.js'
@@ -40,16 +76,20 @@ const serverConfig = {
               use: 'babel-loader'
           },
           {
-              
+            test:/\.css$/,
+            use:'null-loader'
           }
       ]
   },
   plugins: [
+      
+        new CleanWebpackPlugin(),
       new webpack.BannerPlugin({
           banner: 'require("source-map-support").install();',
           raw: true,
           entryOnly: false
-      })
+      }),
+      
   ]
 };
 
