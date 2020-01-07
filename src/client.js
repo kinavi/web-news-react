@@ -5,12 +5,16 @@ import Routes from './Routes';
 import { Provider } from 'react-redux'
 import { BrowserRouter } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import storeFactory from './store/index'
+
+const store = storeFactory(false, window.__PRELOADED_STATE__)
 
 ReactDOM.render(
-
+    <Provider store={store}>
       <BrowserRouter>
         <div>{renderRoutes(Routes)}</div>
       </BrowserRouter>
+    </Provider>
     ,
     document.getElementById("root")
   );

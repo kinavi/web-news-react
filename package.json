@@ -7,7 +7,7 @@
     "child_process": false
   },
   "scripts": {
-    "start": "node ./dist/server.js",
+    "start": "node ./dist/server.bundle.js",
     "build": "webpack"
   },
   "repository": {

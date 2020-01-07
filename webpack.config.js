@@ -58,7 +58,7 @@ const clientConfig = {
 };
 
 const serverConfig = {
-  entry: './server.js',
+  entry: './src/server.js',
   target: "node",
   devtool: "source-map",
   externals: [nodeExternals({

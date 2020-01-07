@@ -1,0 +1,6 @@
+export const TypeActions = {
+    LOAD_LIST_NEWS:'LOAD_LIST_NEWS',
+    ADD_NEWS:'ADD_NEWS',
+    REMOVE_NEWS:'REMOVE_NEWS',
+    EDIT_NEWS:'EDIT_NEWS'
+}
