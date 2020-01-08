@@ -16,12 +16,12 @@ import storeFactory from './store/index'
 
 import serialize from 'serialize-javascript';
 
-//import api from './news-api'
+import api from './news-api'
 
 const serverStore = storeFactory(true, initialState)
 
-const imageFileAssets = express.static(path.join(__dirname, '../uploads/'))
-
+const imageFileAssets = express.static('uploads')
+console.log(`Path file ${path.join(__dirname, 'uploads')}`)
 serverStore.subscribe(() =>
     fs.writeFile(
         path.join(__dirname, '../../data/initialState.json'),
@@ -65,14 +65,16 @@ const app = express();
 
 app.use(express.static('dist'));
 app.use(imageFileAssets)
-// app.use('/api', api)
+
+app.use('/api', api)
 
 //app.get("*", handleRender);
 app.get('*', (req, res) => {
-    console.log(req.params)
-    const params = req.params[0].split('/');
-    const id = params[2];
-  
+    // console.log(req.params[0])
+    // console.log(req.params[2])
+    //const params = req.params[0].split('/');
+    //const id = params[2];
+    //console.dir(`req - ${req}`)
     const routes = matchRoutes(Routes, req.path);
   
     const promises = routes
@@ -100,6 +102,8 @@ app.get('*', (req, res) => {
       res.send(content);
     });
   });
+
+
 
 app.listen(3000);
 console.log("App is running on http://localhost:3000");

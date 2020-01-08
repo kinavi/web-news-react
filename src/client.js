@@ -7,6 +7,8 @@ import { BrowserRouter } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import storeFactory from './store/index'
 
+import { renderRoutes } from 'react-router-config';
+
 const store = storeFactory(false, window.__PRELOADED_STATE__)
 
 ReactDOM.render(
