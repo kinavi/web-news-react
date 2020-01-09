@@ -10,8 +10,6 @@ const fetchThenDispatch = (dispatch, url, method, body) =>
         .then(dispatch)
         .catch(logError)
 
-    
-
 const onlyFetch = ( url, method, body, )=>
     fetch(url, {method, body})
         .then(parseResponse)

@@ -26,7 +26,7 @@ const imageFileAssets = express.static('uploads')
 console.log(`Path file ${path.join(__dirname, 'uploads')}`)
 serverStore.subscribe(() =>
     fs.writeFile(
-        path.join(__dirname, '../../data/initialState.json'),//Сейчас файл не переписывается, надо поменять путь
+        path.join(__dirname, '../data/initialState.json'),//Сейчас файл не переписывается, надо поменять путь
         JSON.stringify(serverStore.getState()),
         error => (error) ? console.log("Error saving state!", error) : null
     )

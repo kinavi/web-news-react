@@ -37,6 +37,7 @@ const clientConfig = {
       ]
   },
   plugins: [
+    new webpack.IgnorePlugin(/jsdom$/),
     new CompressionPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
@@ -53,7 +54,7 @@ const clientConfig = {
     new MiniCssExtractPlugin({
         filename:'public/style.[chunkhash].css'
     }),
-
+    
   ]
 };
 
@@ -90,6 +91,7 @@ const serverConfig = {
           raw: true,
           entryOnly: false
       }),
+      
       
   ]
 };
