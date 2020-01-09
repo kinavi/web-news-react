@@ -18,13 +18,15 @@ import serialize from 'serialize-javascript';
 
 import api from './news-api'
 
+import fs from 'fs'
+import bodyParser from 'body-parser'
 const serverStore = storeFactory(true, initialState)
 
 const imageFileAssets = express.static('uploads')
 console.log(`Path file ${path.join(__dirname, 'uploads')}`)
 serverStore.subscribe(() =>
     fs.writeFile(
-        path.join(__dirname, '../../data/initialState.json'),
+        path.join(__dirname, '../../data/initialState.json'),//Сейчас файл не переписывается, надо поменять путь
         JSON.stringify(serverStore.getState()),
         error => (error) ? console.log("Error saving state!", error) : null
     )
@@ -58,13 +60,19 @@ function renderer(req, serverStore, context) {
             <script src="${assetsByChunkName.main[1]}"></script>
         </body>
     </html>`;
-    //res.send(htmlTemplate);
 }
 
 const app = express();
 
+
+const addStoreToRequestPipeline = (req, res, next) => {
+  req.store = serverStore
+  next()
+}
+app.use(bodyParser.json())
 app.use(express.static('dist'));
 app.use(imageFileAssets)
+app.use(addStoreToRequestPipeline)
 
 app.use('/api', api)
 

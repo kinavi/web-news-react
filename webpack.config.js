@@ -58,6 +58,7 @@ const clientConfig = {
 };
 
 const serverConfig = {
+  mode: 'production',
   entry: './src/server.js',
   target: "node",
   devtool: "source-map",

@@ -16,18 +16,18 @@ const storageConfig = multer.diskStorage({
 const router = Router()
 
 const dispatchAndRespond = (req, res, action) => {
-    console.log(action)
     req.store.dispatch(action)
     res.status(200).json(action)
 }
+    
 
 // router.get("/cms", (req, res) =>{
 //     res.status(200).json(req.store.getState().ListNews)
 //     })
 
-// router.get("/", (req, res) =>{
-//     res.status(200).json(req.store.getState().ListNews)
-//     })
+router.get("/", (req, res) =>{
+    res.status(200).json(req.store.getState().ListNews)
+    })
 
 router.post("/cms", (req, res) =>
 

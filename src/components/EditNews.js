@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import { connect } from 'react-redux'
 import { Button } from "react-bootstrap";
-import { removeNews } from '../store/Actions/actions'
+import { removeNews } from '../store/Actions'
 // import { convertToHTML, convertFromHTML } from 'draft-convert'
 
 // import {Editor, EditorState, RichUtils, CompositeDecorator, ContentState, convertFromRaw} from 'draft-js';
@@ -25,7 +25,6 @@ const mapDispatchToProps = dispatch =>({
     //     dispatch(editNews(id, title, description))
     // },
     onRemove(id){
-        console.log(id)
         dispatch(removeNews(id))
     }
 

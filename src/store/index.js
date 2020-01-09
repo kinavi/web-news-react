@@ -38,9 +38,14 @@ const middleware = server =>[
 
 
 const storeFactory = (server = false, initialState = {}) =>
-    applyMiddleware(...middleware(server))(createStore)(
+    // applyMiddleware(...middleware(server))(createStore)(
+    //     App_R,
+    //     initialState
+    // )
+    createStore(
         App_R,
-        initialState
+        initialState,
+        applyMiddleware(...middleware(server))
     )
 
 export default storeFactory
