@@ -2,6 +2,7 @@ import App from './App'
 import ListNews from './pages/ListNews'
 import News from './pages/News'
 import CMS from './pages/CMS'
+import AddNew from './pages/AddNews' 
 
 export default [
     {
@@ -15,6 +16,10 @@ export default [
         {
           ...CMS,
           path: "/cms",
+        },
+        {
+          ...AddNew,
+          path:"/add"
         }
       ]
     }

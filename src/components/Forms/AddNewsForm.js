@@ -1,33 +1,32 @@
 import React, {useState} from "react";
 import { connect } from 'react-redux'
-import { addNews, loadFile } from '../store/Actions/index'
-import { Modal, Button, ButtonToolbar } from 'react-bootstrap';
-//import { LoadFile } from '../../test/loadFile'
+import { Link } from 'react-router-dom'
 
-import {Title, ButtonSelectImg} from './FormElements'
-import MyEditor from './MyEditor'
-// import {Editor, EditorState, RichUtils, CompositeDecorator, ContentState} from 'draft-js';
+import { addNews, loadFile } from '../../store/Actions/index'
+import {Title, ButtonSelectImg} from '../FormElements'
+import MyEditor from '../MyEditor'
 
-const AddNewLayer = ({ onAdd })=>{
+const AddNewForm = ({ _onCreateNews })=>{
 
     const [title, setTitle] = useState()
     const [description, setDescription] = useState()
+    const [file, setFile] = useState();
 
     return(
         <div style={{background:"#FFE3B3"}} className=" shadow rounded mt-2 p-2 mb-4">
             <Title value={title} setValue={setTitle}/>
             <MyEditor value={description} setValue={setDescription} />
-            <ButtonSelectImg/>
+            <ButtonSelectImg value={file} setValue={setFile}/>
             <div>
                 <button onClick={()=>{}}>Предосмотр</button> 
-                <button onClick={()=>{}}>Создать</button> 
-                <button onClick={()=>setHideAddLayer(true)}>Отмена</button>
+                <button onClick={()=>{_onCreateNews(title, description,file)}}>Создать</button> 
+                <Link className="btn" to="/cms">Отмена</Link>
             </div>
         </div>
-    )//onAdd(titleInput.value,  convertToHTML(editorState.getCurrentContent()), file); console.log(file)
+    )
 }
 const mapDispatchToProps = dispatch =>({
-    onAdd(title, description, file){
+    _onCreateNews(title, description, file){
         dispatch(addNews(title, description, file.name))
 
         //Колхоз, надо в отдельную функцию
@@ -42,6 +41,6 @@ const mapDispatchToProps = dispatch =>({
 export default connect(
     null,
     mapDispatchToProps
-)(AddNewLayer)
+)(AddNewForm)
 
 

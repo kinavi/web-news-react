@@ -6,7 +6,7 @@ import { removeNews } from '../store/Actions'
 
  import {Editor, EditorState, RichUtils, CompositeDecorator, ContentState, convertFromRaw} from 'draft-js';
 
-//import stateFromHTML from '../stateFromHTML'
+import stateFromHTML from '../stateFromHTML'
 
 const EditNews = ({id, title, description, onRemove, onEdit}) =>{
 
