@@ -9,8 +9,7 @@ const CMS = () =>{
     return(
         <Page>
             <AddNews/>
-            <CmsListNews/>
-            {/* <div>Тут Редоктируются новости</div> */}
+            {/* <CmsListNews/> */}
         </Page>
         
     )

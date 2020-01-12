@@ -8,7 +8,8 @@
   },
   "scripts": {
     "start": "node ./dist/server.bundle.js",
-    "build": "webpack"
+    "build": "webpack",
+    "dev": "webpack-dev-server --config ./webpack.config.dev.js --mode development"
   },
   "repository": {
     "type": "git",

@@ -8,13 +8,17 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import storeFactory from './store/index'
 
 import { renderRoutes } from 'react-router-config';
-
+//---
+import MyEditor from './components/MyEditor'
+import AddNews from './components/AddNews'
+//---
 const store = storeFactory(false, window.__PRELOADED_STATE__)
 
 ReactDOM.render(
     <Provider store={store}>
       <BrowserRouter>
-        <div>{renderRoutes(Routes)}</div>
+        <AddNews/>
+        {/* <div>{renderRoutes(Routes)}</div> */}
       </BrowserRouter>
     </Provider>
     ,

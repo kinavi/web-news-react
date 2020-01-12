@@ -8,7 +8,6 @@ const ListNews = () =>{
     return(
         <Page>
             <MainListNews/>
-            {/* <div> Тут выводится список новостей </div> */}
         </Page>
     )
 }
