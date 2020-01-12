@@ -23,7 +23,6 @@ const AddNewForm = ({ _onCreateNews })=>{
                 <Button onClick={()=>{_onCreateNews(title, description,file)}}>Создать</Button> 
                 <Link className="btn" to="/cms">Отмена</Link>
             </div>
-            
         </div>
     )
 }

@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import App from "./old/components/App.js";
 import Routes from './Routes';
 import { Provider } from 'react-redux'
-import { BrowserRouter } from 'react-router-dom'
+import { BrowserRouter, StaticRouter, HashRouter, Route, Switch } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import storeFactory from './store/index'
 
@@ -11,13 +11,36 @@ import { renderRoutes } from 'react-router-config';
 //---
 import MyEditor from './components/MyEditor'
 import AddNews from './components/Forms/AddNewsForm'
+import ListNewsCms from './components/ListNewsCms'
+import __INITIAL_STATE__ from '../data/initialState.json'
+
+//import {BrowserRouter, Route, Link, Switch } from 'react-router-dom'
+
+import ListNews from './pages/ListNews'
+const store = storeFactory(false, __INITIAL_STATE__)
 //---
-const store = storeFactory(false, window.__PRELOADED_STATE__)
+//const store = storeFactory(false, window.__PRELOADED_STATE__)
+
+function RouteWithSubRoutes(route){
+  return (
+    <Route 
+      path={route.path}
+      render={props=>(
+        <route.component {...props} routes={route.routes}/>
+      )}
+    />
+  )
+}
 
 ReactDOM.render(
     <Provider store={store}>
       <BrowserRouter>
-        {/* <AddNews/> */}
+          {/* <Switch>
+            {Routes.map((route, i) => (
+              <RouteWithSubRoutes key={i} {...route}/>
+            ))}
+          </Switch> */}
+        {/* <ListNewsCms/> */}
         <div>{renderRoutes(Routes)}</div>
       </BrowserRouter>
     </Provider>
@@ -26,7 +49,21 @@ ReactDOM.render(
   );
 
 
-
+//   <div>
+//   <nav>
+//     <ul>
+//       <li>
+//         <Link to='/'>Новости</Link>
+//       </li>
+//       <li>
+//         <Link to='/cms'>CMS</Link>
+//       </li>
+//       {/* <li>
+//         <Link to='/cms/add'></Link>
+//       </li> */}
+//     </ul>
+//   </nav>
+// </div>
 
 
 
