@@ -1,18 +1,29 @@
-import React,  { Component,useState,useEffect} from "react";
+import React,  { useState,useEffect} from "react";
 import {Editor, EditorState, RichUtils, CompositeDecorator, ContentState, convertToRaw, convertFromRaw} from 'draft-js';
-import useBeforeFirstRender from './Hooks/useBeforeFirstRender'
+//import useBeforeFirstRender from './Hooks/useBeforeFirstRender'
 
 const MyEditor = ({ value, setValue }) => {
 
     const [editorState, setEditorState] = useState( EditorState.createEmpty())
 
-    const fromRaw = (editorState, raw) => {
-        return EditorState.push(editorState, convertFromRaw(raw), 'update-state');
-      };
+    useEffect(()=>{
+        //console.log("+")
+        if(value!==undefined){
+            //console.log(`Value - ${value!==undefined}`)
+            //setEditorState(convertFromRaw(value))
+            setEditorState(EditorState.push(editorState,convertFromRaw(value)), 'update-state');
+        }
 
-    useBeforeFirstRender(()=>{
-        if(value!==undefined) fromRaw(editorState, value)
-    })
+    }, [value])
+    // const fromRaw = (editorState, raw) => {
+    //     return EditorState.push(editorState, convertFromRaw(raw), 'update-state');
+    //   };createWithContent(convertFromRaw(value))
+
+    // useBeforeFirstRender(()=>{
+    //     if(value!==undefined) {
+    //         fromRaw(editorState, value)
+    //     } 
+    // })
 
     const handleKeyCommand = (command, editorState) => {
         const newState = RichUtils.handleKeyCommand(editorState, command);

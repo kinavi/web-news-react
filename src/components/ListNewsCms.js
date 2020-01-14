@@ -13,11 +13,10 @@ const ListNewsCms = ({ ListNews, onRemove}) =>
                     <div key={i}>
                         <div style={{background:"#af9b79"}} className="d-flex rounded">
                             <div className="align-self-center ml-2 rounded text-white flex-fill">{n.title}</div>
-                            <Link className="nav-link " to="cms/add">Изменить</Link>
+                            <Link className="nav-link " to={`/edit/${n.id}`}>Изменить</Link>
                             <Button onClick={() => onRemove(n.id)} variant="danger" size="sm" className="m-2">Удалить</Button>
                         </div>
                     </div>
-                    // <EditNews key={i} {...n} />
                     )
                 :
                 <div>Новостей нет</div>
@@ -30,7 +29,7 @@ const mapStateToProps = state =>({
 
 const mapDispatchToProps = dispatch =>({
     // onEdit(id, title, description){
-    //     dispatch(editNews(id, title, description))
+    //     dispatch(editNews(id, title, description)) {pathname:"/cms/edit", search:`?id=${n.id}`}
     // },
     onRemove(id){
         dispatch(removeNews(id))

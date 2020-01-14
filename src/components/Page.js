@@ -4,7 +4,7 @@ import {Menu} from './Menu'
 
 
 export const Page = ({children}) =>
-    <div className="page ">
+    <div className="page">
         <Menu/>
         <div className="container">
             {children}

@@ -1,10 +1,11 @@
 import React, {useState} from "react";
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { Button } from "react-bootstrap";
 
+
 import { addNews, loadFile } from '../../store/Actions/index'
-import {Title, ButtonSelectImg} from '../FormElements'
+import {TitleField, ButtonSelectImg} from '../FormElements'
 import MyEditor from '../MyEditor'
 
 const AddNewForm = ({ _onCreateNews })=>{
@@ -13,14 +14,22 @@ const AddNewForm = ({ _onCreateNews })=>{
     const [description, setDescription] = useState()
     const [file, setFile] = useState();
 
+    let history = useHistory();
+
+    function handleClickCreateBtn() {
+        _onCreateNews(title, description,file)
+        history.push("/cms");
+      
+    }
+
     return(
         <div style={{background:"#FFE3B3"}} className=" shadow rounded mt-2 p-2 mb-4">
-            <Title value={title} setValue={setTitle}/>
+            <TitleField value={title} setValue={setTitle}/>
             <MyEditor value={description} setValue={setDescription} />
             <ButtonSelectImg value={file} setValue={setFile}/>
             <div>
                 <Button onClick={()=>{}}>Предосмотр</Button> 
-                <Button onClick={()=>{_onCreateNews(title, description,file)}}>Создать</Button> 
+                <Button onClick={handleClickCreateBtn}>Создать</Button> 
                 <Link className="btn" to="/cms">Отмена</Link>
             </div>
             

@@ -28,6 +28,10 @@ export default [
           ...AddNew,
           path:"/add"
         },
+        {
+          ...EditNews,
+          path:"/edit/:id"
+        },
         
       ]
     }

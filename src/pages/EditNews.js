@@ -1,10 +1,59 @@
-import React, {useState} from "react";
-import AddNewsForm from '../components/Forms/AddNewsForm'
+import React, {useState, useEffect} from "react";
+import NewsForm from '../components/Forms/NewsForm'
+import { render } from "react-dom";
+import { useParams } from "react-router-dom";
+import { renderRoutes } from 'react-router-config';
+import {Page} from '../components/Page'
+import { connect } from 'react-redux'
+import { addNews, loadFile } from '../store/Actions/index'
 
-const AddNews = ()=>
-    <div>
-        <AddNewsForm/>
-    </div>
+const EditNews = ({ListNews, _onCreateNews})=>
+{
+    let { id } = useParams();
 
-export default AddNews
+    const [News, setNews] = useState()
 
+    useEffect(()=>{
+        if(id!==undefined){
+            setNews(getItemById(ListNews, id))
+            // console.log(getItemById(ListNews, id))
+            // console.log(News)
+        }
+    }, [ListNews])
+
+    return (
+        <Page>
+            <NewsForm News={News} _onCreateNews={_onCreateNews} />
+        </Page>
+
+    )
+}
+const mapStateToProps = state =>({
+    ListNews:state.ListNews
+})
+
+const mapDispatchToProps = dispatch =>({
+    _onCreateNews(title, description, file){
+        dispatch(addNews(title, description, file.name))
+        
+        //Колхоз, надо в отдельную функцию
+        var data = new FormData()
+        data.append('file', file)
+        data.append('user', 'hubot')
+
+        loadFile(data)
+        
+    }
+})
+export default {
+    component:connect(
+        mapStateToProps,
+        mapDispatchToProps
+    )(EditNews)
+}
+
+
+// Фигня, надо переделать
+const getItemById = (List, id) =>{
+    return List.filter(item => item.id==id)[0] 
+}

@@ -23,14 +23,34 @@ import bodyParser from 'body-parser'
 const serverStore = storeFactory(true, initialState)
 
 const imageFileAssets = express.static('uploads')
-console.log(`Path file ${path.join(__dirname, 'uploads')}`)
-serverStore.subscribe(() =>
+//console.log(`Path file ${path.join(__dirname, "../")}`)
+
+// const mkdirp = require('mkdirp');
+// //const fs = require('fs');
+
+// const writeFile = async (path, content) => {
+//   try{
+//     await mkdirp(path);
+//     fs.writeFileSync(path, content);
+//   }
+//   catch(e){
+//     console.log("Error saving state!", e) 
+//   }
+  
+// }
+
+serverStore.subscribe(() => 
+  // writeFile(path.join(__dirname, 'data/initialState.json'), JSON.stringify(serverStore.getState()))
     fs.writeFile(
-        path.join(__dirname, '../data/initialState.json'),//Сейчас файл не переписывается, надо поменять путь
+        //path.format(initialState),
+        //initialState,
+        './data/initialState.json',
+        //path.join(__dirname, '../data/initialState.json'),//Сейчас файл не переписывается, надо поменять путь
         JSON.stringify(serverStore.getState()),
         error => (error) ? console.log("Error saving state!", error) : null
     )
 )
+
 
 function renderer(req, serverStore, context) {
     const reactHtml = renderToString(     
