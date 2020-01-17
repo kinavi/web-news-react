@@ -9,9 +9,8 @@ export const TitleField = ({value = "", setValue}) =>
             <input  style={{background:"#e3edef"}}  className="form-control" onChange={(e)=>setValue(e.target.value)} value = {value}/>
         </div> 
 
-export const ButtonSelectImg = ({fileName, value, setValue}) =>{
+export const ButtonSelectImg = ({ value, setValue}) =>{
 
-    
     const [refFileInp, setRefFileInp] = useState();
 
     return(
@@ -20,7 +19,7 @@ export const ButtonSelectImg = ({fileName, value, setValue}) =>{
             <div className="form-group">
                 <label className="exampleInputPassword1">Картинка</label>
                     <div>
-                        {!!value?<IMG file={value}/>:<img src={fileName} className="w-100" />}
+                        {!!value?<IMG file={value}/>:<div></div>}
                     </div> 
                     <button onClick={()=>refFileInp.click()}>Выберите картинку</button>
             </div>

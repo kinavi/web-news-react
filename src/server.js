@@ -70,6 +70,7 @@ function renderer(req, serverStore, context) {
               }">
         </head>
         <body>
+
             <div id="root">${reactHtml}</div>
             <script>
             window.__PRELOADED_STATE__ = ${serialize(serverStore.getState()).replace(
@@ -78,6 +79,7 @@ function renderer(req, serverStore, context) {
             )}
             </script>
             <script src="${assetsByChunkName.main[1]}"></script>
+            <div>server</div>
         </body>
     </html>`;
 }
@@ -104,7 +106,7 @@ app.get('*', (req, res) => {
     //const id = params[2];
     //console.dir(`req - ${req}`)
     const routes = matchRoutes(Routes, req.path);
-  
+
     console.log(req.path)
 
     const promises = routes

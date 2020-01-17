@@ -11,18 +11,19 @@ const EditNews = ({ListNews, _onCreateNews})=>
 {
     let { id } = useParams();
 
-    const [News, setNews] = useState()
+    const [News, setNews] = useState(getItemById(ListNews, id))
 
-    useEffect(()=>{
-        if(id!==undefined){
-            setNews(getItemById(ListNews, id))
-            // console.log(getItemById(ListNews, id))
-            // console.log(News)
-        }
-    }, [ListNews])
+    // useEffect(()=>{
+    //     if(id!==undefined){
+    //         setNews()
+    //         // console.log(getItemById(ListNews, id))
+    //         //console.log(News)
+    //     }
+    // }, [])
 
     return (
         <Page>
+            {console.log(News)}
             <NewsForm News={News} _onCreateNews={_onCreateNews} />
         </Page>
 

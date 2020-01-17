@@ -14,8 +14,6 @@ import AddNews from './components/Forms/AddNewsForm'
 import ListNewsCms from './components/ListNewsCms'
 import __INITIAL_STATE__ from '../data/initialState.json'
 
-//import {BrowserRouter, Route, Link, Switch } from 'react-router-dom'
-
 import ListNews from './pages/ListNews'
 const store = storeFactory(false, __INITIAL_STATE__)
 //---

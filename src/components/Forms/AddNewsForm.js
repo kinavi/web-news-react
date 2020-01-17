@@ -24,9 +24,10 @@ const AddNewForm = ({ _onCreateNews })=>{
 
     return(
         <div style={{background:"#FFE3B3"}} className=" shadow rounded mt-2 p-2 mb-4">
-            <TitleField value={title} setValue={setTitle}/>
-            <MyEditor value={description} setValue={setDescription} />
             <ButtonSelectImg value={file} setValue={setFile}/>
+            <TitleField value={title} setValue={setTitle}/>
+            <MyEditor isEdit={false} value={description} setValue={setDescription} />
+
             <div>
                 <Button onClick={()=>{}}>Предосмотр</Button> 
                 <Button onClick={handleClickCreateBtn}>Создать</Button> 

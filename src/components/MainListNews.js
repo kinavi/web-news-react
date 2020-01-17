@@ -1,12 +1,12 @@
 import React from "react";
 import { connect } from 'react-redux'
-import News from './News'
+import PreviewNews from './PreviewNews'
 
 const MainListNews = ({ listNews }) =>
     <div>
             {(!!listNews)?
                 listNews.map((news, i)=>
-                    <News key={i} {...news}/>
+                    <PreviewNews key={i} {...news}/>
                 )
                 :
                 <div>Новостей нет</div>

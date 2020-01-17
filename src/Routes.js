@@ -4,6 +4,7 @@ import News from './pages/News'
 import CMS from './pages/CMS'
 import AddNew from './pages/AddNews' 
 import EditNews from './pages/EditNews'
+import NoMatch from './pages/NoMatch'
 
 export default [
     {
@@ -32,6 +33,15 @@ export default [
           ...EditNews,
           path:"/edit/:id"
         },
+        {
+          ...News,
+          path:"/news/:id"
+        },
+        {
+          ...NoMatch,
+          path:'*'
+          
+        }
         
       ]
     }

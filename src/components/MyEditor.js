@@ -1,20 +1,26 @@
 import React,  { useState,useEffect} from "react";
 import {Editor, EditorState, RichUtils, CompositeDecorator, ContentState, convertToRaw, convertFromRaw} from 'draft-js';
-//import useBeforeFirstRender from './Hooks/useBeforeFirstRender'
+import useBeforeFirstRender from './Hooks/useBeforeFirstRender'
 
-const MyEditor = ({ value, setValue }) => {
+const MyEditor = ({isEdit, value, setValue }) => {
 
-    const [editorState, setEditorState] = useState( EditorState.createEmpty())
+    const [editorState, setEditorState] = useState( isEdit?EditorState.createWithContent(convertFromRaw(value)):EditorState.createEmpty())
 
-    useEffect(()=>{
-        //console.log("+")
-        if(value!==undefined){
-            //console.log(`Value - ${value!==undefined}`)
-            //setEditorState(convertFromRaw(value))
-            setEditorState(EditorState.push(editorState,convertFromRaw(value)), 'update-state');
-        }
+    const [isLoad, setLoad] = useState(false)
 
-    }, [value])
+
+    // useEffect(()=>{
+    //     console.log("-")
+    //     if(value!==undefined){
+    //         console.log("---")
+    //         //console.log(`Value - ${value!==undefined}`)
+    //         //setEditorState(convertFromRaw(value))
+    //         //setEditorState(EditorState.push(editorState,convertFromRaw(value), 'update-state'));
+    //         //setEditorState(EditorState.createWithContent(convertFromRaw(value)));
+    //         //setEditorState(EditorState.moveFocusToEnd(editorState))
+    //     }
+
+    // }, [])
     // const fromRaw = (editorState, raw) => {
     //     return EditorState.push(editorState, convertFromRaw(raw), 'update-state');
     //   };createWithContent(convertFromRaw(value))
