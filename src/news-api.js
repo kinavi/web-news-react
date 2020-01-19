@@ -56,7 +56,8 @@ router.put("/cms", (req, res) =>
         type: TypeActions.EDIT_NEWS,
         id: req.body.id,
         title: req.body.title,
-        description: req.body.description
+        description: req.body.description,
+        fileName: req.body.fileName
     })
 )
 

@@ -6,12 +6,12 @@ import {Page} from '../components/Page'
 // import { connect } from 'react-redux'
 // import { addNews, loadFile } from '../store/Actions/index'
 
-const AddNews = ()=>
-    <Page>
-        {/* <NewsForm _onCreateNews={_onCreateNews}/> */}
-        <AddNewsForm />
+const AddNews = ()=><AddNewsForm />
+    // <Page>
+    //     {/* <NewsForm _onCreateNews={_onCreateNews}/> */}
         
-    </Page>
+        
+    // </Page>
 
 // const mapDispatchToProps = dispatch =>({
 //     _onCreateNews(title, description, file){

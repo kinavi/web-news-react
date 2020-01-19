@@ -8,6 +8,7 @@ const News = ({ListNews}) =>{
 
     let { id } = useParams();
     const [News, setNews] = useState(getItemById(ListNews, id))
+    
     return(
         <Page>
             <FullNews {...News}/>

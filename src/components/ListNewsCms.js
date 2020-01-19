@@ -4,24 +4,38 @@ import { connect } from 'react-redux'
 //import EditNews from './EditNews'
 import { Button } from "react-bootstrap";
 import { removeNews } from '../store/Actions'
-import { Link } from 'react-router-dom'
+import { Link, useHistory,useParams, useLocation } from 'react-router-dom'
+import { renderRoutes } from 'react-router-config';
 
-const ListNewsCms = ({ ListNews, onRemove}) =>
+const ListNewsCms = ({ ListNews, onRemove}) =>{
+
+    let history = useHistory();
+
+    function handleClickChangeBtn(id){
+        history.push(`/edit/${id}`);
+    }
+
+    return(
         <div className="">
             {(!!ListNews)?
                 ListNews.map((n,i)=>
-                    <div key={i}>
+                    <div key={i} className="shadow mb-2">
                         <div style={{background:"#af9b79"}} className="d-flex rounded">
                             <div className="align-self-center ml-2 rounded text-white flex-fill">{n.title}</div>
-                            <Link className="nav-link " to={`/edit/${n.id}`}>Изменить</Link>
+                            <Button onClick={()=>handleClickChangeBtn(n.id)} size="sm" className="m-2">Изменить</Button> 
                             <Button onClick={() => onRemove(n.id)} variant="danger" size="sm" className="m-2">Удалить</Button>
                         </div>
                     </div>
+                    
                     )
                 :
                 <div>Новостей нет</div>
             }
+            
         </div>
+    )
+}
+        
 
 const mapStateToProps = state =>({
     ListNews:state.ListNews

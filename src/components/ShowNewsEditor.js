@@ -4,7 +4,7 @@ import useBeforeFirstRender from './Hooks/useBeforeFirstRender'
 
 const MyEditor = ({isEdit, value, setValue }) => {
 
-    const [editorState, setEditorState] = useState( isEdit?EditorState.createWithContent(convertFromRaw(value)):EditorState.createEmpty())
+    const [editorState, setEditorState] = useState(EditorState.createWithContent(convertFromRaw(value)))
 
     // const handleKeyCommand = (command, editorState) => {
     //     const newState = RichUtils.handleKeyCommand(editorState, command);

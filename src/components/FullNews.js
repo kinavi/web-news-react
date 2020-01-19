@@ -1,5 +1,5 @@
 import React from "react";
-import ShowNews from './ShowNews'
+import ShowNews from './ShowNewsEditor'
 import { Link, useHistory } from 'react-router-dom'
 
 const FullNews = ({ id, title, description, fileName}) =>

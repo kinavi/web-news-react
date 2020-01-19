@@ -18,17 +18,21 @@ export default [
         {
           ...CMS,
           path: "/cms",
-          // routes:[
-          //   {
-          //     component:EditNews,
-          //     path:"/cms/add"
-          //   }
-          // ]
+          routes:[
+            {
+              ...AddNew,
+              path:"/cms/add"
+            }, 
+            // {
+            //   ...EditNews,
+            //   path:"/cms/edit/:id"
+            // }
+          ]
         },
-        {
-          ...AddNew,
-          path:"/add"
-        },
+        // {
+        //   ...AddNew,
+        //   path:"/add"
+        // },
         {
           ...EditNews,
           path:"/edit/:id"

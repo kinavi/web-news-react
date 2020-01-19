@@ -1,6 +1,6 @@
 import React from "react";
 import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser';
-import ShowNews from './ShowNews'
+import ShowNews from './ShowNewsEditor'
 import { Link, useHistory } from 'react-router-dom'
 
 const PreviewNews = ({ id, title, description, fileName}) =>

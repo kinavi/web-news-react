@@ -32,7 +32,17 @@ const clientConfig = {
                     },
                 },                
                 'css-loader']
-            }
+          },
+          {
+            test: /\.(png|svg|jpg|gif)$/,
+            use: [{loader:'file-loader'}]
+            
+            // options:{
+            //     name:'media/favicon.png',
+            //     outputPath:'media'
+            //   }
+            
+          },
           
       ]
   },
@@ -80,6 +90,10 @@ const serverConfig = {
           {
             test:/\.css$/,
             use:'null-loader'
+          },
+          {
+            test: /\.(png|svg|jpg|gif)$/,
+            use: [{loader:'file-loader'}]
           }
       ]
   },
@@ -91,7 +105,6 @@ const serverConfig = {
           raw: true,
           entryOnly: false
       }),
-      
       
   ]
 };

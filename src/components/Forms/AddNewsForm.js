@@ -6,7 +6,7 @@ import { Button } from "react-bootstrap";
 
 import { addNews, loadFile } from '../../store/Actions/index'
 import {TitleField, ButtonSelectImg} from '../FormElements'
-import MyEditor from '../MyEditor'
+import AddNewsEditor from '../AddNewsEditor'
 
 const AddNewForm = ({ _onCreateNews })=>{
 
@@ -22,16 +22,20 @@ const AddNewForm = ({ _onCreateNews })=>{
       
     }
 
+    function handleClickBackBtn(){
+        history.push("/cms");
+    }
+
     return(
         <div style={{background:"#FFE3B3"}} className=" shadow rounded mt-2 p-2 mb-4">
             <ButtonSelectImg value={file} setValue={setFile}/>
             <TitleField value={title} setValue={setTitle}/>
-            <MyEditor isEdit={false} value={description} setValue={setDescription} />
+            <AddNewsEditor isEdit={false} value={description} setValue={setDescription}/>
 
             <div>
                 <Button onClick={()=>{}}>Предосмотр</Button> 
                 <Button onClick={handleClickCreateBtn}>Создать</Button> 
-                <Link className="btn" to="/cms">Отмена</Link>
+                <Button onClick={handleClickBackBtn}>Отмена</Button> 
             </div>
             
         </div>

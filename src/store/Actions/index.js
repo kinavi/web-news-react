@@ -38,10 +38,10 @@ export const removeNews = id => dispatch =>
         JSON.stringify({id})
     )
 
-export const editNews = (id, title, description) => dispatch =>
+export const editNews = (id, title, description, fileName) => dispatch =>
     fetchThenDispatch(
         dispatch,
         `/api/cms`,
         'PUT',
-        JSON.stringify({id, title, description})
+        JSON.stringify({id, title, description, fileName})
     )

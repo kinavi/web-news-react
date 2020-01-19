@@ -10,7 +10,7 @@ import { matchRoutes, renderRoutes } from 'react-router-config';
 import { assetsByChunkName } from '../dist/stats.json';
 import { Provider } from 'react-redux';
 
-import initialState from '../data/initialState.json'
+import initialState from "../data/initialState.json"
 import favicon from 'serve-favicon'
 import storeFactory from './store/index'
 
@@ -20,6 +20,10 @@ import api from './news-api'
 
 import fs from 'fs'
 import bodyParser from 'body-parser'
+
+//import favicon from 'serve-favicon'
+//import FlagFavi from './favicon.png' 
+
 const serverStore = storeFactory(true, initialState)
 
 const imageFileAssets = express.static('uploads')
@@ -53,9 +57,10 @@ serverStore.subscribe(() =>
 
 
 function renderer(req, serverStore, context) {
+  console.log(serverStore.getState())
     const reactHtml = renderToString(     
       <Provider store={serverStore}>
-        <StaticRouter location={req.path} context={{}}>
+        <StaticRouter location={req.path} context={context}>
             <div>{renderRoutes(Routes)}</div>
         </StaticRouter>
       </Provider>
@@ -93,21 +98,31 @@ const addStoreToRequestPipeline = (req, res, next) => {
 }
 app.use(bodyParser.json())
 app.use(express.static('dist'));
+app.use('/edit', express.static('dist'))
+app.use('/news', express.static('dist'))
+app.use('/cms/add', express.static('dist'))
 app.use(imageFileAssets)
+app.use('/edit', imageFileAssets)
+app.use('/news', imageFileAssets)
 app.use(addStoreToRequestPipeline)
-
+//app.use(favicon(`./${FlagFavi}`))//FlagFavi))
 app.use('/api', api)
 
 //app.get("*", handleRender);
 app.get('*', (req, res) => {
-    // console.log(req.params[0])
-    // console.log(req.params[2])
-    //const params = req.params[0].split('/');
-    //const id = params[2];
-    //console.dir(`req - ${req}`)
+    
+    console.log("req.url - ",req.url)
+    // console.log("param -0 - ",req.params[0])
+    // console.log("param -2 - ",req.params[2])
+    const params = req.params[0].split('/');
+    const id = params[2];
+    console.log('params - ', params)
+    // console.dir(`req - ${req}`)
     const routes = matchRoutes(Routes, req.path);
-
-    console.log(req.path)
+    console.log('req.path - ',req.path)
+    console.log('routes - ',routes)
+    console.log('routes.route.routes - ',routes[0].route.routes)
+    console.log('app-get -',req.path)
 
     const promises = routes
       .map(({ route }) => {
@@ -122,19 +137,20 @@ app.get('*', (req, res) => {
         }
         return null;
       });
-  
+      
+    console.log('promises - ', promises)
     Promise.all(promises).then(() => {
+      console.log("+")
       const context = {};
       const content = renderer(req, serverStore, context);
-  
+      console.log("-")
       if (context.notFound) {
         res.status(404);
       }
-  
+      
       res.send(content);
     });
   });
-
 
 
 app.listen(3000);

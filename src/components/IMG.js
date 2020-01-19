@@ -2,13 +2,12 @@ import React,{ useState, useEffect, Component }  from "react";
 
 const IMG = ({ file }) =>{
 
-    const [src, setSrc] = useState(""); 
+    const [src, setSrc] = useState(file); 
     
     useEffect(() => {
       var reader = new FileReader();
       reader.onload = (e)=>setSrc(e.target.result)
       reader.readAsDataURL(file);
-      
     });
   
     return (
