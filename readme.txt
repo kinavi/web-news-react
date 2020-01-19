@@ -2,12 +2,15 @@
 
 ---> устарел <--- babel-preset-stage-0 --dev 
 
+npm install --save-dev @babel/core @babel/node
 
 npm install --save-dev @babel/core @babel/cli @babel/preset-env
 
 ---> устарел (вроде, хватает env) <--- npm install --save @babel/polyfill ///устарел, или нет https://babeljs.io/docs/en/usage
 
 npm install webpack webpack-cli --save-dev
+
+npm install ignore-styles --save
 
 npx webpack
 
@@ -33,6 +36,12 @@ npm install --save redux
 npm install --save react-redux
 
 npm install react-router-dom --save
+
+npm install redux-thunk --save
+
+npm install uuid
+
+npm install react-icons --save
 ---------------
 npm install babel-cli babel-loader babel-preset-env babel-preset-react --save
 
@@ -46,3 +55,45 @@ npm install image-webpack-loader --save-dev
 npm install file-loader --save-dev
 
 adobe xh
+
+npm install serve-favicon
+install express multer
+-----
+old 
+"start": "webpack-dev-server --mode development --open --hot",
+
+
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: "./src/index.html"
+    })
+  ]
+
+
+
+npm install -g strongloop
+
+$ cd my-app
+$ slc start
+
+$ slc ctl ls
+
+$ slc ctl stop my-app
+
+$ slc ctl restart my-app
+
+$ slc ctl soft-restart my-app
+
+$ slc ctl remove my-app
+
+,
+  plugins: [new HtmlWebpackPlugin({
+    title: 'Custom template',
+    template: 'src/index.html'
+  })]
+
+    "test": "jest",
+    "start": "babel-node ./src/server",
+    "build": "webpack --mode production",
+    "preload": "webpack-dev-server --mode development --open --hot",
+    "final": "webpack --mode production babel-node ./src/server"
