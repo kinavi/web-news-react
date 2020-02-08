@@ -84,7 +84,7 @@ function renderer(req, serverStore, context) {
             )}
             </script>
             <script src="${assetsByChunkName.main[1]}"></script>
-            <div>server</div>
+
         </body>
     </html>`;
 }
@@ -97,10 +97,10 @@ const addStoreToRequestPipeline = (req, res, next) => {
   next()
 }
 app.use(bodyParser.json())
-app.use(express.static('dist'));
-app.use('/edit', express.static('dist'))
-app.use('/news', express.static('dist'))
-app.use('/cms/add', express.static('dist'))
+app.use(express.static('dist/public'));
+app.use('/edit', express.static('dist/public'))
+app.use('/news', express.static('dist/public'))
+app.use('/cms/add', express.static('dist/public'))
 app.use(imageFileAssets)
 app.use('/edit', imageFileAssets)
 app.use('/news', imageFileAssets)

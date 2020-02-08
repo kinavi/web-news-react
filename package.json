@@ -8,6 +8,8 @@
   },
   "scripts": {
     "start": "node ./dist/server.bundle.js",
+    "build:client": "webpack --config ./webpack.config.client.js --mode production",
+    "build:server": "webpack --config ./webpack.config.server.js --mode production",
     "build": "webpack",
     "dev": "webpack-dev-server --config ./webpack.config.dev.js --mode development"
   },

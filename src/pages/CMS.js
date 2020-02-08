@@ -18,7 +18,8 @@ const CMS = ({route}) =>{
 
     return(
         <Page>
-            <Button size="sm" className="mb-4" onClick={handleClickAddNewsBtn}>Добавить новость</Button> 
+            <button className="btn btn-add-news" onClick={handleClickAddNewsBtn}>Добавить новость</button> 
+            {/* <Button size="sm" className="mb-4" onClick={handleClickAddNewsBtn}>Добавить новость</Button>  */}
             {renderRoutes(route.routes)}
             <CmsListNews/>
         </Page>

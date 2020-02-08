@@ -4,8 +4,8 @@ import { HashRouter, Route, Switch, Link, NavLink } from 'react-router-dom'
 export const Menu = () =>{
     return (
         <nav className="nav container">
-            <Link className="nav-link " to="/cms">CMS</Link>
-            <Link className="nav-link " to="/">Показать все новости</Link>
+            <Link className="nav-link " to="/cms"><span>CMS</span></Link>
+            <Link className="nav-link " to="/"><span>Показать все новости</span></Link>
         </nav>
     )
 }

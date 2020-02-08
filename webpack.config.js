@@ -12,15 +12,16 @@ const clientConfig = {
   mode: 'production',
   entry: './src/client.js',
   output: {
-      path: path.resolve(__dirname, 'dist'),
-      filename: 'public/client.[chunkhash].js'
+      path: path.resolve(__dirname, 'dist', 'public'),
+      filename: 'client.[chunkhash].js'
   },
   module: {
       rules: [
           {
               test: /\.(js|jsx)$/,
               exclude: /node_modules/,
-              use: 'babel-loader'
+              use: 'babel-loader',
+              
           },
           {
             test: /\.css$/,
@@ -28,7 +29,7 @@ const clientConfig = {
                 {
                     loader:MiniCssExtractPlugin.loader,
                     options:{
-                        publicPath:'/public'
+                        publicPath:'/'
                     },
                 },                
                 'css-loader']
@@ -47,26 +48,39 @@ const clientConfig = {
       ]
   },
   plugins: [
+
     new webpack.IgnorePlugin(/jsdom$/),
+    new CleanWebpackPlugin(),
     new CompressionPlugin(),
+
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify('production')
       }
     }),
     new StatsWriterPlugin({
-        // filename: 'stats.json',
+        filename: '../stats.json',
         stats: {
           all: false,
-          assets: true
+          assets: true,
+          
         }
       }),
     new MiniCssExtractPlugin({
-        filename:'public/style.[chunkhash].css'
+        filename:'style.[chunkhash].css' //"public/name.pp"
     }),
     
   ]
 };
+
+// const preBuild = {
+//   output:{
+//     path: path.resolve(__dirname, 'dist')
+//   },
+//   plugins:[
+//     new CleanWebpackPlugin(),
+//   ]
+// } 
 
 const serverConfig = {
   mode: 'production',
@@ -99,7 +113,7 @@ const serverConfig = {
   },
   plugins: [
       
-        new CleanWebpackPlugin(),
+
       new webpack.BannerPlugin({
           banner: 'require("source-map-support").install();',
           raw: true,
