@@ -1,33 +1,36 @@
-import React from 'react'
-import { Page } from '../components/Page'
-//import 'bootstrap/dist/css/bootstrap.min.css';
-//import LiteNews from '../components/LiteNews'
-import CmsListNews from '../components/ListNewsCms'
-import AddNewsForm from '../components/Forms/AddNewsForm'
-import { Link, useHistory,useParams, useLocation } from 'react-router-dom'
-import { renderRoutes } from 'react-router-config';
-import { Button } from "react-bootstrap";
+import React from 'react';
+import {Page, ListNewsCms} from '../components';
+import {useHistory, useLocation} from 'react-router-dom';
+import {renderRoutes} from 'react-router-config';
+import {Button} from 'react-bootstrap';
 
-const CMS = ({route}) =>{
+const Cms = ({route}) =>{
+  const history = useHistory();
+  const location = useLocation();
 
-    let history = useHistory();
-
-    const handleClickAddNewsBtn = () =>{
-        history.push("/cms/add");
+  const handlerClick = (e) =>{
+    e.stopPropagation();
+    console.log('location.pathname - ', location.pathname);
+    if (location.pathname=='/cms/add') {
+      history.push('/cms');
+    } else {
+      history.push('/cms/add');
     }
+  };
 
-    return(
-        <Page>
-            <button className="btn btn-add-news" onClick={handleClickAddNewsBtn}>Добавить новость</button> 
-            {/* <Button size="sm" className="mb-4" onClick={handleClickAddNewsBtn}>Добавить новость</Button>  */}
-            {renderRoutes(route.routes)}
-            <CmsListNews/>
-        </Page>
-        
-    )
-    
-}
+  return (
+    <Page>
+      <Button
+        size="sm"
+        className="mb-4"
+        onClick={handlerClick}>Добавить новость</Button>
+      {renderRoutes(route.routes)}
+      <ListNewsCms/>
+    </Page>
+
+  );
+};
 
 export default {
-    component:CMS
-}
+  component: Cms,
+};
