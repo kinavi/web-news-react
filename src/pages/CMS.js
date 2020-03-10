@@ -11,10 +11,10 @@ const Cms = ({route}) =>{
   const handlerClick = (e) =>{
     e.stopPropagation();
     console.log('location.pathname - ', location.pathname);
-    if (location.pathname=='/cms/add') {
+    if (location.pathname=='/cms/add/') {
       history.push('/cms');
     } else {
-      history.push('/cms/add');
+      history.push('/cms/add/');
     }
   };
 
