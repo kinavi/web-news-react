@@ -1,17 +1,15 @@
-import React from 'react'
-import { Page } from '../components/Page'
-//import 'bootstrap/dist/css/bootstrap.min.css';
-//import '../styles/App.css'
-import MainListNews from  '../components/MainListNews'
+import React from 'react';
+
+import {ListNewsMain, Page} from '../components';
 
 const ListNews = () =>{
-    return(
-        <Page>
-            <MainListNews/>
-        </Page>
-    )
-}
+  return (
+    <Page>
+      <ListNewsMain/>
+    </Page>
+  );
+};
 
 export default {
-    component:ListNews
-}
+  component: ListNews,
+};

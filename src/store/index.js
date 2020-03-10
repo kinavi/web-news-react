@@ -1,30 +1,30 @@
-import { App_R } from './Redusers/App_R'
-import { createStore, combineReducers, applyMiddleware } from 'redux'
-import thunk from 'redux-thunk'
+import thunk from 'redux-thunk';
+import {createStore, combineReducers, applyMiddleware} from 'redux';
 
-const clientLogger = store => next => action => {
-    let result
-    console.groupCollapsed("dispatching", action.type)
-    console.log('prev state', store.getState())
-    console.log('action', action)
-    result = next(action)
-    console.log('next state', store.getState())
-    console.groupEnd()
-    return result
-}
+import {News} from './Redusers';
 
-const serverLogger = store => next => action => {
-    console.log('\n dispatching server action\n')
-    console.log(action)
-    console.log('\n')
-    return next(action)
-}
+const clientLogger = (store) => (next) => (action) => {
+  console.groupCollapsed('dispatching', action.type);
+  console.log('prev state', store.getState());
+  console.log('action', action);
+  const result = next(action);
+  console.log('next state', store.getState());
+  console.groupEnd();
+  return result;
+};
 
-const middleware = server =>[
+const serverLogger = (store) => (next) => (action) => {
+  console.log('\n dispatching server action\n');
+  console.log(action);
+  console.log('\n');
+  return next(action);
+};
+
+const middleware = (server) =>[
     (server) ? serverLogger : clientLogger,
-    thunk
-]
-    
+    thunk,
+];
+
 // const composeEnhancers =
 //   typeof window !== 'undefined'
 //     ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
@@ -38,14 +38,14 @@ const middleware = server =>[
 
 
 const storeFactory = (server = false, initialState = {}) =>
-    // applyMiddleware(...middleware(server))(createStore)(
-    //     App_R,
-    //     initialState
-    // )
-    createStore(
-        App_R,
-        initialState,
-        applyMiddleware(...middleware(server))
-    )
+// applyMiddleware(...middleware(server))(createStore)(
+//     App_R,
+//     initialState
+// )
+  createStore(
+      combineReducers({News}),
+      initialState,
+      applyMiddleware(...middleware(server)),
+  );
 
-export default storeFactory
+export default storeFactory;
