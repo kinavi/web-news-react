@@ -4,18 +4,18 @@ import {useParams} from 'react-router-dom';
 import {connect} from 'react-redux';
 import FullNews from '../components/FullNews';
 
-const News = ({ListNews}) =>{
+const News = ({News}) =>{
   const {id} = useParams();
-  const [News, setNews] = useState(getItemById(ListNews, id));
+  const [news, setNews] = useState(getItemById(News, id));
 
   return (
     <Page>
-      <FullNews {...News}/>
+      <FullNews {...news}/>
     </Page>
   );
 };
 const mapStateToProps = (state) =>({
-  ListNews: state.ListNews,
+  News: state.News,
 });
 
 export default {
@@ -26,6 +26,6 @@ export default {
 };
 
 // Фигня, надо переделать
-const getItemById = (List, id) =>{
-  return List.filter((item) => item.id==id)[0];
+const getItemById = (list, id) =>{
+  return list.find((item) => item.id==id);
 };
