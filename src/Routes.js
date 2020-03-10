@@ -3,7 +3,6 @@ import ListNews from './pages/ListNews';
 import News from './pages/News';
 import CMS from './pages/CMS';
 import AddNew from './pages/AddNews';
-import EditNews from './pages/EditNews';
 import NoMatch from './pages/NoMatch';
 
 export default [
@@ -23,19 +22,7 @@ export default [
             ...AddNew,
             path: '/cms/add',
           },
-          {
-            ...EditNews,
-            path: '/cms/edit/:id',
-          },
         ],
-      },
-      // {
-      //   ...AddNew,
-      //   path:"/add"
-      // },
-      {
-        ...EditNews,
-        path: '/edit/:id',
       },
       {
         ...News,
