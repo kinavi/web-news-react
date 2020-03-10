@@ -1,28 +1,25 @@
-import React from "react";
-import ShowNews from './ShowNewsEditor'
-import { Link, useHistory } from 'react-router-dom'
+import React from 'react';
+import {EditorPreview} from '.';
+import {useHistory} from 'react-router-dom';
 
-const FullNews = ({ id, title, description, fileName}) =>
-{
+const FullNews = ({id, title, description, fileName}) => {
+  const history = useHistory();
 
-    let history = useHistory();
+  const handleClick = () =>{
+    // _onCreateNews(title, description,file)
+    history.push(`/news/${id}`);
+  };
 
-    function handleClick() {
-        //_onCreateNews(title, description,file)
-        history.push(`/news/${id}`);
-      
-    }
+  return (
+    <div className="shadow card rounded mb-5" onClick={handleClick}>
+      <img src={fileName} className=" card-img-top" />
+      <div className="card-body">
+        <div className="card-title h3">{title}</div>
+        <EditorPreview isEdit={true} value={description}/>
+      </div>
+    </div>
+  );
+};
 
-    return(
-        <div className="shadow card rounded mb-5" onClick={handleClick}>
-            <img src={fileName} className=" card-img-top" />
-            <div className="card-body">
-                <div className="card-title h3">{title}</div>
-                <ShowNews isEdit={true} value={description}/>
-            </div>
-        </div>
-    )
-}
-    
 
-export default FullNews
+export default FullNews;
