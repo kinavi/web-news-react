@@ -1,5 +1,5 @@
 import express from 'express';
-import path from 'path';
+// import path from 'path';
 import React from 'react';
 import {renderToString} from 'react-dom/server';
 // import App from "./client/app.js";
@@ -11,7 +11,7 @@ import {assetsByChunkName} from '../stats.json';
 import {Provider} from 'react-redux';
 
 import initialState from '../data/initialState.json';
-import favicon from 'serve-favicon';
+// import favicon from 'serve-favicon';
 import storeFactory from './store/index';
 
 import serialize from 'serialize-javascript';
@@ -29,12 +29,12 @@ const serverStore = storeFactory(true, initialState);
 const imageFileAssets = express.static('uploads');
 
 serverStore.subscribe(() =>
-  // writeFile(path.join(__dirname, 'data/initialState.json'), JSON.stringify(serverStore.getState()))
   fs.writeFile(
       // path.format(initialState),
       // initialState,
       './data/initialState.json',
-      // path.join(__dirname, '../data/initialState.json'),//Сейчас файл не переписывается, надо поменять путь
+      // path.join(__dirname, '../data/initialState.json'),
+      // Сейчас файл не переписывается, надо поменять путь
       JSON.stringify(serverStore.getState()),
       (error) => (error) ? console.log('Error saving state!', error) : null,
   ),
@@ -74,7 +74,7 @@ const addStoreToRequestPipeline = (req, res, next) => {
   next();
 };
 app.use(bodyParser.json());
-app.use(express.static('public'));
+app.use('/', express.static('public'));
 app.use('/edit', express.static('public'));
 app.use('/news', express.static('public'));
 app.use('/cms/add', express.static('public'));
@@ -87,18 +87,9 @@ app.use('/api', api);
 
 // app.get("*", handleRender);
 app.get('*', (req, res) => {
-  console.log('req.url - ', req.url);
-  // console.log("param -0 - ",req.params[0])
-  // console.log("param -2 - ",req.params[2])
   const params = req.params[0].split('/');
   const id = params[2];
-  console.log('params - ', params);
-  // console.dir(`req - ${req}`)
   const routes = matchRoutes(Routes, req.path);
-  console.log('req.path - ', req.path);
-  console.log('routes - ', routes);
-  console.log('routes.route.routes - ', routes[0].route.routes);
-  console.log('app-get -', req.path);
 
   const promises = routes
       .map(({route}) => {
@@ -114,12 +105,9 @@ app.get('*', (req, res) => {
         return null;
       });
 
-  console.log('promises - ', promises);
   Promise.all(promises).then(() => {
-    console.log('+');
     const context = {};
     const content = renderer(req, serverStore, context);
-    console.log('-');
     if (context.notFound) {
       res.status(404);
     }
