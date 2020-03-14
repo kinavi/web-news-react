@@ -10,7 +10,7 @@ const IMG = ({file}) =>{
   });
 
   return (
-    <img className='w-25 mr-3' src={src} alt="текст"></img>
+    <img className='img' src={src} alt="текст"></img>
   );
 };
 
