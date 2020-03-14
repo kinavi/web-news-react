@@ -1,0 +1,1 @@
+[Maket](https://www.figma.com/file/eSwSqNYr0bSGMhsk8ekBkPv7/News-Camp?node-id=1%3A2 )
