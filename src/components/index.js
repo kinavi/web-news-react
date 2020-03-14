@@ -1,4 +1,4 @@
-import {NewsPreview} from './NewsPreview';
+import {NewsPreview, FORMAT_NEWS} from './NewsPreview';
 import ListNewsMain from './ListNewsMain';
 import {Page} from './Page';
 import {EditorPreview} from './editor/EditorPreview';
@@ -8,6 +8,7 @@ import {ButtonSelectImg, TitleField} from './FormElements';
 import NewsLite from './NewsLite';
 import NewsEdit from './NewsEdit';
 import {NewsSelectorForm} from './NewsSelectorForm';
+
 export {
   NewsPreview,
   ListNewsMain,
@@ -20,4 +21,5 @@ export {
   NewsLite,
   NewsEdit,
   NewsSelectorForm,
+  FORMAT_NEWS,
 };
