@@ -1,72 +1,85 @@
-@font-face {
-    font-family: "Sony";
-    src: url("/fonts/Sony.otf") format("otf"),
-           url("/fonts/Sony.otf") format("otf");
-   }
-#root{
-    position: relative;
-
-
-}
-body{
-    margin: 0;
-    font-family: Sony;
-}
-.app{
-    width: 70%;
-    margin-left: auto;  
-    margin-right: auto;
-    margin-top: 10px;
-    height: 100vh;
-    background: antiquewhite;
-
-}
-.nav {
-    margin-bottom: 10px;
-
-}
-.nav-link:last-child{
-    margin-left: 10px;
-    
-}
-
-/* .nav-link{
-    box-sizing: border-box;
-    border: 1px solid rgb(124, 11, 11);
-    color: rgb(105, 23, 23);
-    font-size: 12px;
-    font-style: italic;
-    font-weight: 400;
-    letter-spacing: 1.2px;
-    line-height: 1;
-    padding: 15px 40px;
-    position: relative;
-
-} */
-
-.nav-link {
-    
-    
-  }
-  .nav-link:hover {
-
-  }
- 
-  html, body {
+html, 
+body,
+#root,
+.app,
+.page {
     height: 100%;
-    overflow: hidden;
-  }
+}
 
-  .btn{
-    border-radius: 5px;
-    border-color: rgb(156, 157, 161);
-    background-color: rgb(194, 219, 161);
-    font-family: Sony;
-    border-style: none;
-    margin-bottom: 10px;
-    box-shadow: 1px 2px 3px 1px black;
-  }
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
 
-  .btn:hover{
-      background: brown;
-  }
+    -moz-background-size: 100%; /* Firefox 3.6+ */
+    -webkit-background-size: 100%; /* Safari 3.1+ и Chrome 4.0+ */
+    -o-background-size: 100%; /* Opera 9.6+ */
+    background-size: 100%; /* Современные браузеры */
+
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+
+    background-image: url(e9ec5a3e78c51a4f860589663eaf29fc.jpeg);
+
+    /* object-fit: contain; */
+}
+
+.text-center {
+    margin: 0 auto;
+}
+
+.page {
+    width: 1140px;
+    /* height: 100px; */
+    margin: 0 auto;
+    
+}
+
+.container-news {
+    margin-top: 50px;
+    background: #FFFFFF;
+    /* min-height: 1400px; */
+    height: 100%;
+    /* padding: 40px; */
+    overflow-y: auto;
+}
+
+.big-preview {
+    position: relative;
+    width: 60%;
+    height: 580px;
+}
+
+.big-preview__img {
+
+}
+.big-preview__info{
+    position: relative;
+    /* margin-top: -50px; */
+}
+.big-preview__layer{
+    z-index: 1;
+    color: white;
+    /* background: yellowgreen; */
+
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    /* margin-left: -50px; */
+    top: 0;
+}
+.big-preview__title{
+
+}
+
+.text_white{
+
+}
+
+.img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
