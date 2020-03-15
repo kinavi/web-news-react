@@ -14,11 +14,11 @@ const NewsLite = ({id, title, fileName, setEdit, onRemove}) =>{
   return (
 
     <div className="cms__lite-news lite-news">
-      <div
-        className="lite-news__title">{title}</div>
       <div className='lite-news__img-container' >
         <img className="img" src={`/${fileName}`} alt=""/>
       </div>
+      <div className="lite-news__title">{title}</div>
+
       <div className='lite-news__btn-container' >
         <button
           className='btn lite-news__btn's

@@ -13,17 +13,12 @@ export const NewsSelectorForm = (props) =>{
       (isEdit)?
         <NewsEdit
           {...props}
-          // id={id}
-          // title={title}
-          // description={description}
           setEdit={setEdit}
-          
-          />:
+
+        />:
         <NewsLite
-        {...props}
-          // id={id}
-          // title={title}
-          setEdit={setEdit} 
-          />
+          {...props}
+          setEdit={setEdit}
+        />
   );
 };
