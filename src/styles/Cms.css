@@ -1,0 +1,89 @@
+.cms {
+    height: 100%;
+}
+.btn_center {
+    margin: 0 auto;
+}
+
+.add-form{
+    /* background: #FFE3B3; */
+    padding: 10px;
+    margin-bottom: 20px;
+    /* padding-bottom: 15px; */
+    background: #FFFFFF;
+    border: 1px solid #706F6F;
+}
+.add-form__container-btns{
+    display: flex;
+}
+.add-form__img{
+
+}
+.add-form__img-group{
+    /* margin-top: 10px; */
+}
+/* .add-form__title-picture{
+} */
+.add-form__container-img{
+    /* margin-bottom: 15px; */
+}
+.add-form__container-title{
+    margin-bottom: 15px;
+}
+.add-form__title{
+
+}
+.title{
+    margin-bottom: 5px;
+}
+.add-form__title-input{
+    background: #fbdac0;
+}
+.add-form__editor{
+    background: #fbdac0;
+    margin-bottom: 15px;
+    
+    
+}
+.editor{
+    font-weight: normal;
+    padding: 10px;
+    outline: auto;
+}
+.editor__tools{
+    display: flex;
+    flex-wrap: wrap;
+}
+.add-form__btn{
+    margin-right: 10px;
+}
+.cms__container-news{
+    
+}
+.cms__lite-news{
+
+} 
+.lite-news{
+    display: flex;
+    padding: 10px;
+    background: #FFFFFF;
+    border: 1px solid #706F6F;
+}
+.lite-news__title{
+    align-self: center;
+    width: 60%;
+    text-transform: uppercase;
+}
+.lite-news__img-container{
+    width: 10%;
+}
+.lite-news__btn{
+    align-self: center;
+    margin-bottom: 0;
+    
+}
+.lite-news__btn-container{
+    display: flex;
+    width: 30%;
+    justify-content: space-evenly;
+}

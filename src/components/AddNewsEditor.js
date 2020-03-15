@@ -41,15 +41,28 @@ const EditNewsEditor = ({isEdit, value, setValue}) => {
   };
 
   return (
-    <div style={{background: '#e3edef'}} className="rounded p-2">
-      <div className="btn-group btn-group-sm" role="group">
-        <div>
-          <button type="button" className="btn btn-secondary" onClick={_onBoldClick}>Bold</button>
-          <button type="button" className="btn btn-secondary" onClick={_onItalicClick}>Italic</button>
-          <button type="button" className="btn btn-secondary" onClick={_onCodeClick}>Code</button>
-          <button type="button" className="btn btn-secondary" onClick={_onStrikethroughClick}>Strikethrough</button>
-          <button type="button" className="btn btn-secondary" onClick={_onUnderlineClick}>Underline</button>
-        </div>
+    <div className="add-form__editor editor">
+      <div className="editor__tools" role="group">
+        <button
+          type="button"
+          className="btn"
+          onClick={_onBoldClick}>Bold</button>
+        <button
+          type="button"
+          className="btn"
+          onClick={_onItalicClick}>Italic</button>
+        <button
+          type="button"
+          className="btn"
+          onClick={_onCodeClick}>Code</button>
+        <button
+          type="button"
+          className="btn"
+          onClick={_onStrikethroughClick}>Strikethrough</button>
+        <button
+          type="button"
+          className="btn"
+          onClick={_onUnderlineClick}>Underline</button>
       </div>
       <Editor
         editorState={editorState}

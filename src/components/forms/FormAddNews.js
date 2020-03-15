@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {connect} from 'react-redux';
 import {Link, useHistory} from 'react-router-dom';
-import {Button} from 'react-bootstrap';
+import {Button as button} from 'react-bootstrap';
 
 
 import {addNews, loadFile} from '../../store/Actions/index';
@@ -25,15 +25,15 @@ const FormAddNew = ({_onCreateNews})=>{
   }
 
   return (
-    <div style={{background: '#FFE3B3'}} className=" shadow rounded mt-2 p-2 mb-4">
+    <div className="add-form">
       <ButtonSelectImg value={file} setValue={setFile}/>
       <TitleField value={title} setValue={setTitle}/>
       <AddNewsEditor isEdit={false} value={description} setValue={setDescription}/>
 
-      <div>
+      <div className='add-form__container-btns'>
         {/* <Button onClick={()=>{}}>Предосмотр</Button> */}
-        <Button onClick={handleCreate}>Создать</Button>
-        <Button onClick={handleBack}>Отмена</Button>
+        <button className='btn add-form__btn' onClick={handleCreate}>Создать</button>
+        <button className='btn add-form__btn' onClick={handleBack}>Отмена</button>
       </div>
 
     </div>

@@ -1,11 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Button} from 'react-bootstrap';
 
 import {removeNews} from '../store/Actions';
 
-const NewsLite = ({id, title, setEdit, onRemove}) =>{
-
+const NewsLite = ({id, title, fileName, setEdit, onRemove}) =>{
   const handlerEdit = () =>{
     setEdit(true);
   };
@@ -14,19 +12,22 @@ const NewsLite = ({id, title, setEdit, onRemove}) =>{
   };
 
   return (
-    <div className="shadow mb-2">
-      <div style={{background: '#af9b79'}} className="d-flex rounded">
-        <div
-          className="align-self-center ml-2 rounded text-white flex-fill">{title}</div>
-        <Button
-          onClick={handlerEdit}
-          size="sm"
-          className="m-2">Изменить</Button>
-        <Button
-          onClick={handlerRemove}
-          variant="danger" size="sm"
-          className="m-2">Удалить</Button>
+
+    <div className="cms__lite-news lite-news">
+      <div
+        className="lite-news__title">{title}</div>
+      <div className='lite-news__img-container' >
+        <img className="img" src={`/${fileName}`} alt=""/>
       </div>
+      <div className='lite-news__btn-container' >
+        <button
+          className='btn lite-news__btn's
+          onClick={handlerEdit}>Edit</button>
+        <button
+          className='btn lite-news__btn'
+          onClick={handlerRemove}>Remove</button>
+      </div>
+
     </div>
   );
 };

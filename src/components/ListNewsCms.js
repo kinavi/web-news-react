@@ -6,7 +6,7 @@ import {NewsSelectorForm} from '.';
 const ListNewsCms = ({News}) =>{
 
   return (
-    <div className="">
+    <div className="cms__container-news">
       {(!!News)?
         News.map((item, i)=>
           <NewsSelectorForm key={i} {...item} />):

@@ -44,7 +44,7 @@ const renderer = (req, serverStore, context) =>{
   const reactHtml = renderToString(
       <Provider store={serverStore}>
         <StaticRouter location={req.path} context={context}>
-          <div>{renderRoutes(Routes)}</div>
+          <div className='app' >{renderRoutes(Routes)}</div>
         </StaticRouter>
       </Provider>,
   );
@@ -77,10 +77,12 @@ app.use(bodyParser.json());
 app.use('/', express.static('public'));
 app.use('/edit', express.static('public'));
 app.use('/news', express.static('public'));
+app.use('/cms', express.static('public'));
 app.use('/cms/add', express.static('public'));
 app.use(imageFileAssets);
-app.use('/edit', imageFileAssets);
+// app.get('/cms/', imageFileAssets);
 app.use('/news', imageFileAssets);
+// app.use('/cms*', imageFileAssets);
 app.use(addStoreToRequestPipeline);
 // app.use(favicon(`./${FlagFavi}`))//FlagFavi))
 app.use('/api', api);

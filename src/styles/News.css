@@ -45,7 +45,7 @@
 .container {
     /* font-family: Roboto; */
     /* font-family: Arial; */
-    padding: 4.39%;
+    /* padding: 4.39%; */
     min-height: 100%;
     text-align: center;
 }
@@ -98,6 +98,6 @@
     line-height: 21px;
     display: flex;
     letter-spacing: 0.1em;
-    margin: 0 auto;
     text-transform: uppercase;
+    margin-bottom: 20px;
 }

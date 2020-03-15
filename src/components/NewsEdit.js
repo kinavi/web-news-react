@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {connect} from 'react-redux';
-import {Button} from 'react-bootstrap';
+import {Button as button} from 'react-bootstrap';
 
 import {EditorNews, TitleField, ButtonSelectImg} from '.';
 import {editNews, loadFile} from '../store/Actions';
@@ -20,17 +20,17 @@ const NewsEdit = ({id, title, description, onEdit, setEdit}) =>{
   };
 
   return (
-    <div style={{background: '#FFE3B3'}} className="shadow rounded mt-2 p-2 mb-4">
+    <div className="add-form">
       <ButtonSelectImg value={file} setValue={setFile}/>
       <TitleField value={_title} setValue={setTitle}/>
       <EditorNews
         isEdit={false}
         value={_description}
         setValue={setDescription}/>
-      <div>
+      <div className='add-form__container-btns' >
         {/* <Button >Предосмотр</Button> */}
-        <Button onClick={handlerSave}>Save</Button>
-        <Button onClick={handlerCancel}>Cancel</Button>
+        <button className='btn add-form__btn' onClick={handlerSave}>Save</button>
+        <button className='btn add-form__btn' onClick={handlerCancel}>Cancel</button>
       </div>
 
     </div>

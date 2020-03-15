@@ -8,7 +8,7 @@ import {ButtonSelectImg, TitleField} from './FormElements';
 import NewsLite from './NewsLite';
 import NewsEdit from './NewsEdit';
 import {NewsSelectorForm} from './NewsSelectorForm';
-
+import IMG from './IMG';
 export {
   NewsPreview,
   ListNewsMain,
@@ -22,4 +22,5 @@ export {
   NewsEdit,
   NewsSelectorForm,
   FORMAT_NEWS,
+  IMG
 };
