@@ -11,12 +11,15 @@ const FullNews = ({id, title, description, fileName}) => {
   };
 
   return (
-    <div className="shadow card rounded mb-5" onClick={handleClick}>
-      <img src={fileName} className=" card-img-top" />
-      <div className="card-body">
-        <div className="card-title h3">{title}</div>
-        <EditorPreview isEdit={true} value={description}/>
+    <div className="news" onClick={handleClick}>
+      {/* <img src={fileName} className="news__img img" /> */}
+      <div className='news__title-container'>
+        <div className='title-news'>
+          <div className="title-news__author">Author</div>
+          <div className="title-news__title">{title}</div>
+        </div>
       </div>
+      <EditorPreview isEdit={true} value={description}/>
     </div>
   );
 };

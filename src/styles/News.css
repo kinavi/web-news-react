@@ -6,6 +6,7 @@
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: #FFFFFF;
+    margin-bottom: 20px;
 }
 .preview__title{
     font-weight: bold;
@@ -24,7 +25,7 @@
     display: flex;
     align-content: space-between;
     flex-flow: row wrap;
-    margin-bottom: 30px;
+    /* margin-bottom: 30px; */
     /* height: 100%; */
 }
 .img {
@@ -54,19 +55,21 @@
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    margin-bottom: 30px;
 }
 /* Bottom right text */
 .preview__text-block {
     position: absolute;
-    bottom: 35%;
+    bottom: 0%;
     display: flex;
     flex-flow: row wrap;
     width: 100%;
+    height: 100%;
 }
 .preview__text-block_small{
     position: relative;
     color: black;
-    height: 21.76%;
+    height: 45px;
     font-size: 18px;
     line-height: 21px;
     display: flex;
@@ -76,15 +79,41 @@
 .preview_big {
     position: relative;
     width: 57.69%;
-    margin-bottom: 30px;
+    height: 580px;
+    
+}
+.preview__text-block:hover{
+    background: #2e262680;
+    cursor: pointer;
 }
 .preview__item_small {
     width: 100%;
     height: 47.45%;
 }
+
+.preview__item_small:hover{
+    cursor: pointer;
+}
+
+.preview__item_small:hover .img-container .img {
+    /* background: #2e262680;
+    filter: brightness(.5); .img-container  */
+}
+.preview__item_small:hover .img-container__layer{
+    background: #2e262680;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+}
+.preview__item_small:hover .preview__text-block_small {
+    text-decoration: underline;
+}
+
 .img-container{
     width: 100%;
-    height: 78.23%;
+    height: 230px;
+    position: relative;
 }
 .btn {
     background: #FFFFFF;
@@ -101,4 +130,45 @@
     text-transform: uppercase;
     margin-bottom: 20px;
     padding: 0 5px;
+}
+.title-news{
+    width: 53.37%;
+    margin: 28px auto 54px auto;
+}
+.title-news__title{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 42px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+.news__title-container{
+    text-align: center;
+    border: solid;
+    /* width: 53.37%; */
+    margin-bottom: 20px;
+}
+.title-news__author {
+    margin-bottom: 30px;
+}
+.news__content{
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+    display: flex;
+    align-items: center;
+    text-align: justify;
+    letter-spacing: 0.1em;
+
+    color: #333333;
+}
+.preview__title-content{
+    display: block;
+    margin: 182px auto 162px auto;
+    width: 60.56%;
 }
