@@ -16,8 +16,11 @@ const BigLayer = ({id, title, fileName}) =>{
     <div className="preview_big" onClick={handleClick}>
       <img className="img" src={fileName} alt=""/>
       <div className="preview__text-block">
-        <span className="preview__author">Author</span>
-        <span className="preview__title">{title}</span>
+        <div className='preview__title-content'>
+          <div className="preview__author">Author</div>
+          <div className="preview__title">{title}</div>
+        </div>
+
       </div>
     </div>
   );
@@ -34,11 +37,12 @@ const SmallLayer = ({id, title, fileName}) =>{
   };
 
   return (
-    <div className="preview__item_small" onClick={handleClick}>
-      <div className='img-container' >
+    <div className="preview__item_small">
+      <div className='img-container' onClick={handleClick} >
         <img className="img" src={fileName} alt=""/>
+        <div className='img-container__layer'></div>
       </div>
-      <div className="preview__text-block_small">
+      <div className="preview__text-block_small" onClick={handleClick}>
         <span>{title}</span>
       </div>
     </div>

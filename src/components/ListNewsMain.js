@@ -27,7 +27,7 @@ const ListNewsMain = ({News}) =>{
         <div>No News</div>
 
       }
-      <button className='btn'>show more</button>
+      {/* <button className='btn'>show more</button> */}
 
     </div>
   );

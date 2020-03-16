@@ -7,7 +7,7 @@
 
 .add-form{
     /* background: #FFE3B3; */
-    padding: 10px;
+    padding: 20px;
     margin-bottom: 20px;
     /* padding-bottom: 15px; */
     background: #FFFFFF;
@@ -38,6 +38,12 @@
 }
 .add-form__title-input{
     background: #fbdac0;
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
 }
 .add-form__editor{
     background: #fbdac0;
@@ -48,7 +54,11 @@
 .editor{
     font-weight: normal;
     padding: 10px;
-    outline: auto;
+    width: 100%;
+    padding: 12px 20px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
 }
 .editor__tools{
     display: flex;

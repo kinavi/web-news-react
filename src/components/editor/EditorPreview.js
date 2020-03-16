@@ -17,7 +17,7 @@ export const EditorPreview = ({isEdit, value, setValue}) => {
   }, [value]);
 
   return (
-    <div style={{background: '#e3edef'}} className="rounded p-2">
+    <div className="news__content">
       <Editor
         editorState={editorState}
         readOnly={isEdit}

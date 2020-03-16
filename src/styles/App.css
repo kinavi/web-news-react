@@ -4,7 +4,20 @@ body,
 .app,
 .page {
     height: 100%;
+    width: 100%;
+    
 }
+a img, :link img, :visited img  {
+    border: none;
+    outline: none;
+    transform: none;
+    }
+a:focus{
+    border: none;
+    outline: none;
+    transform: none;
+} 
+
 button {
     padding: 0;
     border: none;
@@ -21,20 +34,15 @@ button {
 }
 
 body {
-    height: 100%;
     margin: 0;
     padding: 0;
-
-    -moz-background-size: 100%; /* Firefox 3.6+ */
-    -webkit-background-size: 100%; /* Safari 3.1+ и Chrome 4.0+ */
-    -o-background-size: 100%; /* Opera 9.6+ */
-    background-size: 100%; /* Современные браузеры */
+    background: #181a19 no-repeat;
 
     font-family: 'Roboto', sans-serif;
     font-style: normal;
     font-weight: bold;
 
-    background-image: url(e9ec5a3e78c51a4f860589663eaf29fc.jpeg);
+    
 
     /* object-fit: contain; */
 }
@@ -53,8 +61,8 @@ body {
 .container-news {
     margin-top: 50px;
     background: #FFFFFF;
-    /* min-height: 1400px; */
-    height: 100%;
+    min-height: 1400px;
+    /* min-height: 100%; */
     /* padding: 40px; */
     overflow-y: auto;
     padding: 4.39%;

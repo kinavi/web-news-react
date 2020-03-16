@@ -5,6 +5,7 @@ import {GoSearch} from 'react-icons/go';
 import '../styles/Header.css';
 import {MdClose} from 'react-icons/md';
 import {Link, useHistory} from 'react-router-dom';
+import {TiHome} from 'react-icons/ti';
 // import {Menu} from './Menu';
 
 const CloseState = () =>
@@ -26,12 +27,16 @@ const Menu = () =>{
     e.stopPropagation();
     setOpen(true);
   };
-  const handlerMouseOff = (e) =>{
-    e.stopPropagation();
-    setOpen(false);
-  }; 
+  // const handlerMouseOff = (e) =>{
+  //   e.stopPropagation();
+  //   setOpen(false);
+  // };      onMouseLeave={handlerMouseOff}
+
   return (
-    <button className='header__menu header__btn' onMouseLeave={handlerMouseOff} onMouseEnter={handlerMouseOn}>
+    <button
+      className='header__menu header__btn'
+
+      onMouseEnter={handlerMouseOn}>
       {isOpen?<OpenState/>:<CloseState/>
       }
       {isOpen&&
@@ -45,34 +50,37 @@ const Menu = () =>{
 };
 
 const Title = () =>{
+  // const handlerClick = (e)=>{
+  //   e.stopPropagation();
+
+  // }
   return (
     <div className='header__title'>
       <span className='text-center'>
-        TITLE
+        world web news
       </span>
     </div>
   );
 };
 
-const Club = () =>{
+const Home = () =>{
   return (
-    <button className='header__club header__btn'>
-      <span className='text-center'>
-      CLUB
-      </span>
-
-    </button>
+    <Link to='/' title='main' className='header__home header__btn'>
+      <IconContext.Provider
+        value={{size: 30, className: 'header__icon'}}>
+        <TiHome/>
+      </IconContext.Provider>
+    </Link>
   );
 };
 
 const Auth = () =>{
   return (
-    <button className='header__auth header__btn'>
+    <Link to='/cms' title='main' className='header__auth header__btn'>
       <span className='text-center'>
-      AUTH
+        AUTH
       </span>
-
-    </button>
+    </Link>
   );
 };
 const Search = () =>{
@@ -107,10 +115,10 @@ export const Page = ({children}) =>
   <div className="page">
 
     <Header>
-      <Menu/>
-      <Club/>
-      <Title/>
+      {/* <Menu/> */}
+      <Home/>
       <Auth/>
+      <Title/>
       <Search/>
     </Header>
     <div className="container-news">
