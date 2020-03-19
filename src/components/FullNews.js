@@ -1,17 +1,17 @@
 import React from 'react';
-import {EditorPreview} from '.';
+import {EditorView} from '.';
 import {useHistory} from 'react-router-dom';
 
-const FullNews = ({id, title, description, fileName}) => {
-  const history = useHistory();
+const FullNews = ({_id, title, description, fileName}) => {
+  // const history = useHistory();
 
-  const handleClick = () =>{
-    // _onCreateNews(title, description,file)
-    history.push(`/news/${id}`);
-  };
+  // const handleClick = () =>{
+  //   // _onCreateNews(title, description,file)
+  //   history.push(`/news/${_id}`);
+  // }; onClick={handleClick}
 
   return (
-    <div className="news" onClick={handleClick}>
+    <div className="news" >
       {/* <img src={fileName} className="news__img img" /> */}
       <div className='news__title-container'>
         <div className='title-news'>
@@ -19,7 +19,7 @@ const FullNews = ({id, title, description, fileName}) => {
           <div className="title-news__title">{title}</div>
         </div>
       </div>
-      <EditorPreview isEdit={true} value={description}/>
+      <EditorView isEdit={true} value={description}/>
     </div>
   );
 };

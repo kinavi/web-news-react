@@ -1,5 +1,5 @@
 import React from 'react';
-import FormAddNew from '../components/forms/FormAddNews';
+import FormAddNew from '../components/forms/AddNews';
 
 const AddNews = ()=> <FormAddNew/>;
 

@@ -5,18 +5,22 @@ import {Button as button} from 'react-bootstrap';
 import {EditorNews, TitleField, ButtonSelectImg} from '.';
 import {editNews, loadFile} from '../store/Actions';
 
-const NewsEdit = ({id, title, description, onEdit, setEdit}) =>{
+const NewsEdit = ({_id, title, description, fileName, onEdit, setEdit}) =>{
   const [_title, setTitle] = useState(title);
   const [file, setFile] = useState();
   const [_description, setDescription] = useState(description);
+  const [scrollY, setScrollY] = useState(window.pageYOffset);
+  const [scrollX, setScrollX] = useState(window.pageXOffset); // Надо ли?
 
   const handlerSave = () =>{
-    onEdit(id, _title, _description, file); // Тут баг с file
+    onEdit(_id, _title, _description, file, fileName); // Тут баг с file
     setEdit(false);
+    window.scrollTo(scrollX, scrollY);
   };
 
   const handlerCancel = () =>{
     setEdit(false);
+    window.scrollTo(scrollX, scrollY);
   };
 
   return (
@@ -38,17 +42,21 @@ const NewsEdit = ({id, title, description, onEdit, setEdit}) =>{
 };
 
 const mapDispatchToProps = (dispatch) =>({
-  onEdit(id, title, description, file) {
-    // dispatch(editNews(id, title, description)) {pathname:"/cms/edit", search:`?id=${n.id}`}
+  onEdit(id, title, description, newfile, oldfile) {
+    // Нужен рефакторинг
+    if (!newfile) {
+      dispatch(editNews(id, title, description, oldfile));
 
-    dispatch(editNews(id, title, description, file.name));
+    }
+    else {
+      dispatch(editNews(id, title, description, newfile.name));
+      // Колхоз, надо в отдельную функцию
+      const data = new FormData();
+      data.append('file', newfile);
+      data.append('user', 'hubot');
 
-    // Колхоз, надо в отдельную функцию
-    const data = new FormData();
-    data.append('file', file);
-    data.append('user', 'hubot');
-
-    loadFile(data);
+      loadFile(data);
+    }
   },
 });
 export default connect(

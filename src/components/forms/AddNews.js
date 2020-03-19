@@ -6,7 +6,7 @@ import {Button as button} from 'react-bootstrap';
 
 import {addNews, loadFile} from '../../store/Actions/index';
 import {TitleField, ButtonSelectImg} from '../FormElements';
-import AddNewsEditor from '../AddNewsEditor';
+import {EditNewsEditor} from '../AddNewsEditor';
 
 const FormAddNew = ({_onCreateNews})=>{
   const [title, setTitle] = useState();
@@ -17,18 +17,19 @@ const FormAddNew = ({_onCreateNews})=>{
 
   const handleCreate = () =>{
     _onCreateNews(title, description, file);
+    window.scrollTo(0, 0);
     history.push('/cms');
-  }
+  };
 
   const handleBack = () =>{
     history.push('/cms');
-  }
+  };
 
   return (
     <div className="add-form">
       <ButtonSelectImg value={file} setValue={setFile}/>
       <TitleField value={title} setValue={setTitle}/>
-      <AddNewsEditor isEdit={false} value={description} setValue={setDescription}/>
+      <EditNewsEditor isEdit={false} value={description} setValue={setDescription}/>
 
       <div className='add-form__container-btns'>
         {/* <Button onClick={()=>{}}>Предосмотр</Button> */}

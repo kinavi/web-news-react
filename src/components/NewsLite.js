@@ -3,12 +3,12 @@ import {connect} from 'react-redux';
 
 import {removeNews} from '../store/Actions';
 
-const NewsLite = ({id, title, fileName, setEdit, onRemove}) =>{
+const NewsLite = ({_id, title, fileName, setEdit, onRemove}) =>{
   const handlerEdit = () =>{
     setEdit(true);
   };
   const handlerRemove = () =>{
-    onRemove(id);
+    onRemove(_id);
   };
 
   return (
