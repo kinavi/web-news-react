@@ -1,14 +1,7 @@
 import React from 'react';
-import {EditorView} from '.';
-import {useHistory} from 'react-router-dom';
+import {EditorView} from '../editor';
 
-const FullNews = ({_id, title, description, fileName}) => {
-  // const history = useHistory();
-
-  // const handleClick = () =>{
-  //   // _onCreateNews(title, description,file)
-  //   history.push(`/news/${_id}`);
-  // }; onClick={handleClick}
+export const FullNews = ({_id, title, description, fileName}) => {
 
   return (
     <div className="news" >
@@ -23,6 +16,3 @@ const FullNews = ({_id, title, description, fileName}) => {
     </div>
   );
 };
-
-
-export default FullNews;

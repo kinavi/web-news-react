@@ -4,16 +4,15 @@ import {Footer} from './footer';
 import '../styles/Header.css';
 import {ModalContext} from './context';
 
+import '../styles/Login.css';
+
 export const Page = ({children}) =>{
   const [modalState, setStateModal] = useState(false);
 
-  // const handlerModalClick =() =>{
-  //   // setModalState(false);
-  // };
   return (
     <ModalContext.Provider value={{modalState, setStateModal}}>
       <div className="page">
-        {/* <ModalLayer setStateModal={setStateModal}/> */}
+        {/* <ModalLayer/> */}
         <Header>
           {/* <Menu/> */}
           <Home/>
@@ -25,7 +24,7 @@ export const Page = ({children}) =>{
           {children}
         </div>
         <Footer>
-
+          Footer
         </Footer>
       </div>
     </ModalContext.Provider>

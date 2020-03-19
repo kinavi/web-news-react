@@ -12,7 +12,11 @@ export const EditorNews = ({isEdit, value, setValue}) => {
   console.log('editorState - ', editorState);
   console.log('value - ', value);
   useEffect(()=>{
-    setEditorState(EditorState.createWithContent(convertFromRaw({...value, entityMap: {}}))); // Костыль
+    setEditorState(
+        EditorState.createWithContent(
+            convertFromRaw({...value, entityMap: {}}),
+        ),
+    ); // Костыль
   }, []);
 
   const handleKeyCommand = (command, editorState) => {
@@ -85,4 +89,3 @@ export const EditorNews = ({isEdit, value, setValue}) => {
     </div>
   );
 };
-// export default EditorNews;

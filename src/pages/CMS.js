@@ -1,10 +1,14 @@
 import React from 'react';
-import {Page, ListNewsCms} from '../components';
 import {useHistory, useLocation} from 'react-router-dom';
 import {renderRoutes} from 'react-router-config';
-import {Button as button} from 'react-bootstrap';
-import '../styles/Cms.css';
+
+import {Page} from '../components/Page';
+import {ListNewsCms} from '../components/list';
+
 import {loadDataAll} from '../store/Actions';
+
+import '../styles/Cms.css';
+
 const Cms = ({route}) =>{
   const history = useHistory();
   const location = useLocation();

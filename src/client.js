@@ -8,7 +8,7 @@ import {renderRoutes} from 'react-router-config';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 import storeFactory from './store/index';
 import './styles/App.css';
-import './styles/Login.css';
+
 import __INITIAL_STATE__ from '../data/initialState.json';
 
 // const store = storeFactory(false, __INITIAL_STATE__);

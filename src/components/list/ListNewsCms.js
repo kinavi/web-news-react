@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-import {NewsSelectorForm} from '.';
+import {NewsSelectorForm} from '../news';
 
 const ListNewsCms = ({News}) =>{
 

@@ -1,13 +1,16 @@
 import React, {useState, useEffect} from 'react';
-import {Page} from '../components/Page';
-import {useParams} from 'react-router-dom';
 import {connect} from 'react-redux';
-import FullNews from '../components/FullNews';
+import {useParams} from 'react-router-dom';
+
+import {FullNews} from '../components/news';
+import {Page} from '../components/Page';
 import {loadDataAll} from '../store/Actions';
+
+import '../styles/News.css';
 
 const News = ({News}) =>{
   const {id} = useParams();
-  // console.log('id - ', id)
+
   const [news, setNews] = useState(getItemById(News, id));
 
   return (

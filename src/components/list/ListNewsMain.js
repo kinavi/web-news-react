@@ -2,8 +2,8 @@ import React, {useState, useEffect} from 'react';
 import {connect} from 'react-redux';
 import Skeleton, {SkeletonTheme} from 'react-loading-skeleton';
 
-import {NewsPreview, FORMAT_NEWS} from '.';
-import '../styles/News.css';
+import {NewsPreview, FORMAT_NEWS} from '../news/NewsPreview';
+
 
 const ListNewsMain = ({News}) =>{
   const [news, setNews] = useState(getSplitedArray(News));

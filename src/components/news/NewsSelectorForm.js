@@ -1,17 +1,14 @@
-import React, {useState, useEffect} from 'react';
-// import {connect} from 'react-redux';
-// import {Button} from 'react-bootstrap';
+import React, {useState} from 'react';
 
-
-// import {removeNews} from '../store/Actions';
-import {NewsEdit, NewsLite} from '.';
+import {NewsLite} from '../news';
+import {EditNews} from '../forms';
 
 export const NewsSelectorForm = (props) =>{
   const [isEdit, setEdit] = useState(false);
 
   return (
       (isEdit)?
-        <NewsEdit
+        <EditNews
           {...props}
           setEdit={setEdit}
 

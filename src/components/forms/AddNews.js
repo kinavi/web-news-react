@@ -1,12 +1,11 @@
 import React, {useState} from 'react';
 import {connect} from 'react-redux';
-import {Link, useHistory} from 'react-router-dom';
-import {Button as button} from 'react-bootstrap';
+import {useHistory} from 'react-router-dom';
 
 
 import {addNews, loadFile} from '../../store/Actions/index';
 import {TitleField, ButtonSelectImg} from '../FormElements';
-import {EditNewsEditor} from '../AddNewsEditor';
+import {EditNewsEditor} from '../editor';
 
 const FormAddNew = ({_onCreateNews})=>{
   const [title, setTitle] = useState();

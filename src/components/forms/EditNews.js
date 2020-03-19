@@ -1,11 +1,12 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import {connect} from 'react-redux';
-import {Button as button} from 'react-bootstrap';
 
-import {EditorNews, TitleField, ButtonSelectImg} from '.';
-import {editNews, loadFile} from '../store/Actions';
+import {EditorNews} from '../editor';
+import {TitleField, ButtonSelectImg} from '../FormElements';
 
-const NewsEdit = ({_id, title, description, fileName, onEdit, setEdit}) =>{
+import {editNews, loadFile} from '../../store/Actions';
+
+const EditNews = ({_id, title, description, fileName, onEdit, setEdit}) =>{
   const [_title, setTitle] = useState(title);
   const [file, setFile] = useState();
   const [_description, setDescription] = useState(description);
@@ -33,8 +34,12 @@ const NewsEdit = ({_id, title, description, fileName, onEdit, setEdit}) =>{
         setValue={setDescription}/>
       <div className='add-form__container-btns' >
         {/* <Button >Предосмотр</Button> */}
-        <button className='btn add-form__btn' onClick={handlerSave}>Save</button>
-        <button className='btn add-form__btn' onClick={handlerCancel}>Cancel</button>
+        <button
+          className='btn add-form__btn'
+          onClick={handlerSave}>Save</button>
+        <button
+          className='btn add-form__btn'
+          onClick={handlerCancel}>Cancel</button>
       </div>
 
     </div>
@@ -46,9 +51,7 @@ const mapDispatchToProps = (dispatch) =>({
     // Нужен рефакторинг
     if (!newfile) {
       dispatch(editNews(id, title, description, oldfile));
-
-    }
-    else {
+    } else {
       dispatch(editNews(id, title, description, newfile.name));
       // Колхоз, надо в отдельную функцию
       const data = new FormData();
@@ -62,4 +65,4 @@ const mapDispatchToProps = (dispatch) =>({
 export default connect(
     null,
     mapDispatchToProps,
-)(NewsEdit);
+)(EditNews);

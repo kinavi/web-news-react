@@ -25,4 +25,3 @@ export const EditorView = ({isEdit, value, setValue}) => {
     </div>
   );
 };
-//  default PreviewEditor;

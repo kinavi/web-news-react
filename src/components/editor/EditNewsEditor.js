@@ -4,8 +4,6 @@ import {Editor, EditorState, RichUtils, convertToRaw} from 'draft-js';
 export const EditNewsEditor = ({isEdit, value, setValue}) => {
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
 
-  const [isLoad, setLoad] = useState(false);
-
   const handleKeyCommand = (command, editorState) => {
     const newState = RichUtils.handleKeyCommand(editorState, command);
     if (newState) {
@@ -73,4 +71,3 @@ export const EditNewsEditor = ({isEdit, value, setValue}) => {
     </div>
   );
 };
-// export default EditNewsEditor;

@@ -1,5 +1,4 @@
 import React from 'react';
-// import {EditorPreview, EditorNews} from '.';
 import {useHistory} from 'react-router-dom';
 
 const BigLayer = ({_id, title, fileName}) =>{
@@ -7,7 +6,6 @@ const BigLayer = ({_id, title, fileName}) =>{
   const history = useHistory();
 
   const handleClick = (e) =>{
-    // _onCreateNews(title, description,file)
     e.stopPropagation();
     history.push(`/news/${_id}`);
   };

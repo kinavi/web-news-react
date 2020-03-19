@@ -1,5 +1,6 @@
 import React, {useContext} from 'react';
 import {ModalContext} from '../context';
+import '../../styles/Login.css';
 
 export const Login = () =>{
   const {setStateModal} = useContext(ModalContext);
