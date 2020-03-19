@@ -2,18 +2,14 @@ import React, {useState, useEffect} from 'react';
 import {
   Editor,
   EditorState,
-  RichUtils,
-  CompositeDecorator,
-  ContentState,
-  convertToRaw,
   convertFromRaw,
 } from 'draft-js';
 
-export const EditorPreview = ({isEdit, value, setValue}) => {
+export const EditorView = ({isEdit, value, setValue}) => {
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
 
   useEffect(()=>{
-    setEditorState(EditorState.createWithContent(convertFromRaw(value)));
+    setEditorState(EditorState.createWithContent(convertFromRaw({...value, entityMap: {}}))); // Костыль
   }, [value]);
 
   return (
