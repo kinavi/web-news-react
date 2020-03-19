@@ -12,6 +12,11 @@ a img, :link img, :visited img  {
     outline: none;
     transform: none;
     }
+
+input{
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+}
 a:focus{
     border: none;
     outline: none;
