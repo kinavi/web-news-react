@@ -1,7 +1,7 @@
-import {NewsPreview, FORMAT_NEWS} from './NewsPreview';
+import {NewsPreview, FORMAT_NEWS} from './NewsView';
 import ListNewsMain from './ListNewsMain';
 import {Page} from './Page';
-import {EditorPreview} from './editor/EditorPreview';
+import {EditorView} from './editor/EditorView';
 import {EditorNews} from './editor/EditorNews';
 import ListNewsCms from './ListNewsCms';
 import {ButtonSelectImg, TitleField} from './FormElements';
@@ -13,7 +13,7 @@ export {
   NewsPreview,
   ListNewsMain,
   Page,
-  EditorPreview,
+  EditorView,
   EditorNews,
   ListNewsCms,
   ButtonSelectImg,
@@ -22,5 +22,5 @@ export {
   NewsEdit,
   NewsSelectorForm,
   FORMAT_NEWS,
-  IMG
+  IMG,
 };

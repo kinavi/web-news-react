@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {Editor, EditorState, RichUtils, convertToRaw} from 'draft-js';
 
-const EditNewsEditor = ({isEdit, value, setValue}) => {
+export const EditNewsEditor = ({isEdit, value, setValue}) => {
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
 
   const [isLoad, setLoad] = useState(false);
@@ -73,4 +73,4 @@ const EditNewsEditor = ({isEdit, value, setValue}) => {
     </div>
   );
 };
-export default EditNewsEditor;
+// export default EditNewsEditor;
