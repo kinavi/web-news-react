@@ -9,7 +9,11 @@ export const EditorView = ({isEdit, value, setValue}) => {
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
 
   useEffect(()=>{
-    setEditorState(EditorState.createWithContent(convertFromRaw({...value, entityMap: {}}))); // Костыль
+    setEditorState(
+        EditorState.createWithContent(
+            convertFromRaw({...value, entityMap: {}}),
+        ),
+    ); // Костыль
   }, [value]);
 
   return (

@@ -3,17 +3,16 @@ import {
   Editor,
   EditorState,
   RichUtils,
-  CompositeDecorator,
-  ContentState,
   convertToRaw,
   convertFromRaw,
 } from 'draft-js';
 
 export const EditorNews = ({isEdit, value, setValue}) => {
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
-
+  console.log('editorState - ', editorState);
+  console.log('value - ', value);
   useEffect(()=>{
-    setEditorState(EditorState.createWithContent(convertFromRaw(value)));
+    setEditorState(EditorState.createWithContent(convertFromRaw({...value, entityMap: {}}))); // Костыль
   }, []);
 
   const handleKeyCommand = (command, editorState) => {
