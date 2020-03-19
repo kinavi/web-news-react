@@ -4,7 +4,7 @@ import {useHistory, useLocation} from 'react-router-dom';
 import {renderRoutes} from 'react-router-config';
 import {Button as button} from 'react-bootstrap';
 import '../styles/Cms.css';
-
+import {loadDataAll} from '../store/Actions';
 const Cms = ({route}) =>{
   const history = useHistory();
   const location = useLocation();
@@ -33,7 +33,10 @@ const Cms = ({route}) =>{
 
   );
 };
-
+const loadData = (store) => {
+  return store.dispatch(loadDataAll());
+};
 export default {
   component: Cms,
+  loadData,
 };

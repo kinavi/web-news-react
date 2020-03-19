@@ -1,4 +1,6 @@
 import fetch from 'isomorphic-fetch';
+import {News, mongoose} from '../../mongoose';
+import {TypeActions} from '../TypeActions';
 
 const parseResponse = (response) => response.json();
 
@@ -45,3 +47,18 @@ export const editNews = (id, title, description, fileName) => (dispatch) =>
       'PUT',
       JSON.stringify({id, title, description, fileName}),
   );
+
+export const loadDataAll = ()=> async (dispatch) =>{
+  const news = await News.find({});
+  console.log('news - ', news);
+
+  dispatch({
+    type: TypeActions.LOAD_DATA_ALL,
+    news,
+  });
+};
+// fetchThenDispatch(
+//     dispatch,
+//     '/api/',
+//     'GET',
+// );
