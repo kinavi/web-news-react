@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import {Login} from '../forms/Login';
+import {Login} from '../forms';
 import {ModalContext} from '../context';
 
 export const Title = () =>{

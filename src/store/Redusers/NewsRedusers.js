@@ -1,6 +1,6 @@
 import {TypeActions} from '../TypeActions';
 
-export const News = (state = [], action) =>{
+export const NewsRedusers = (state = [], action) =>{
   switch (action.type) {
     case TypeActions.ADD_NEWS:
       return [{
