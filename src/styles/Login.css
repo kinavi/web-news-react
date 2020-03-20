@@ -7,6 +7,8 @@
 
     width: 100%;
     height: 100%;
+
+
 }
 .login__group{
     width: 35%;
@@ -55,4 +57,9 @@
     border: none;
     border-left: 1px solid #706F6F;
     box-shadow: none;
+    font-size: 18px;
+    font-family: Roboto;
+    font-style: normal;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
 }

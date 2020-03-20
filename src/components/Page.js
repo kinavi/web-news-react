@@ -1,10 +1,13 @@
 import React, {useState} from 'react';
 import {Auth, Header, Home, Menu, Search, Title} from './header';
 import {Footer} from './footer';
-import '../styles/Header.css';
+
 import {ModalContext} from './context';
 
+// import '../styles/App.css';
+import '../styles/Header.css';
 import '../styles/Login.css';
+
 
 export const Page = ({children}) =>{
   const [modalState, setStateModal] = useState(false);
