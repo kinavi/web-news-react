@@ -1,5 +1,6 @@
-import {News} from './News';
-
+import {NewsRedusers} from './NewsRedusers';
+import {AuthRedusers} from './AuthRedusers'
 export {
-  News,
+  NewsRedusers,
+  AuthRedusers,
 };
