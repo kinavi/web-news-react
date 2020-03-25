@@ -1,6 +1,6 @@
 import {fetchThenDispatch} from '../Actions';
 
-const SET_USER_DATA = 'SET_USER_DATA';
+export const SET_USER_DATA = 'SET_USER_DATA';
 
 const initialState = {
   userId: null,
@@ -15,6 +15,7 @@ export const AuthRedusers = (state = initialState, action) =>{
         {
           ...state,
           ...action.data,
+          isAuth: true,
         }
       );
     default:
@@ -22,11 +23,20 @@ export const AuthRedusers = (state = initialState, action) =>{
   }
 };
 
-export const setUserData = (login, password) => (dispatch)=>{
+export const registerUser = (login, password) => (dispatch)=>{
   fetchThenDispatch(
       dispatch,
-      `/api/auth`,
+      `/api/users/`,
       'POST',
-      JSON.stringify({login, password}),
+      JSON.stringify({user: {login, password}}),
+  );
+};
+
+export const loginUser = (login, password) => (dispatch)=>{
+  fetchThenDispatch(
+      dispatch,
+      `/api/users/login`,
+      'POST',
+      JSON.stringify({user: {login, password}}),
   );
 };

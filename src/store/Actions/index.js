@@ -1,5 +1,5 @@
 import fetch from 'isomorphic-fetch';
-import {News, mongoose} from '../../mongoose';
+import {News, mongoose } from '../../server/mongoose';
 import {TypeActions} from '../TypeActions';
 
 const parseResponse = (response) => response.json();

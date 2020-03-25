@@ -1,25 +1,33 @@
-import express from 'express';
 import React from 'react';
-import {renderToString} from 'react-dom/server';
-import Routes from './Routes';
 import {StaticRouter} from 'react-router-dom';
+import {renderToString} from 'react-dom/server';
 import {matchRoutes, renderRoutes} from 'react-router-config';
-import '@babel/polyfill';
-import {assetsByChunkName} from '../stats.json';
 import {Provider} from 'react-redux';
 
-import initialState from '../data/initialState.json';
-import storeFactory from './store/index';
-
+import express from 'express';
+import '@babel/polyfill';
 import serialize from 'serialize-javascript';
 
-import api from './news-api';
+import {mongoose} from './mongoose';
 
-// import fs from 'fs';
+import Routes from '../Routes';
+import storeFactory from '../store/index';
+import {assetsByChunkName} from '../../stats.json';
+import api from './routes/api/news-api';
 
-import bodyParser from 'body-parser';
+const cookieParser = require('cookie-parser');
 
-import {mongoose, News} from './mongoose';
+// #region auth
+const path = require('path');
+const bodyParser = require('body-parser');
+const session = require('express-session');
+const cors = require('cors');
+const errorHandler = require('errorhandler');
+require('./passport');
+
+// Configure isProduction variable
+const isProduction = process.env.NODE_ENV === 'production';
+// #endregion
 
 const serverStore = storeFactory(true);
 
@@ -27,17 +35,8 @@ const imageFileAssets = express.static('uploads');
 
 const app = express();
 
-const url = 'mongodb://localhost:27017/web-news-react';
 
-// #region FileWrited
-// serverStore.subscribe(() =>
-//   fs.writeFile(
-//       './data/initialState.json',
-//       JSON.stringify(serverStore.getState()),
-//       (error) => (error) ? console.log('Error saving state!', error) : null,
-//   ),
-// );
-// #endregion
+const url = 'mongodb://localhost:27017/web-news-react';
 
 const renderer = (req, serverStore, context) =>{
   const reactHtml = renderToString(
@@ -72,8 +71,17 @@ const addStoreToRequestPipeline = async (req, res, next) => {
   req.store = serverStore;
   next();
 };
-
-app.use(bodyParser.json())
+app.use(cors())
+    .use(require('morgan')('dev'))
+    .use(bodyParser.urlencoded({extended: false}))
+    .use(bodyParser.json())
+    .use(session({
+      secret: 'soo-zero',
+      cookie: {maxAge: 60000},
+      resave: false,
+      saveUninitialized: false,
+    }))
+    .use(cookieParser())
     .use('/', express.static('public'))
     .use('/edit', express.static('public'))
     .use('/news', express.static('public'))
@@ -83,6 +91,7 @@ app.use(bodyParser.json())
     .use('/news', imageFileAssets)
     .use(addStoreToRequestPipeline)
     .use('/api', api)
+    // .use(require('./routes'))
     .get('*', (req, res) => {
       const params = req.params[0].split('/');
       const id = params[2];
@@ -112,7 +121,36 @@ app.use(bodyParser.json())
         res.send(content);
       });
     });
-// .listen(3000);
+
+if (!isProduction) {
+  app.use(errorHandler());
+}
+
+// Error handlers & middlewares
+if (!isProduction) {
+  app.use((err, req, res, next) => {
+    res.status(err.status || 500);
+
+    res.json({
+      errors: {
+        message: err.message,
+        error: err,
+      },
+    });
+  });
+}
+
+app.use((err, req, res, next) => {
+  res.status(err.status || 500);
+
+  res.json({
+    errors: {
+      message: err.message,
+      error: {},
+    },
+  });
+});
+
 mongoose.connect(url, {useUnifiedTopology: true, useNewUrlParser: true})
     .then(()=>{
       app.listen(3000, ()=>{
@@ -122,3 +160,5 @@ mongoose.connect(url, {useUnifiedTopology: true, useNewUrlParser: true})
     .catch((err)=>{
       console.log(err);
     });
+
+mongoose.set('debug', true);
