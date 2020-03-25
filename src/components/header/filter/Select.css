@@ -1,0 +1,44 @@
+.select__container{
+    width:17%;
+    height:100%;
+    background: #181a19;
+    color: white;
+    display: flex;
+    flex-direction:column;
+    overflow: hidden;
+    overflow-y: overlay;
+    font-size: 28px;
+    outline: 2px solid #333333;
+    text-align: center;
+
+  }
+  .select__container:hover{
+    cursor: pointer;
+    outline: 2px solid #786428;
+    z-index: 2;
+  }
+  .select__titel-group{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none; 
+    text-transform: uppercase;
+    flex-direction:column;
+  }
+  .select__options{
+    font-size:18px;
+    color: #786428;
+    text-align: center;
+    text-transform: uppercase;
+  }
+  .select__options:hover{
+    color: #FFFFFF;
+    background: #333333;
+  }
+
+  .select_title{
+    color: #786428;
+    font-size:15px;
+  }

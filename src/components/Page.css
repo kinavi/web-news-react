@@ -1,0 +1,39 @@
+@keyframes test {
+    from {
+        background: #ffffff00;
+        margin-top: 0;
+    }
+    to {
+        background: #ffffff;
+        margin-top: 100px;
+    }
+}
+.myTest{
+    visibility: hidden;
+    animation: test 2s infinite ease-in-out;
+}
+/* ----- */
+
+.navigator{
+    
+}
+
+.filter-enter {
+    max-height: 0;
+  }
+  
+  .filter-enter.filter-enter-active {
+    max-height: 150px;
+    transition: max-height 300ms ease-in;
+  }
+  
+  .filter-leave {
+    max-height: 150px;
+  }
+  
+  .filter-leave.filter-leave-active {
+    max-height: 0;
+    transition: max-height 300ms ease-out;
+  }
+
+  
