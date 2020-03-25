@@ -24,6 +24,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
+    
 }
 .sub-menu__link:hover{
     color: #786428;
