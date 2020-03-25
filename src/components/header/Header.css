@@ -1,0 +1,130 @@
+
+.header {
+    position: relative;
+    display: flex;
+    margin-top: 50px;
+    color: #FFFFFF;
+    height: 100px;
+    outline: solid 2px #333333;
+}
+
+.header__home{
+    width: 8.5%;
+    font-size: 18px;
+    align-items: center;
+    letter-spacing: 0.1em;
+    border: none;
+    outline: 2px solid #333333;
+}
+
+.header__auth {
+    width: 14.47%;
+    font-size: 18px;
+    align-items: center;
+    letter-spacing: 0.1em;
+    border: none;
+    outline: 2px solid #333333;
+    text-decoration: none;
+}
+
+.header__search{
+    width: 8.5%;
+    align-items: center;
+    border: none;
+    outline: 2px solid #333333;
+}
+
+.header__title{
+    /* background: #181a19; */
+    position: relative;
+    display: inherit;
+    width: 66%;
+    font-size: 48px;
+    align-items: center;
+    letter-spacing: 0.1em;
+    /* outline: 2px solid #333333; */
+    text-transform: uppercase;
+    justify-content: center;
+}
+
+.header__menu{
+    width: 8.5%;
+    align-items: center;
+    border: none;
+    outline: 2px solid #333333;
+}
+
+.header__btn{
+    position: relative;
+    display: flex;
+    /* display: inherit; */
+    background: #181a19;
+    color: #FFFFFF;
+}
+
+
+.header__icon{
+    color: inherit;
+    width: 100%;
+}
+.header__icon:focus{
+    color: #786428;
+}
+.header__icon:hover{
+    color: #786428;
+}
+.submenu{
+    position: absolute;
+    top: 100%;
+    text-align: center;
+    left: 0%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background: #786428;
+    display: grid;
+    width: 100%;
+}
+.header__link{
+    color: white;
+    margin-bottom: 6px;
+    text-decoration: none;
+    text-transform: uppercase;
+    height: 100%;
+    outline: 2px solid #333333;
+    display: flex;
+    align-items: center;
+    min-width: 8.5%;
+    justify-content: center;
+    overflow: hidden;
+}
+.header__link:hover {
+    color: #786428;
+    background: #333333;
+    outline: 2px solid #786428;
+    z-index: 2;
+}
+.header__btn:hover {
+    outline: 2px solid #786428;
+    color: #786428;
+    transform: none;
+    z-index: 2;
+}
+.header__btn:focus{
+    /* border: none; */
+    outline: 2px solid #786428;
+    color: #786428;
+    transform: none;
+    z-index: 2;
+}
+.link{
+    color: white;
+    margin-bottom: 6px;
+    text-decoration: none;
+    text-transform: uppercase;
+    height: 100%;
+    outline: 2px solid #333333;
+    display: flex;
+    align-items: center;
+    min-width: 8.5%;
+    justify-content: center;
+}
