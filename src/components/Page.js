@@ -2,10 +2,11 @@ import React, {useState} from 'react';
 import {connect} from 'react-redux';
 import {CSSTransition} from 'react-transition-group';
 
-import {Auth, Header, Home, Menu, Search, Title} from './header';
+import {Header, Home, SubHeader} from './header';
+import {Menu} from './header/menu';
+import {Title, Search} from './header/search/';
 import {Footer} from './footer';
 import {Filter} from './header/filter';
-import {SubHeader} from './header/SubHeader';
 
 import './Page.css';
 import './header/animation/slide.css';
@@ -14,7 +15,7 @@ const Page = ({isAuth, children}) =>{
   const [isMenu, setMenu] = useState(false);
   const [isVisibleSubMenu, setVisibleSubMenu] = useState(false);
   const [isVisibleSubFilter, setVisibleSubFilter] = useState(false);
-  const [isVisibleSearch, setVisibleSearch] = useState(true);
+  // const [isVisibleSearch, setVisibleSearch] = useState(true);
 
   const handlerClickMenu = () =>{
     setVisibleSubMenu(!isVisibleSubMenu);
@@ -37,8 +38,8 @@ const Page = ({isAuth, children}) =>{
       <Header>
         <Menu visible={isVisibleSubMenu} onClick={handlerClickMenu} />
         <Home/>
-        <Title isSearch={isVisibleSearch}/>
-        <Search isSearch={isVisibleSearch} setSearch={setVisibleSearch}/>
+        {/* <Title isSearch={isVisibleSearch}/> */}
+        <Search/>
         <Filter onClick={handlerClickFilter}/>
       </Header>
       <CSSTransition in={isVisibleSubMenu||isVisibleSubFilter} unmountOnExit timeout={300} classNames='slide' >
