@@ -1,10 +1,13 @@
 import React from 'react';
-import {Page} from '../components/Page';
+import Page from '../components/Page';
+
+
 
 const NoMatch = ({route}) =>{
   return (
     <Page>
-            404
+      <div>404</div>
+      <div>Page not found</div>
     </Page>
 
   );

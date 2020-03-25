@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {useParams} from 'react-router-dom';
 
 import {FullNews} from '../components/news';
-import {Page} from '../components/Page';
+import Page from '../components/Page';
 import {loadDataAll} from '../store/Actions';
 
 import '../styles/News.css';

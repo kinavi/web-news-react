@@ -3,7 +3,7 @@ import React from 'react';
 import {loadDataAll} from '../store/Actions';
 
 import {ListNewsMain} from '../components/list';
-import {Page} from '../components/Page';
+import Page from '../components/Page';
 
 import '../styles/News.css';
 

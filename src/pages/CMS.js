@@ -2,7 +2,7 @@ import React from 'react';
 import {useHistory, useLocation} from 'react-router-dom';
 import {renderRoutes} from 'react-router-config';
 
-import {Page} from '../components/Page';
+import Page from '../components/Page';
 import {ListNewsCms} from '../components/list';
 
 import {loadDataAll} from '../store/Actions';

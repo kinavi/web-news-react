@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
 
+import './Select.css';
+
 export const Select = ({title, values}) => {
 
   const [isVisible, setVisible] = useState(true);

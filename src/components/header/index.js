@@ -1,14 +1,16 @@
-import {Auth} from './Auth';
-import {Header} from './Header';
+import React from 'react';
+
+import {SubHeader} from './SubHeader';
 import {Home} from './Home';
-import {Menu} from './menu';
-import {Search} from './Search';
-import {Title} from './Title';
-export {
-  Auth,
-  Header,
-  Home,
-  Menu,
-  Search,
-  Title,
+
+import './Header.css';
+
+const Header = ({children})=>{
+  return (
+    <div className='header'>
+      {children}
+    </div>
+  );
 };
+
+export {Header, SubHeader, Home};
