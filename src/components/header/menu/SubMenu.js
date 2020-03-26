@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import Login from '../../forms/Login';
+import {FormContainer} from '../../forms';
 
 import './SubMenu.css';
 import '../animation/fade.css';
@@ -13,13 +13,11 @@ export const SubMenu = ({visible, children}) =>{
   };
   return (
     <div className='sub-menu'>
-        <div className='sub-menu__links-container'>
-          {children}
-        </div>
-        <button className='header__link' onClick={handlerLogin}>Login</button>
-      {isVisibleLogin&&<Login onClose={()=>setVisibleLogin(false)} />}
-
-
+      <div className='sub-menu__links-container'>
+        {children}
+      </div>
+      <button className='header__link' onClick={handlerLogin}>Login</button>
+      {isVisibleLogin&&<FormContainer onClose={()=>setVisibleLogin(false)} />}
     </div>
   );
 };

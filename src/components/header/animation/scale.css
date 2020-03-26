@@ -1,0 +1,17 @@
+.scale-enter {
+    /* opacity: 1; */
+    
+}
+.scale-enter-active {
+    /* opacity: 1; */
+    transform: scaleY(-1);
+    /* transform: scaleZ(-1); */
+    transition: 200ms linear;
+}
+.scale-exit {
+    /* opacity: 1; */
+}
+.scale-exit-active {
+    /* opacity: 0; */
+    transition: 200ms linear;
+}

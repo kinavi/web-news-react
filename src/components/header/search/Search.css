@@ -39,8 +39,9 @@
 }
 .search__icon{
     /* width: 11.41%; */
-    width: 9.31%;
+    /* width: 9.31%; */
     /* position: absolute; */
+    width: 7.71%;
     z-index: 2;
 }
 .search__input:focus{
@@ -48,15 +49,15 @@
     outline: none;
 }
 .search__input{
-    width: 84.6%;
+    width: 86%;
     height: 50%;
     background: #181a19;
     /* background: wheat; */
     position: absolute;
     padding-bottom: 25px;
     padding-top: 25px;
-    padding-right: 65px;
-    padding-left: 65px;
+    padding-right: 7%;
+    padding-left: 7%;
     border: none;
     text-transform: uppercase;
     letter-spacing: 0.1em;
