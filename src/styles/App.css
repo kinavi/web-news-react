@@ -58,7 +58,9 @@ body {
 }
 
 .page {
-    width: 1140px;
+    /* width: 1140px; */
+    /* width: 65%; */
+    width: 50%;
     /* height: 100px; */
     margin: 0 auto;
     
