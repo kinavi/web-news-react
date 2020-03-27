@@ -13,7 +13,6 @@ import './Form.css';
 import '../header/animation/scale.css';
 import '../header/animation/fade.css';
 
-
 const ScaleTransition = (props) => {
   return (
     <CSSTransition {...props} classNames="fade">
@@ -34,8 +33,8 @@ const FormContainer = ({onClose}) =>{
   };
 
   return (
-    <div className='form'>
-      <div className='form__container'>
+    <div>
+      <div className='form'>
         <IconContext.Provider
           value={{size: 30, className: 'form__btn-cancel'}}>
           <MdClose onClick={onClose}/>
@@ -43,13 +42,13 @@ const FormContainer = ({onClose}) =>{
         <SwitchTransition mode='out-in'>
           <ScaleTransition key={isLogin} timeout={200}>
             {isLogin?
-              <Login onClose={onClose} onOpenRegister={handlerOpenRegister}/>:
-              <Register onClose={onClose} onOpenRegister={handlerOpenLogin}/>
+              <Login onClose={onClose} switchForm={handlerOpenRegister}/>:
+              <Register onClose={onClose} switchForm={handlerOpenLogin}/>
             }
           </ScaleTransition>
         </SwitchTransition>
       </div>
-      <div className='login__layer' onClick={onClose}></div>
+      <div className='form__layer' onClick={onClose}></div>
     </div>
   );
 };

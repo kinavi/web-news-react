@@ -2,43 +2,71 @@ import React, {useRef, useContext} from 'react';
 import {connect} from 'react-redux';
 
 import {registerUser, loginUser} from '../../store/Redusers/AuthRedusers';
+import {SET_DEFAULT_STATE} from '../../store/Redusers/FormRedusers';
 
-const Register = ({onClose, onOpenRegister, onRegister}) =>{
+import {
+  FormTitle,
+  FormAlert,
+  FormGroup, 
+  FormLabel,
+  FormInput,
+FormCheckbox,
+FormGroupButton,
+FormButton
+
+} from './elements'
+
+const Register = ({Form, onClickInput, onClose, switchForm, onRegister}) =>{
   const inputLogin = useRef(null);
   const inputPassword = useRef(null);
-  // const inputSave = useRef(null);
+  const inputSave = useRef(null);
 
-  const handlerSibmitButtonClick = (e) =>{
+  const handlerClickSubmit = (e) =>{
     console.log('inputLogin - ', inputLogin.current.value);
     console.log('inputPassword - ', inputPassword.current.value);
     // console.log('inputSave - ', inputSave.current.checked);
     onRegister(inputLogin.current.value, inputPassword.current.value);
-    onClose();
+    // onClose();
     e.stopPropagation();
   };
   return (
-    <div className='form__login'>
-      <div className='login__title'>Register</div>
-      <div className='login__group'>
-        <div className='login__label-name '>name</div>
-        <input ref={inputLogin} className='login__input-name login___input'/>
-      </div>
-      <div className='login__group'>
-        <div className='login__label-password'>Password</div>
-        <input type='password' ref={inputPassword} className='login__input-password login___input'/>
-      </div>
-      {/* <label className='login__save'><input ref={inputSave} type="checkbox"/> Save me</label> */}
-      <div className='login__btn-container'>
-        <button className='register__btn btn-form' onClick={onOpenRegister}>Login</button>
-        <button className='login__btn btn-form' onClick={handlerSibmitButtonClick} >Sibmit</button>
-      </div>
+    <div className='form__container'>
+      <FormTitle value='Register'/>
+      <FormAlert/>
+      <FormGroup>
+        <FormLabel value='Login'/>
+        <FormInput type='text' refInput={inputLogin}/>
+      </FormGroup>
+      <FormGroup>
+        <FormLabel value='Password'/>
+        <FormInput type='password' refInput={inputPassword}/>
+      </FormGroup>
+      <FormCheckbox refInput={inputSave} text='Save me'/>
+      <FormGroupButton>
+        <FormButton
+          text='Login'
+          onClick={switchForm}
+        />
+        <FormButton
+          text='Submit'
+          onClick={handlerClickSubmit}
+        />
+      </FormGroupButton>
     </div>
   );
 };
+const mapStateToProps = (state) =>({
+  Form: state.Form,
+});
 const mapDispatchToProps = (dispatch) =>({
   onRegister(login, password) {
     dispatch(registerUser(login, password));
   },
+  onClickInput() {
+    dispatch({
+      type: SET_DEFAULT_STATE,
+    });
+  },
 });
 
-export default connect( null, mapDispatchToProps)(Register);
+export default connect( mapStateToProps, mapDispatchToProps)(Register);

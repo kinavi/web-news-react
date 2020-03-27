@@ -1,21 +1,4 @@
-.login__container{
-    /* position: absolute; */
-    /* display: flex; */
-    text-transform: uppercase;
-    color: black;
-}
-.login__group{
-    /* width: 60%; */
-    margin-bottom: 10px;
-    /* padding: 20px; */
-    display: grid;
-    box-sizing: border-box;
-}
-.login__input-name{
-
-}
-
-.login___input{
+.form__input{
     background: #fbdac0;
     width: 100%;
     padding: 12px 20px;
@@ -25,19 +8,9 @@
     box-sizing: border-box;
 }
 
-.login__input-password{
-
-}
-
-.login__label-name{
+.form__label{
     font-size: 12px;
     letter-spacing: 0.1em;
-   
-}
-.login__label-password{
-    font-size: 12px;
-    letter-spacing: 0.1em;
-
 }
 .modal-bg{
     position: fixed;
@@ -50,7 +23,7 @@
 }
 
 
-.login__layer{
+.form__layer{
     position: fixed;
     width: 100%;
     height: 100%;
@@ -60,30 +33,19 @@
     left: 0;
     z-index: 1;
 }
-.login__form{
-
-}
 .form__btn-cancel{
     position: absolute;
     right: 0;
     top: 0;
     cursor: pointer;
 }
-.login__btn-container{
+.form__btn-container{
     display: flex;
     justify-content: space-between;
-    margin-top: 50px;
+    /* margin-top: 50px; */
+    height: 10%;
 }
-.register__btn{
-    border: none;
-    box-shadow: none;
-    font-size: 18px;
-    font-family: Roboto;
-    font-style: normal;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-}
-.login__btn{
+.form__btn{
     border: none;
     box-shadow: none;
     font-size: 18px;
@@ -93,35 +55,39 @@
     letter-spacing: 0.1em;
 }
 
-.btn-form:hover{
+.form__btn:hover{
     text-decoration: underline;
 }
 
-.login__save{
+.form__checkbox{
     letter-spacing: 0.1em;
     font-size: 12px;
+    height: 20%;
+    display: flex;
+    align-items: center;
 }
-.login__title{
+.form__title{
     font-size: 30px;
-    margin-bottom: 40px;
+    /* margin-bottom: 40px; */
     letter-spacing: 0.1em;
     text-align: center;
+    height: 10%;
 }
-.form__container{
+.form{
     position: fixed;
     z-index: 2;
     background: white;
     top: 25%;
-    left: 25%;
-    width: 50%;
-    height: 50%;
+    left: 30%;
+    width: 40%;
+    height: 45%;
     display: flex;
     flex-flow: column;
     justify-content: center;
     align-items: center;
 }
 
-.form__login{
+.form__container{
     width: 60%;
     height: 70%;
     text-transform: uppercase;
@@ -130,6 +96,16 @@
     display: flex;
     flex-direction: column;
 }
-.form{
+.form__alert{
+    text-align: center;
+    color: #ff0000;
+    /* margin-bottom: 20px; */
+    height: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
+.form__input_alert{
+    outline: 3px solid #ff0000;
 }
