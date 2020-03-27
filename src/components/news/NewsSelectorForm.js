@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 
 import {NewsLite} from '../news';
-import {EditNews} from '../forms';
+import {EditNews} from '../forms/news';
 
 export const NewsSelectorForm = (props) =>{
   const [isEdit, setEdit] = useState(false);

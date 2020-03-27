@@ -1,7 +1,7 @@
 import React from 'react';
-import FormAddNew from '../components/forms/AddNews';
+import {AddNewForm} from '../components/forms/news';
 
-const AddNews = ()=> <FormAddNew/>;
+const AddNews = ()=> <AddNewForm/>;
 
 export default {
   component: AddNews,
