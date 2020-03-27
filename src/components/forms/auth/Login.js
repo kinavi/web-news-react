@@ -1,8 +1,8 @@
 import React, {useRef, useContext, useState} from 'react';
 import {connect} from 'react-redux';
 
-import {registerUser, loginUser} from '../../store/Redusers/AuthRedusers';
-import {SET_DEFAULT_STATE} from '../../store/Redusers/FormRedusers';
+import {registerUser, loginUser} from '../../../store/Redusers/AuthRedusers';
+import {done} from '../../../store/Redusers/FormRedusers';
 
 import {
   FormTitle,
@@ -15,17 +15,15 @@ import {
   FormGroupButton,
 } from './elements';
 
-const Login = ({Form, onClickInput, onClose, switchForm, onLogin}) =>{
+const Login = ({switchForm, setLogin, isLogin, isPassword}) =>{
   const inputLogin = useRef(null);
   const inputPassword = useRef(null);
   const inputSave = useRef(null);
 
   const handlerClickSubmit = (e) =>{
-    console.log('inputLogin - ', inputLogin.current.value);
-    console.log('inputPassword - ', inputPassword.current.value);
-    console.log('inputSave - ', inputSave.current.checked);
-    onLogin(inputLogin.current.value, inputPassword.current.value);
-    e.stopPropagation();
+    const loginValue = inputLogin.current.value;
+    const loginPassword = inputPassword.current.value;
+    setLogin(loginValue, loginPassword);
   };
 
   return (
@@ -34,11 +32,11 @@ const Login = ({Form, onClickInput, onClose, switchForm, onLogin}) =>{
       <FormAlert/>
       <FormGroup>
         <FormLabel value='Login'/>
-        <FormInput type='text' refInput={inputLogin}/>
+        <FormInput type='text' refInput={inputLogin} required={isLogin}/>
       </FormGroup>
       <FormGroup>
         <FormLabel value='Password'/>
-        <FormInput type='password' refInput={inputPassword}/>
+        <FormInput type='password' refInput={inputPassword} required={isPassword}/>
       </FormGroup>
       <FormCheckbox refInput={inputSave} text='Save me'/>
       <FormGroupButton>
@@ -53,18 +51,12 @@ const Login = ({Form, onClickInput, onClose, switchForm, onLogin}) =>{
   );
 };
 const mapStateToProps = (state) =>({
-  Form: state.Form,
+  ...state.Form,
 });
 const mapDispatchToProps = (dispatch) =>({
-  onLogin(login, password) {
+  setLogin(login, password) {
     dispatch(loginUser(login, password));
   },
-  onClickInput() {
-    dispatch({
-      type: SET_DEFAULT_STATE,
-    });
-  },
-
 });
 
 export default connect( mapStateToProps, mapDispatchToProps)(Login);

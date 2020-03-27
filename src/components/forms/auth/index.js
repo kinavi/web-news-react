@@ -4,14 +4,12 @@ import {SwitchTransition, CSSTransition} from 'react-transition-group';
 import {IconContext} from 'react-icons';
 import {MdClose} from 'react-icons/md';
 
-import AddNews from './AddNews';
-import EditNews from './EditNews';
 import Login from './Login';
 import Register from './Register';
 
 import './Form.css';
-import '../header/animation/scale.css';
-import '../header/animation/fade.css';
+import '../../header/animation/scale.css';
+import '../../header/animation/fade.css';
 
 const ScaleTransition = (props) => {
   return (
@@ -53,8 +51,6 @@ const FormContainer = ({onClose}) =>{
   );
 };
 export {
-  AddNews,
-  EditNews,
   Login,
   Register,
   FormContainer,

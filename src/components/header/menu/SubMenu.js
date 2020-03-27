@@ -1,10 +1,8 @@
 import React, {useState} from 'react';
-import {FormContainer} from '../../forms';
+import {FormContainer} from '../../forms/auth';
 
 import './SubMenu.css';
 import '../animation/fade.css';
-
-import {CSSTransition} from 'react-transition-group';
 
 export const SubMenu = ({visible, children}) =>{
   const [isVisibleLogin, setVisibleLogin] =useState(false);

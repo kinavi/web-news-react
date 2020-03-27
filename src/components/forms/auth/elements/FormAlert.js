@@ -1,9 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-const FormAlert = ({isAlert, alertMessage}) =>
+const FormAlert = ({alertMessage}) =>
   <div className='form__alert' >
-    {isAlert&&alertMessage}
+    {alertMessage}
   </div>;
 
 const mapStateToProps = (state) =>({

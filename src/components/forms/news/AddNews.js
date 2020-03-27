@@ -3,11 +3,11 @@ import {connect} from 'react-redux';
 import {useHistory} from 'react-router-dom';
 
 
-import {addNews, loadFile} from '../../store/Actions/index';
-import {TitleField, ButtonSelectImg} from '../FormElements';
-import {EditNewsEditor} from '../editor';
+import {addNews, loadFile} from '../../../store/Actions/index';
+import {TitleField, ButtonSelectImg} from '../../FormElements';
+import {EditNewsEditor} from '../../editor';
 
-const FormAddNew = ({_onCreateNews})=>{
+const AddNewForm = ({_onCreateNews})=>{
   const [title, setTitle] = useState();
   const [description, setDescription] = useState();
   const [file, setFile] = useState();
@@ -55,6 +55,6 @@ const mapDispatchToProps = (dispatch) =>({
 export default connect(
     null,
     mapDispatchToProps,
-)(FormAddNew);
+)(AddNewForm);
 
 

@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
 import {connect} from 'react-redux';
 
-import {EditorNews} from '../editor';
-import {TitleField, ButtonSelectImg} from '../FormElements';
+import {EditorNews} from '../../editor';
+import {TitleField, ButtonSelectImg} from '../../FormElements';
 
-import {editNews, loadFile} from '../../store/Actions';
+import {editNews, loadFile} from '../../../store/Actions';
 
 const EditNews = ({_id, title, description, fileName, onEdit, setEdit}) =>{
   const [_title, setTitle] = useState(title);

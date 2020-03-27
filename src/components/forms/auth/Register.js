@@ -1,31 +1,30 @@
 import React, {useRef, useContext} from 'react';
 import {connect} from 'react-redux';
 
-import {registerUser, loginUser} from '../../store/Redusers/AuthRedusers';
-import {SET_DEFAULT_STATE} from '../../store/Redusers/FormRedusers';
+import {registerUser, loginUser} from '../../../store/Redusers/AuthRedusers';
+import {done} from '../../../store/Redusers/FormRedusers';
 
 import {
   FormTitle,
   FormAlert,
-  FormGroup, 
+  FormGroup,
   FormLabel,
   FormInput,
-FormCheckbox,
-FormGroupButton,
-FormButton
+  FormCheckbox,
+  FormGroupButton,
+  FormButton,
 
-} from './elements'
+} from './elements';
 
-const Register = ({Form, onClickInput, onClose, switchForm, onRegister}) =>{
+const Register = ({switchForm, setRegister, isLogin, isPassword}) =>{
   const inputLogin = useRef(null);
   const inputPassword = useRef(null);
   const inputSave = useRef(null);
 
   const handlerClickSubmit = (e) =>{
-    console.log('inputLogin - ', inputLogin.current.value);
-    console.log('inputPassword - ', inputPassword.current.value);
-    // console.log('inputSave - ', inputSave.current.checked);
-    onRegister(inputLogin.current.value, inputPassword.current.value);
+    const loginValue = inputLogin.current.value;
+    const loginPassword = inputPassword.current.value;
+    setRegister(loginValue, loginPassword);
     // onClose();
     e.stopPropagation();
   };
@@ -35,11 +34,11 @@ const Register = ({Form, onClickInput, onClose, switchForm, onRegister}) =>{
       <FormAlert/>
       <FormGroup>
         <FormLabel value='Login'/>
-        <FormInput type='text' refInput={inputLogin}/>
+        <FormInput type='text' refInput={inputLogin} required={isLogin}/>
       </FormGroup>
       <FormGroup>
         <FormLabel value='Password'/>
-        <FormInput type='password' refInput={inputPassword}/>
+        <FormInput type='password' refInput={inputPassword} required={isLogin}/>
       </FormGroup>
       <FormCheckbox refInput={inputSave} text='Save me'/>
       <FormGroupButton>
@@ -56,16 +55,11 @@ const Register = ({Form, onClickInput, onClose, switchForm, onRegister}) =>{
   );
 };
 const mapStateToProps = (state) =>({
-  Form: state.Form,
+  ...state.Form,
 });
 const mapDispatchToProps = (dispatch) =>({
-  onRegister(login, password) {
+  setRegister(login, password) {
     dispatch(registerUser(login, password));
-  },
-  onClickInput() {
-    dispatch({
-      type: SET_DEFAULT_STATE,
-    });
   },
 });
 
