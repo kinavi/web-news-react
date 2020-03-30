@@ -1,16 +1,9 @@
-import {fetchThenDispatch} from '../Actions';
-
-export const ALERT = 'SET_ALERT';
+export const ALLALERT = 'ALLALERT';
 export const LOGIN_ALERT = 'LOGIN_ALERT';
 export const PASSWORD_ALERT = 'PASSWORD_ALERT';
 export const LOGIN_DONE = 'LOGIN_DONE';
 export const PASSWORD_DONE = 'PASSWORD_DONE';
-export const DONE= 'DONE';
-
-// const typeAler = {
-//   LOGIN: 'LOGIN',
-//   PASSWORD: 'PASSWORD',
-// };
+export const ALLDONE= 'ALLDONE';
 
 const initialState = {
   isAlert: null,
@@ -21,7 +14,7 @@ const initialState = {
 
 export const FormRedusers = (state = initialState, action) =>{
   switch (action.type) {
-    case ALERT:
+    case ALLALERT:
       return (
         {
           isAlert: true,
@@ -62,7 +55,7 @@ export const FormRedusers = (state = initialState, action) =>{
           alertMessage: null,
         }
       );
-    case DONE:
+    case ALLDONE:
       return (
         {
           isAlert: null,
@@ -94,11 +87,13 @@ export const donePassword = () =>({
   type: PASSWORD_DONE,
 });
 
-export const done = () =>({
-  type: DONE,
+export const allDone = () =>({
+  type: ALLDONE,
 });
 
-export const alert = (message) => ({
-  type: ALERT,
+export const allAlert = (message) => ({
+  type: ALLALERT,
   alertMessage: message,
 });
+
+

@@ -1,5 +1,5 @@
 import {fetchThenDispatch} from '../Actions';
-import {alertLogin, alertPassword, alert} from './FormRedusers';
+import {alertLogin, alertPassword, allAlert} from './FormRedusers';
 import fetch from 'isomorphic-fetch';
 const parseResponse = (response) => response.json();
 
@@ -73,21 +73,11 @@ export const getUser = () => (dispatch)=> {
       .then(parseResponse)
       .then(dispatch)
       .catch(logError);
-  // fetchThenDispatch(
-  //     dispatch,
-  //     ,
-  //     'GET',
-  // );
 };
-
-// fetch(url, {method, body, headers: {'Content-Type': 'application/json'}})
-//     .then(parseResponse)
-//     .then(dispatch)
-//     .catch(logError);
 
 const cheackData = (login, password, dispatch) =>{
   if (!login&&!password) {
-    dispatch(alert('Input login and password'));
+    dispatch(allAlert('Input login and password'));
     return false;
   }
   if (!login) {
