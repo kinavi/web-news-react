@@ -39,16 +39,16 @@ UsersSchema.methods.generateJWT = function() {
   expirationDate.setDate(today.getDate() + 60);
 
   return jwt.sign({
-    email: this.email,
+    login: this.login,
     id: this._id,
     exp: parseInt(expirationDate.getTime() / 1000, 10),
-  }, 'secret');
+  }, '23wt20klU');
 };
 
 UsersSchema.methods.toAuthJSON = function() {
   return {
-    _id: this._id,
-    email: this.email,
+    id: this._id,
+    login: this.login,
     token: this.generateJWT(),
   };
 };

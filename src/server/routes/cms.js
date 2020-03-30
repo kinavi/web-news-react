@@ -1,5 +1,6 @@
 import {Router} from 'express';
-import {TypeActions} from '../../../store/TypeActions';
+import {TypeActions} from '../../store/TypeActions';
+import {dispatchAndRespond, respondAction} from '../services/dispatch';
 // import {SET_USER_DATA} from '../../../store/Redusers/AuthRedusers';
 // import {v4} from 'uuid';
 
@@ -8,9 +9,9 @@ import {TypeActions} from '../../../store/TypeActions';
 const express = require('express');
 const jsonParser = express.json();
 
-import {mongoose, News} from '../../mongoose';
+import {mongoose, News} from '../mongoose';
 
-import user from './users';
+// import user from './user';
 
 // const urlAuth = 'http://localhost:8000/';
 
@@ -28,28 +29,22 @@ const storageConfig = multer.diskStorage({
 
 const router = Router();
 
-const dispatchAndRespond = (req, res, action) => {
-  req.store.dispatch(action);
-  res.status(200).json(action);
-};
+// router.get('/', (req, res) =>{
+//   res.status(200).json(req.store.getState().ListNews);
+// });
 
+// router.get('/', (req, res) => {
+//   // const news = await News.find({});
+//   // console.log('news - ', news);
 
-router.get('/cms', (req, res) =>{
-  res.status(200).json(req.store.getState().ListNews);
-});
+//   // dispatchAndRespond(req, res, {
+//   //   type: TypeActions.LOAD_DATA_ALL,
+//   //   news,
+//   // });
+//   res.status(200).json(req.store.getState().ListNews);
+// });
 
-router.get('/', (req, res) => {
-  // const news = await News.find({});
-  // console.log('news - ', news);
-
-  // dispatchAndRespond(req, res, {
-  //   type: TypeActions.LOAD_DATA_ALL,
-  //   news,
-  // });
-  res.status(200).json(req.store.getState().ListNews);
-});
-
-router.post('/cms', jsonParser, async (req, res) =>{
+router.post('/', jsonParser, async (req, res) =>{
   try {
     if (!req.body) return res.sendStatus(400);
 
@@ -91,7 +86,7 @@ router.post('/upload', (req, res, next)=>{
 });
 
 
-router.put('/cms', jsonParser, async (req, res) =>{
+router.put('/', jsonParser, async (req, res) =>{
   try {
     // console.log('edit');
     if (!req.body) return res.sendStatus(400);
@@ -123,7 +118,7 @@ router.put('/cms', jsonParser, async (req, res) =>{
     req.sendStatus(500).send(e);
   }
 });
-router.delete('/cms', jsonParser, async (req, res) => {
+router.delete('/', jsonParser, async (req, res) => {
   try {
     // console.log('remove');
     if (!req.body) return res.sendStatus(400);
@@ -191,6 +186,6 @@ router.delete('/cms', jsonParser, async (req, res) => {
 //   }
 // });
 
-router.use('/users', user);
+// router.use('/users', user);
 
 export default router;

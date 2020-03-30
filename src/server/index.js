@@ -3,40 +3,38 @@ import {StaticRouter} from 'react-router-dom';
 import {renderToString} from 'react-dom/server';
 import {matchRoutes, renderRoutes} from 'react-router-config';
 import {Provider} from 'react-redux';
+// const router = Router();
 
 import express from 'express';
 import '@babel/polyfill';
 import serialize from 'serialize-javascript';
 
 import {mongoose} from './mongoose';
+import {passport} from './passport';
 
 import Routes from '../Routes';
+
+import routes from './routes';
 import storeFactory from '../store/index';
 import {assetsByChunkName} from '../../stats.json';
-import api from './routes/api/news-api';
 
+// import api from './routes/cms';
+
+const app = express();
 const cookieParser = require('cookie-parser');
 
 // #region auth
-const path = require('path');
 const bodyParser = require('body-parser');
 const session = require('express-session');
-const cors = require('cors');
+// const cors = require('cors');
 const errorHandler = require('errorhandler');
-require('./passport');
-
-// Configure isProduction variable
+// // Configure isProduction variable
 const isProduction = process.env.NODE_ENV === 'production';
 // #endregion
 
 const serverStore = storeFactory(true);
 
 const imageFileAssets = express.static('uploads');
-
-const app = express();
-
-
-const url = 'mongodb://localhost:27017/web-news-react';
 
 const renderer = (req, serverStore, context) =>{
   const reactHtml = renderToString(
@@ -65,23 +63,23 @@ const renderer = (req, serverStore, context) =>{
 };
 
 const addStoreToRequestPipeline = async (req, res, next) => {
-  // const news = await News.find({});
-  // console.log('news - ', news);
-  // const serverStore = storeFactory(true, {News: news});
   req.store = serverStore;
   next();
 };
-app.use(cors())
-    .use(require('morgan')('dev'))
-    .use(bodyParser.urlencoded({extended: false}))
+app
+    // .use(cors())
+    // .use(require('morgan')('dev'))
+    // .use(bodyParser.urlencoded({extended: false}))
     .use(bodyParser.json())
+    .use(cookieParser())
+    .use(passport.initialize())
     .use(session({
       secret: 'soo-zero',
       cookie: {maxAge: 60000},
       resave: false,
       saveUninitialized: false,
     }))
-    .use(cookieParser())
+    .use('/api', routes)
     .use('/', express.static('public'))
     .use('/edit', express.static('public'))
     .use('/news', express.static('public'))
@@ -90,7 +88,7 @@ app.use(cors())
     .use(imageFileAssets)
     .use('/news', imageFileAssets)
     .use(addStoreToRequestPipeline)
-    .use('/api', api)
+    // .use('/api', api)
     // .use(require('./routes'))
     .get('*', (req, res) => {
       const params = req.params[0].split('/');
@@ -101,6 +99,9 @@ app.use(cors())
           .map(({route}) => {
             return route.loadData ? route.loadData(serverStore) : null;
           })
+          // .map(({route}) => {
+          //   return route.cheackAuth ? route.cheackAuth(serverStore) : null;
+          // })
           .map((promise) => {
             if (promise) {
               return new Promise((resolve, reject) => {
@@ -150,6 +151,8 @@ app.use((err, req, res, next) => {
     },
   });
 });
+
+const url = 'mongodb://localhost:27017/web-news-react';
 
 mongoose.connect(url, {useUnifiedTopology: true, useNewUrlParser: true})
     .then(()=>{

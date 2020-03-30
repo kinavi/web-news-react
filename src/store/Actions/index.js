@@ -1,5 +1,5 @@
 import fetch from 'isomorphic-fetch';
-import {News, mongoose } from '../../server/mongoose';
+import {News, mongoose} from '../../server/mongoose';
 import {TypeActions} from '../TypeActions';
 
 const parseResponse = (response) => response.json();
@@ -7,12 +7,12 @@ const parseResponse = (response) => response.json();
 const logError = (error) => console.error(error);
 
 export const fetchThenDispatch = (dispatch, url, method, body) =>
-  fetch(url, {method, body, headers: {'Content-Type': 'application/json'}})
+  fetch(url, {method, body, headers: {'Content-Type': 'application/json'}, credentials: 'include'})
       .then(parseResponse)
       .then(dispatch)
       .catch(logError);
 
-const onlyFetch = ( url, method, body )=>
+export const onlyFetch = ( url, method, body )=>
   fetch(url, {method, body})
       .then(parseResponse)
       .catch(logError);
@@ -56,7 +56,22 @@ export const loadDataAll = ()=> async (dispatch) =>{
     type: TypeActions.LOAD_DATA_ALL,
     news,
   });
+
+  // fetch('http://localhost:3000/api/users/current', {method: 'POST', body: {}, headers: {'Content-Type': 'application/json'}})
+  //     .then(parseResponse)
+  //     .then(dispatch)
+  //     .catch(logError);
+
+  // fetchThenDispatch(
+  //     dispatch,
+  //     '/api/users/current',
+  //     'GET',
+  // );
 };
+
+// export const checkAuth = () => async (dispatch) =>{
+
+// }
 // fetchThenDispatch(
 //     dispatch,
 //     '/api/',
