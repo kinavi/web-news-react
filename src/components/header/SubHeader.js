@@ -22,13 +22,13 @@ export const SubHeader = ({isMenu}) =>{
         {
             isMenu?
             <SubMenu visible={isMenu}>
-              <Link 
-                to='/#About' 
-                title='About' 
+              <Link
+                to='/#About'
+                title='About'
                 className='sub-menu__link' >About</Link>
-              <Link 
-                to='/#About' 
-                title='About' 
+              <Link
+                to='/#About'
+                title='About'
                 className='sub-menu__link' >About</Link>
             </SubMenu>:
             <SubFilter/>

@@ -1,8 +1,8 @@
-import React, {useRef, useContext, useState} from 'react';
+import React, {useRef, useContext, useState, useEffect} from 'react';
 import {connect} from 'react-redux';
 
 import {registerUser, loginUser} from '../../../store/Redusers/AuthRedusers';
-import {done} from '../../../store/Redusers/FormRedusers';
+import {allDone} from '../../../store/Redusers/FormRedusers';
 
 import {
   FormTitle,
@@ -15,11 +15,14 @@ import {
   FormGroupButton,
 } from './elements';
 
-const Login = ({switchForm, setLogin, isLogin, isPassword}) =>{
+const Login = ({setDone, switchForm, setLogin, isLogin, isPassword}) =>{
   const inputLogin = useRef(null);
   const inputPassword = useRef(null);
   const inputSave = useRef(null);
 
+  useEffect(()=>{
+    setDone();
+  }, []);
   const handlerClickSubmit = (e) =>{
     const loginValue = inputLogin.current.value;
     const loginPassword = inputPassword.current.value;
@@ -56,6 +59,9 @@ const mapStateToProps = (state) =>({
 const mapDispatchToProps = (dispatch) =>({
   setLogin(login, password) {
     dispatch(loginUser(login, password));
+  },
+  setDone() {
+    dispatch(allDone());
   },
 });
 

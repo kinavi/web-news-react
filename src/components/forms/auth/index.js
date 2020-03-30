@@ -1,4 +1,4 @@
-import React, {useRef, useContext, useState} from 'react';
+import React, {useRef, useContext, useState, useEffect} from 'react';
 import {SwitchTransition, CSSTransition} from 'react-transition-group';
 
 import {IconContext} from 'react-icons';

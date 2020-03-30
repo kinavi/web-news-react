@@ -1,8 +1,8 @@
-import React, {useRef, useContext} from 'react';
+import React, {useRef, useContext, useEffect} from 'react';
 import {connect} from 'react-redux';
 
 import {registerUser, loginUser} from '../../../store/Redusers/AuthRedusers';
-import {done} from '../../../store/Redusers/FormRedusers';
+import {allDone} from '../../../store/Redusers/FormRedusers';
 
 import {
   FormTitle,
@@ -16,16 +16,19 @@ import {
 
 } from './elements';
 
-const Register = ({switchForm, setRegister, isLogin, isPassword}) =>{
+const Register = ({setDone, switchForm, setRegister, isLogin, isPassword}) =>{
   const inputLogin = useRef(null);
   const inputPassword = useRef(null);
   const inputSave = useRef(null);
+
+  useEffect(()=>{
+    setDone();
+  }, []);
 
   const handlerClickSubmit = (e) =>{
     const loginValue = inputLogin.current.value;
     const loginPassword = inputPassword.current.value;
     setRegister(loginValue, loginPassword);
-    // onClose();
     e.stopPropagation();
   };
   return (
@@ -38,7 +41,7 @@ const Register = ({switchForm, setRegister, isLogin, isPassword}) =>{
       </FormGroup>
       <FormGroup>
         <FormLabel value='Password'/>
-        <FormInput type='password' refInput={inputPassword} required={isLogin}/>
+        <FormInput type='password' refInput={inputPassword} required={isPassword}/>
       </FormGroup>
       <FormCheckbox refInput={inputSave} text='Save me'/>
       <FormGroupButton>
@@ -60,6 +63,9 @@ const mapStateToProps = (state) =>({
 const mapDispatchToProps = (dispatch) =>({
   setRegister(login, password) {
     dispatch(registerUser(login, password));
+  },
+  setDone() {
+    dispatch(allDone());
   },
 });
 

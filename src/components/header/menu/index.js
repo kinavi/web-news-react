@@ -4,7 +4,7 @@ import {GiHamburgerMenu} from 'react-icons/gi';
 import {MdClose} from 'react-icons/md';
 
 import './Menu.css';
-import {SubMenu} from './SubMenu';
+import SubMenu from './SubMenu';
 
 const CloseState = () =>
   <IconContext.Provider
