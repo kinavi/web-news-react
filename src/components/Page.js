@@ -1,6 +1,7 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {connect} from 'react-redux';
 import {CSSTransition} from 'react-transition-group';
+import { useCookies } from 'react-cookie';
 
 import {Header, Home, SubHeader} from './header';
 import {Menu} from './header/menu';
@@ -11,11 +12,23 @@ import {Filter} from './header/filter';
 import './Page.css';
 import './header/animation/slide.css';
 
-const Page = ({isAuth, children}) =>{
+import {getUser, nullUserData} from '../store/redusers/AuthRedusers';
+
+const Page = ({isAuth, children, checkUser, logout}) =>{
   const [isMenu, setMenu] = useState(false);
   const [isVisibleSubMenu, setVisibleSubMenu] = useState(false);
   const [isVisibleSubFilter, setVisibleSubFilter] = useState(false);
   // const [isVisibleSearch, setVisibleSearch] = useState(true);
+  // const [cookies, setCookie, removeCookie] = useCookies(['Token']);
+
+  
+  // useEffect(()=>{
+  //   console.log('cookies - ', cookies);
+  //   if (!!cookies) {
+  //     checkUser();
+  //     console.log('+');
+  //   }
+  // }, []);
 
   const handlerClickMenu = () =>{
     setVisibleSubMenu(!isVisibleSubMenu);
@@ -57,5 +70,13 @@ const Page = ({isAuth, children}) =>{
 const mapStateToProps = (state) =>({
   isAuth: state.Auth.isAuth,
 });
+const mapDispatchToProps = (dispatch) =>({
+  // checkUser() {
+  //   dispatch(getUser());
+  // },
+  // logout() {
+  //   nullUserData();
+  // },
+});
 
-export default connect( mapStateToProps, null)(Page);
+export default connect( mapStateToProps, mapDispatchToProps)(Page);

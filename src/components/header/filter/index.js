@@ -3,7 +3,7 @@ import React from 'react';
 import {IconContext} from 'react-icons';
 import {MdFilterList} from 'react-icons/md';
 
-import {Select} from './Select';
+import Select from './Select';
 import {SubFilter} from './SubFilter';
 
 const Filter = ({onClick}) =>{

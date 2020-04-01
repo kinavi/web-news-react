@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
+import {connect} from 'react-redux';
 
 import './Select.css';
 
-export const Select = ({title, values}) => {
-
+const Select = ({title, values}) => {
   const [isVisible, setVisible] = useState(true);
   const [option, setOption] = useState('ALL');
 
@@ -39,3 +39,19 @@ export const Select = ({title, values}) => {
     </div>
   );
 };
+const mapStateToProps = (state) =>({
+  // ...state.Form,
+});
+const mapDispatchToProps = (dispatch) =>({
+  // setRegister(login, password) {
+  //   dispatch(registerUser(login, password));
+  // },
+  // setDone() {
+  //   dispatch(allDone());
+  // },
+});
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps,
+)(Select);

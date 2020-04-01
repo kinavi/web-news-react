@@ -1,5 +1,5 @@
 import React, {useState, useContext} from 'react';
-import {Select} from './Select';
+import Select from './Select';
 import {author} from '../../../../data/dataFilter';
 export const SubFilter = () =>{
   const style = {
