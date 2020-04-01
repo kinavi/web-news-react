@@ -18,7 +18,6 @@ const BigLayer = ({_id, title, fileName}) =>{
           <div className="preview__author">Author</div>
           <div className="preview__title">{title}</div>
         </div>
-
       </div>
     </div>
   );

@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-import {removeNews} from '../../store/Actions';
+import {removeNews} from '../../store/fetchs/cms';
 
 const NewsLite = ({_id, title, fileName, setEdit, onRemove}) =>{
   const handlerEdit = () =>{
