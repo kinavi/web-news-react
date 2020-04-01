@@ -1,12 +1,12 @@
 import AddNews from './AddNews';
 import CMS from './CMS';
-import ListNews from './ListNews';
+import MainPage from './MainPage';
 import News from './News';
 import NoMatch from './NoMatch';
 export {
   AddNews,
   CMS,
-  ListNews,
+  MainPage,
   News,
   NoMatch,
 };

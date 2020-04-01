@@ -2,35 +2,35 @@ import React, {useState, useEffect} from 'react';
 import {connect} from 'react-redux';
 import {useParams} from 'react-router-dom';
 
-import {FullNews} from '../components/news';
+import {News} from '../components/news';
 import Page from '../components/Page';
-import {loadDataAll} from '../store/Actions';
+import {loadNewsByDate} from '../store/fetchs/preload';
 
 import '../styles/News.css';
 
-const News = ({News}) =>{
+const NewsPage = ({Item}) =>{
   const {id} = useParams();
 
-  const [news, setNews] = useState(getItemById(News, id));
+  const [news, setNews] = useState(getItemById(Item, id));
 
   return (
     <Page>
-      <FullNews {...news}/>
+      <News {...news}/>
     </Page>
   );
 };
 const mapStateToProps = (state) =>({
-  News: state.News,
+  Item: state.News,
 });
-const loadData = (store) => {
-  return store.dispatch(loadDataAll());
+const loadDataByDate = (store) => {
+  return store.dispatch(loadNewsByDate());
 };
 export default {
   component: connect(
       mapStateToProps,
       null,
-  )(News),
-  loadData,
+  )(NewsPage),
+  loadDataByDate,
 };
 
 // Фигня, надо переделать
