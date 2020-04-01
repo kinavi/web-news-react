@@ -1,7 +1,7 @@
 import thunk from 'redux-thunk';
 import {createStore, combineReducers, applyMiddleware} from 'redux';
 
-import {NewsRedusers, AuthRedusers, FormRedusers} from './Redusers';
+import {NewsRedusers, AuthRedusers, FormRedusers, CmsRedusers} from './redusers';
 
 const clientLogger = (store) => (next) => (action) => {
   console.groupCollapsed('dispatching', action.type);
@@ -47,6 +47,7 @@ const storeFactory = (server = false, initialState = {}) =>
         News: NewsRedusers,
         Auth: AuthRedusers,
         Form: FormRedusers,
+        Cms: CmsRedusers,
       }),
       initialState,
       applyMiddleware(...middleware(server)),

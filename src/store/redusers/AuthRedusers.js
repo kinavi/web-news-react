@@ -1,4 +1,4 @@
-import {fetchThenDispatch} from '../Actions';
+import {fetchThenDispatch} from '../fetchs';
 import {alertLogin, alertPassword, allAlert} from './FormRedusers';
 import fetch from 'isomorphic-fetch';
 const parseResponse = (response) => response.json();
@@ -6,7 +6,8 @@ const parseResponse = (response) => response.json();
 const logError = (error) => console.error(error);
 
 export const SET_USER_DATA = 'SET_USER_DATA';
-export const NULL_USER_DATA = 'NULL_USER_DATA';
+export const THROW_USER_DATA = 'THROW_USER_DATA';
+
 const initialState = {
   id: null,
   login: null,
@@ -24,7 +25,7 @@ export const AuthRedusers = (state = initialState, action) =>{
           isAuth: true,
         }
       );
-    case NULL_USER_DATA:
+    case THROW_USER_DATA:
       return (
         {
           id: null,
@@ -43,7 +44,7 @@ export const setUserData = (data) =>({
 });
 
 export const nullUserData = () =>({
-  type: NULL_USER_DATA,
+  type: THROW_USER_DATA,
 });
 
 export const registerUser = (login, password) => (dispatch)=>{
