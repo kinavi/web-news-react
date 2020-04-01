@@ -1,0 +1,18 @@
+.input__container-title{
+    width: 68%;
+    margin-bottom: 15px;
+}
+
+/* .input__title{
+    margin-bottom: 15px;
+} */
+
+.input{
+    background: #fbdac0;
+    width: 100%;
+    padding: 12px 20px;
+    /* margin: 10px 0; */
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}

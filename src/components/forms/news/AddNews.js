@@ -1,59 +1,41 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {connect} from 'react-redux';
-import {useHistory} from 'react-router-dom';
 
+import {addNews} from '../../../store/fetchs/cms';
+import {FormContainer} from './';
 
-import {addNews, loadFile} from '../../../store/Actions/index';
-import {TitleField, ButtonSelectImg} from '../../FormElements';
-import {EditNewsEditor} from '../../editor';
+const AddNewForm = (props)=>{
+  const {userId, login, onAddNews, onClose} = props;
 
-const AddNewForm = ({_onCreateNews})=>{
-  const [title, setTitle] = useState();
-  const [description, setDescription] = useState();
-  const [file, setFile] = useState();
-
-  const history = useHistory();
-
-  const handleCreate = () =>{
-    _onCreateNews(title, description, file);
+  const handlerSubmit = (title, description, fileName) =>{
+    onAddNews(userId, login, title, description, fileName);
     window.scrollTo(0, 0);
-    history.push('/cms');
+    onClose();
   };
 
-  const handleBack = () =>{
-    history.push('/cms');
+  const handlerCancel = () =>{
+    onClose();
   };
 
   return (
-    <div className="add-form">
-      <ButtonSelectImg value={file} setValue={setFile}/>
-      <TitleField value={title} setValue={setTitle}/>
-      <EditNewsEditor isEdit={false} value={description} setValue={setDescription}/>
-
-      <div className='add-form__container-btns'>
-        {/* <Button onClick={()=>{}}>Предосмотр</Button> */}
-        <button className='btn add-form__btn' onClick={handleCreate}>Создать</button>
-        <button className='btn add-form__btn' onClick={handleBack}>Отмена</button>
-      </div>
-
-    </div>
+    <FormContainer
+      {...props}
+      onSubmit={handlerSubmit} onCancel={handlerCancel}/>
   );
 };
+const mapStateToProps = (state) =>({
+  userId: state.Auth.id,
+  login: state.Auth.login,
+});
+
 const mapDispatchToProps = (dispatch) =>({
-  _onCreateNews(title, description, file) {
-    dispatch(addNews(title, description, file.name));
-
-    // Колхоз, надо в отдельную функцию
-    const data = new FormData();
-    data.append('file', file);
-    data.append('user', 'hubot');
-
-    loadFile(data);
+  onAddNews(userId, author, title, description, fileName) {
+    dispatch(addNews(userId, author, title, description, fileName));
   },
 });
 
 export default connect(
-    null,
+    mapStateToProps,
     mapDispatchToProps,
 )(AddNewForm);
 

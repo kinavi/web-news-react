@@ -1,8 +1,7 @@
 import App from './App';
-import ListNews from './pages/ListNews';
-import News from './pages/News';
-import CMS from './pages/CMS';
-import AddNew from './pages/AddNews';
+import MainPage from './pages/MainPage';
+import NewsPage from './pages/NewsPage';
+import CmsPage from './pages/CmsPage';
 import NoMatch from './pages/NoMatch';
 
 export default [
@@ -10,22 +9,16 @@ export default [
     ...App,
     routes: [
       {
-        ...ListNews,
+        ...MainPage,
         path: '/',
         exact: true,
       },
       {
-        ...CMS,
+        ...CmsPage,
         path: '/cms',
-        routes: [
-          {
-            ...AddNew,
-            path: '/cms/add',
-          },
-        ],
       },
       {
-        ...News,
+        ...NewsPage,
         path: '/news/:id',
       },
       {

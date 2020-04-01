@@ -1,8 +1,8 @@
 import React, {useRef, useContext, useEffect} from 'react';
 import {connect} from 'react-redux';
 
-import {registerUser, loginUser} from '../../../store/Redusers/AuthRedusers';
-import {allDone} from '../../../store/Redusers/FormRedusers';
+import {registerUser, loginUser} from '../../../store/redusers/AuthRedusers';
+import {allDone} from '../../../store/redusers/FormRedusers';
 
 import {
   FormTitle,

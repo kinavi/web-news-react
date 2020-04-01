@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-import {doneLogin, donePassword, alertLogin, alertPassword, isAlert} from '../../../../store/Redusers/FormRedusers';
+import {doneLogin, donePassword, alertLogin, alertPassword, isAlert} from '../../../../store/redusers/FormRedusers';
 
 const FormInput = ({
   type,

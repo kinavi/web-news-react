@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 
-const IMG = ({file}) =>{
+export const Img = ({file}) =>{
   const [src, setSrc] = useState(file);
 
   useEffect(() => {
@@ -15,4 +15,4 @@ const IMG = ({file}) =>{
 };
 
 
-export default IMG;
+//  default Img;

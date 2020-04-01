@@ -1,20 +1,21 @@
 import React, {useState} from 'react';
 import {connect} from 'react-redux';
 
-import {EditorNews} from '../../editor';
-import {TitleField, ButtonSelectImg} from '../../FormElements';
+// import {CustomeEditor} from '../../editor';
+// import {FormInput, ButtonSelectImg, FormHeader, FormGroupButton} from './elements';
 
-import {editNews, loadFile} from '../../../store/Actions';
+import {editNews, loadFile} from '../../../store/fetchs/cms';
 
-const EditNews = ({_id, title, description, fileName, onEdit, setEdit}) =>{
-  const [_title, setTitle] = useState(title);
-  const [file, setFile] = useState();
-  const [_description, setDescription] = useState(description);
+import {FormContainer} from './';
+
+
+const EditNews = (props) =>{
+  const {_id, onSave, setEdit} = props;
   const [scrollY, setScrollY] = useState(window.pageYOffset);
   const [scrollX, setScrollX] = useState(window.pageXOffset); // Надо ли?
 
-  const handlerSave = () =>{
-    onEdit(_id, _title, _description, file, fileName); // Тут баг с file
+  const handlerSubmit = (title, description, fileName) =>{
+    onSave(_id, title, description, fileName); // Тут баг с file
     setEdit(false);
     window.scrollTo(scrollX, scrollY);
   };
@@ -25,41 +26,15 @@ const EditNews = ({_id, title, description, fileName, onEdit, setEdit}) =>{
   };
 
   return (
-    <div className="add-form">
-      <ButtonSelectImg value={file} setValue={setFile}/>
-      <TitleField value={_title} setValue={setTitle}/>
-      <EditorNews
-        isEdit={false}
-        value={_description}
-        setValue={setDescription}/>
-      <div className='add-form__container-btns' >
-        {/* <Button >Предосмотр</Button> */}
-        <button
-          className='btn add-form__btn'
-          onClick={handlerSave}>Save</button>
-        <button
-          className='btn add-form__btn'
-          onClick={handlerCancel}>Cancel</button>
-      </div>
-
-    </div>
+    <FormContainer
+      {...props}
+      onSubmit={handlerSubmit} onCancel={handlerCancel}/>
   );
 };
 
 const mapDispatchToProps = (dispatch) =>({
-  onEdit(id, title, description, newfile, oldfile) {
-    // Нужен рефакторинг
-    if (!newfile) {
-      dispatch(editNews(id, title, description, oldfile));
-    } else {
-      dispatch(editNews(id, title, description, newfile.name));
-      // Колхоз, надо в отдельную функцию
-      const data = new FormData();
-      data.append('file', newfile);
-      data.append('user', 'hubot');
-
-      loadFile(data);
-    }
+  onSave(id, title, description, fileName) {
+    dispatch(editNews(id, title, description, fileName));
   },
 });
 export default connect(
