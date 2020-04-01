@@ -1,9 +1,9 @@
 const jwt = require('express-jwt');
 
 const getTokenFromHeaders = (req) => {
-  const { headers: { authorization } } = req;
+  const {headers: {authorization}} = req;
 
-  if(authorization && authorization.split(' ')[0] === 'Token') {
+  if (authorization && authorization.split(' ')[0] === 'Token') {
     return authorization.split(' ')[1];
   }
   return null;
@@ -11,7 +11,7 @@ const getTokenFromHeaders = (req) => {
 
 const getTokenFromCookies = (req) =>{
   const {Token} = req.cookies;
-  console.log('cookies - ', req.cookies)
+  console.log('cookies - ', req.cookies);
   if (Token) {
     return Token;
   }
@@ -20,12 +20,13 @@ const getTokenFromCookies = (req) =>{
 
 export const auth = {
   required: jwt({
-    secret: '23wt20klU',
+    secret: 'misha',
     // requestProperty: 'userData',
     getToken: getTokenFromCookies,
+    credentialsRequired: false,
   }),
   optional: jwt({
-    secret: '23wt20klU',
+    secret: 'misha',
     // requestProperty: 'userData',
     getToken: getTokenFromCookies,
     credentialsRequired: false,

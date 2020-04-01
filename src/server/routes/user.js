@@ -10,8 +10,8 @@ import attachCurrentUser from '../middlewares/attachCurrentUser';
 
 import {dispatchAndRespond, respondAction} from '../services/dispatch';
 
-import {setUserData, nullUserData} from '../../store/Redusers/AuthRedusers';
-import {alertLogin, alertPassword, alert} from '../../store/Redusers/FormRedusers';
+import {setUserData, nullUserData} from '../../store/redusers/AuthRedusers';
+import {alertLogin, alertPassword, allAlert} from '../../store/redusers/FormRedusers';
 
 // POST new user route (optional, everyone has access)
 router.post('/', auth.optional, async (req, res, next) => {
@@ -29,6 +29,7 @@ router.post('/', auth.optional, async (req, res, next) => {
   if (!!result) {
     return res.status(422).json(alertLogin('login is busy'));
   }
+  console.log('user - ', user)
   const finalUser = new Users(user);
 
   finalUser.setPassword(user.password);
@@ -51,7 +52,7 @@ router.post('/login', auth.optional, (req, res, next) => {
     // console.log('passportUser 1- ', passportUser);
     // console.log('info - 1', info);
     if (err) {
-      return res.status(422).json(alert('login or password is invalid'));
+      return res.status(422).json(allAlert('login or password is invalid'));
       // console.log('err - ', err);
       // return next(err);
     }
@@ -95,5 +96,7 @@ router.post('/current', auth.required, handlerError, (req, res, next) => {
         return respondAction(req, res, setUserData(user.toAuthJSON()), 200);
       });
 });
+
+
 
 export default router;

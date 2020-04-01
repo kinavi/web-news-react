@@ -9,7 +9,7 @@ import express from 'express';
 import '@babel/polyfill';
 import serialize from 'serialize-javascript';
 
-import {mongoose} from './mongoose';
+import {mongoose, Users} from './mongoose';
 import {passport} from './passport';
 
 import Routes from '../Routes';
@@ -18,10 +18,13 @@ import routes from './routes';
 import storeFactory from '../store/index';
 import {assetsByChunkName} from '../../stats.json';
 
+import {nullUserData, setUserData} from '../store/redusers/AuthRedusers';
 // import api from './routes/cms';
 
 const app = express();
 const cookieParser = require('cookie-parser');
+
+import {auth} from './services/auth';
 
 // #region auth
 const bodyParser = require('body-parser');
@@ -62,6 +65,29 @@ const renderer = (req, serverStore, context) =>{
     </html>`;
 };
 
+const authErrorHandler = (err, req, res, next) =>{
+  if (err.name === 'UnauthorizedError') {
+    console.log('error name - ', err.name);
+    serverStore.dispatch(nullUserData());
+    next();
+  }
+};
+
+const checkUser = (req, res, next) =>{
+  if (!req.user) {
+    serverStore.dispatch(nullUserData());
+  } else {
+    Users.findById(req.user.id).then((user)=>{
+      if (!user) {
+        serverStore.dispatch(nullUserData());
+      } else {
+        serverStore.dispatch(setUserData(user.toAuthJSON()));
+      }
+    });
+  }
+  next();
+};
+
 const addStoreToRequestPipeline = async (req, res, next) => {
   req.store = serverStore;
   next();
@@ -79,6 +105,7 @@ app
       resave: false,
       saveUninitialized: false,
     }))
+    .use(addStoreToRequestPipeline)
     .use('/api', routes)
     .use('/', express.static('public'))
     .use('/edit', express.static('public'))
@@ -87,21 +114,20 @@ app
     .use('/cms/add', express.static('public'))
     .use(imageFileAssets)
     .use('/news', imageFileAssets)
-    .use(addStoreToRequestPipeline)
-    // .use('/api', api)
-    // .use(require('./routes'))
-    .get('*', (req, res) => {
-      const params = req.params[0].split('/');
-      const id = params[2];
+    .get('*', auth.required, authErrorHandler, checkUser, (req, res, next) => {
       const routes = matchRoutes(Routes, req.path);
 
       const promises = routes
           .map(({route}) => {
-            return route.loadData ? route.loadData(serverStore) : null;
+            // if (route.loadDataByDate) {
+            //   return route.loadDataByDate(serverStore);
+            // } else if (route.loadDataById) {
+            //   return route.loadDataById(req.user.id, serverStore);
+            // } else {
+            //   return null;
+            // }
+            return route.loadDataByDate ? route.loadDataByDate(serverStore) : null;
           })
-          // .map(({route}) => {
-          //   return route.cheackAuth ? route.cheackAuth(serverStore) : null;
-          // })
           .map((promise) => {
             if (promise) {
               return new Promise((resolve, reject) => {

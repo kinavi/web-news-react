@@ -7,6 +7,7 @@ const Schema = mongoose.Schema;
 
 const NewsScheme = new Schema(
     {
+      userId: String,
       title: String,
       description: Object,
       fileName: String,
@@ -42,7 +43,7 @@ UsersSchema.methods.generateJWT = function() {
     login: this.login,
     id: this._id,
     exp: parseInt(expirationDate.getTime() / 1000, 10),
-  }, '23wt20klU');
+  }, 'misha');
 };
 
 UsersSchema.methods.toAuthJSON = function() {
