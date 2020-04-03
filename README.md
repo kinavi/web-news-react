@@ -24,6 +24,7 @@ The module is currently under development.
 - [ ] Configure adding pictures to draft (Editor)
 - [ ] Add skeleton
 - [ ] Change token lifetime
+- [ ] Search for keywords on the news page
 - [ ] Autotest
 - [ ] JS refactoring
 - [ ] CSS refactoring
