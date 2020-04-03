@@ -15,6 +15,9 @@ All data taken from mongoDB. Two collections of users and news are created. Toke
 # Need to do
 The module is currently under development.
 
+- [ ] Autotest
+- [ ] JS refactoring
+- [ ] CSS refactoring
 - [ ] Fix bugs CSS header
 - [ ] Extend editor features
 - [ ] Extend filter features
@@ -25,9 +28,6 @@ The module is currently under development.
 - [ ] Add skeleton
 - [ ] Change token lifetime
 - [ ] Search for keywords on the news page
-- [ ] Autotest
-- [ ] JS refactoring
-- [ ] CSS refactoring
 
 # Installation
 
