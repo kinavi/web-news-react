@@ -39,6 +39,6 @@ client build - `npm run build:client`
 client start - `npm start`
 
 ![Main](/images/main.png)
-
-
-
+![Main](/images/main_scroll.png)
+![Main](/images/cms.png)
+![Main](/images/news.png)
