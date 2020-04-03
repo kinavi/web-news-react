@@ -16,10 +16,12 @@ export default [
       {
         ...CmsPage,
         path: '/cms',
+        exact: true,
       },
       {
         ...NewsPage,
         path: '/news/:id',
+        exact: true,
       },
       {
         ...NoMatch,

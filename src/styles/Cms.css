@@ -19,12 +19,7 @@
 .cms__container-btns{
     display: flex;
 }
-.btn__img{
-    width: 30%;
-    /* text-align: left; */
-    color: black;
-    /* box-sizing: content-box;
-}
+
 .btn__img-group{
 
     /* margin-top: 10px; */
@@ -34,28 +29,8 @@
 .btn__title-picture{
     margin-bottom: 15px;
 }
-.btn__container-img{
-    width: 100%;
-    height: 150px;
-    margin-bottom: 15px;
-    border-radius: 20px unset;
-    /* border-radius: 6%; */
-    /* outline: 4px solid #6382a5; */
-    border: 4px solid #6382a5;
-    overflow: hidden;
-    box-sizing: border-box;
-}
 
-.btn__layer{
-    background: red;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    /* display: flex; */
-    /* text-align: center; */
-    justify-content: center;
-}
+
 
 .cms__title {
     margin-bottom: 15px;
