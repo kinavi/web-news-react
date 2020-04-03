@@ -1,7 +1,3 @@
-// import {EditNewsEditor} from './EditNewsEditor';
-// import {EditorNews} from './EditorNews';
-import {EditorView} from './EditorView';
-
 import React, {useState, useEffect} from 'react';
 
 import {
@@ -60,7 +56,7 @@ const CustomeEditor = ({isEdit, value, setValue}) => {
   };
 
   return (
-    <div className="add-form__editor editor">
+    <div className={`editor ${isEdit||'editor_view'}`}>
       {
         isEdit&&<div className="editor__tools" role="group">
           <button
@@ -98,8 +94,5 @@ const CustomeEditor = ({isEdit, value, setValue}) => {
 
 
 export {
-  // EditNewsEditor,
-  // EditorNews,
-  EditorView,
   CustomeEditor,
 };

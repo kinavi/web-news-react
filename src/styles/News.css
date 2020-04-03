@@ -140,21 +140,22 @@
 }
 .title-news__title{
     font-family: Roboto;
-    font-style: normal;
-    font-weight: bold;
     font-size: 36px;
-    line-height: 42px;
     letter-spacing: 0.1em;
     text-transform: uppercase;
 }
 .news__title-container{
     text-align: center;
     border: solid;
-    /* width: 53.37%; */
     margin-bottom: 20px;
 }
 .title-news__author {
     margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 14px;
+    line-height: 16px;
+    font-family: Roboto;
 }
 .news__content{
 

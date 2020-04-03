@@ -1,5 +1,5 @@
 import {News } from '../../../server/mongoose';
-import {ActionsNews} from '../../redusers/NewsRedusers';
+import {ActionsNews} from '../../redusers/ListNewsRedusers';
 
 import {loadPartNewsAC} from '../../redusers/ViewRedusers';
 

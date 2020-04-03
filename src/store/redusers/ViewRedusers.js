@@ -1,7 +1,5 @@
 import {fetchThenDispatch} from '../fetchs';
 
-import {NewsRedusers} from './NewsRedusers';
-
 // const SORT_BY_AUHTHOR = 'SORT_BY_AUHTHOR';
 // const SEARCH_BY_TITLE = 'SEARCH_BY_TITLE';
 const VIEW_ALL_NEWS = 'VIEW_ALL_NEWS';

@@ -8,7 +8,7 @@ import {
   addNewAC,
   editNewAC,
   removeNewsAC,
-} from '../../store/redusers/NewsRedusers';
+} from '../../store/redusers/ListNewsRedusers';
 
 import {
   loadNewsByIdAC,

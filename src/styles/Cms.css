@@ -50,10 +50,9 @@
     margin-bottom: 5px;
 } */
 
-.add-form__editor{
-    background: #fbdac0;
-    margin-bottom: 15px;
-}
+/* .add-form__editor{
+
+} */
 .editor{
     font-weight: normal;
     padding: 10px;
@@ -62,6 +61,15 @@
     display: inline-block;
     border: 1px solid #ccc;
     box-sizing: border-box;
+
+    background: #fbdac0;
+    margin-bottom: 15px;
+}
+.editor_view{
+    border: none;
+    background: none;
+    padding: 0;
+
 }
 .editor__tools{
     display: flex;
