@@ -96,6 +96,12 @@ const getAuthorDB = async (req, res, next) =>{
   next();
 };
 
+const getNewsByNewsIdDB = async (req, res, next) =>{
+  req.result = await News.findOne({_id: req.body.newsId});
+  console.log('req.result -', req.result);
+  next();
+}
+
 export {
   addNewsDB,
   editNewsDB,
@@ -105,5 +111,6 @@ export {
   getNewsByAuthorDB,
   getAllNewsDB,
   getListAuthorDB,
-  getNewsByTitleDB
+  getNewsByTitleDB,
+  getNewsByNewsIdDB
 };

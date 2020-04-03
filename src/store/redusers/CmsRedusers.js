@@ -1,5 +1,5 @@
 import {fetchThenDispatch} from '../fetchs';
-import {NewsRedusers} from './NewsRedusers';
+import {ListNewsRedusers} from './ListNewsRedusers';
 
 const LOAD_NEWS_BY_ID = 'LOAD_NEWS_BY_ID';
 const ADD_NEWS = 'ADD_NEWS';
@@ -15,11 +15,11 @@ export const CmsRedusers = (state = initialState, action) =>{
     case LOAD_NEWS_BY_ID:
       return {news: [...action.data]};
     case ADD_NEWS:
-      return {news: NewsRedusers(state.news, action)};
+      return {news: ListNewsRedusers(state.news, action)};
     case EDIT_NEWS:
-      return {news: NewsRedusers(state.news, action)};
+      return {news: ListNewsRedusers(state.news, action)};
     case REMOVE_NEWS:
-      return {news: NewsRedusers(state.news, action)};
+      return {news: ListNewsRedusers(state.news, action)};
     default: return state;
   }
 };
