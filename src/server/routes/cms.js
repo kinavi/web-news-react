@@ -3,7 +3,13 @@ import {Router} from 'express';
 import multer from '../middlewares/multer';
 import {dispatchAndRespond, respondAction} from '../services/dispatch';
 
-import {addNewsDB, editNewsDB, removeNewsDB, getNewsByIdDB} from '../mongoose/api';
+import {
+  addNewsDB,
+  editNewsDB,
+  removeNewsDB,
+  getNewsByIdDB,
+} from '../mongoose/api';
+
 import {
   addNewAC,
   editNewAC,
@@ -30,7 +36,6 @@ router.post('/', getNewsByIdDB, (req, res) =>{
 router.post('/add', addNewsDB, (req, res) =>{
   try {
     if (!req.result) return res.sendStatus(400);
-    // console.log('req.result - ', req.result);
 
     dispatchAndRespond(req, res, addNewAC(req.result));
   } catch (e) {

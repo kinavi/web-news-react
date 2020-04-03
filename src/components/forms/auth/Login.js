@@ -1,7 +1,7 @@
-import React, {useRef, useContext, useState, useEffect} from 'react';
+import React, {useRef, useEffect} from 'react';
 import {connect} from 'react-redux';
 
-import {registerUser, loginUser} from '../../../store/redusers/AuthRedusers';
+import {loginUser} from '../../../store/redusers/AuthRedusers';
 import {allDone} from '../../../store/redusers/FormRedusers';
 
 import {
@@ -23,6 +23,7 @@ const Login = ({setDone, switchForm, setLogin, isLogin, isPassword}) =>{
   useEffect(()=>{
     setDone();
   }, []);
+
   const handlerClickSubmit = (e) =>{
     const loginValue = inputLogin.current.value;
     const loginPassword = inputPassword.current.value;

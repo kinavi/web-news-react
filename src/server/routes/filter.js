@@ -1,9 +1,9 @@
 import {Router} from 'express';
 
-import {dispatchAndRespond, respondAction} from '../services/dispatch';
+import {respondAction} from '../services/dispatch';
 
 import {viewListAuthorAC} from '../../store/redusers/FilterRedusers';
-import {getNewsByIdDB, getNewsByAuthorDB, getListAuthorDB, getAllNewsDB} from '../mongoose/api';
+import {getListAuthorDB, getAllNewsDB} from '../mongoose/api';
 
 const router = Router();
 

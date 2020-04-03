@@ -1,9 +1,6 @@
 import React, {useState, useEffect} from 'react';
 
-// import Skeleton, {SkeletonTheme} from 'react-loading-skeleton';
-
 import {NewsPreview, FORMAT_NEWS} from './NewsPreview';
-
 
 export const ListNewsMain = ({value}) =>{
   const [news, setNews] = useState(getSplitedArray(value));

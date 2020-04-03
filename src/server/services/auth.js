@@ -11,7 +11,6 @@ const getTokenFromHeaders = (req) => {
 
 const getTokenFromCookies = (req) =>{
   const {Token} = req.cookies;
-  // console.log('cookies - ', req.cookies);
   if (Token) {
     return Token;
   }

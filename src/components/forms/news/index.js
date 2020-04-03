@@ -25,7 +25,7 @@ const FormContainer = ({
 
   const handlerSubmit = () =>{
     if (!_file&&!fileName) {
-      return null; // alert
+      return null; // нужен alert
     } else if (!_file) {
       onSubmit(_title, _description, fileName);
     } else {

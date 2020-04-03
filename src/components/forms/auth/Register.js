@@ -1,7 +1,7 @@
-import React, {useRef, useContext, useEffect} from 'react';
+import React, {useRef, useEffect} from 'react';
 import {connect} from 'react-redux';
 
-import {registerUser, loginUser} from '../../../store/redusers/AuthRedusers';
+import {registerUser} from '../../../store/redusers/AuthRedusers';
 import {allDone} from '../../../store/redusers/FormRedusers';
 
 import {
@@ -16,7 +16,13 @@ import {
 
 } from './elements';
 
-const Register = ({setDone, switchForm, setRegister, isLogin, isPassword}) =>{
+const Register = ({
+  setDone,
+  switchForm,
+  setRegister,
+  isLogin,
+  isPassword,
+}) =>{
   const inputLogin = useRef(null);
   const inputPassword = useRef(null);
   const inputSave = useRef(null);
@@ -41,7 +47,10 @@ const Register = ({setDone, switchForm, setRegister, isLogin, isPassword}) =>{
       </FormGroup>
       <FormGroup>
         <FormLabel value='Password'/>
-        <FormInput type='password' refInput={inputPassword} required={isPassword}/>
+        <FormInput
+          type='password'
+          refInput={inputPassword}
+          required={isPassword}/>
       </FormGroup>
       <FormCheckbox refInput={inputSave} text='Save me'/>
       <FormGroupButton>
@@ -69,4 +78,7 @@ const mapDispatchToProps = (dispatch) =>({
   },
 });
 
-export default connect( mapStateToProps, mapDispatchToProps)(Register);
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps,
+)(Register);

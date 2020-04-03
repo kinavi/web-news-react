@@ -8,5 +8,5 @@ export {
   Img,
   FormInput,
   FormHeader,
-  FormGroupButton
+  FormGroupButton,
 };

@@ -45,12 +45,6 @@ const getListAuthors = (arr) =>{
   return result;
 };
 
-//
-
-
-
-//
-
 const addNewsDB = async (req, res, next) =>{
   if (!req.body) return res.sendStatus(400);
   console.log('req.body.userId - ', req.body.userId);
@@ -100,7 +94,7 @@ const getNewsByNewsIdDB = async (req, res, next) =>{
   req.result = await News.findOne({_id: req.body.newsId});
   console.log('req.result -', req.result);
   next();
-}
+};
 
 export {
   addNewsDB,

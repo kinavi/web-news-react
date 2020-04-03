@@ -2,7 +2,8 @@ import React from 'react';
 
 import './Footer.css';
 
-const Footer = ({children}) =>{
+// Заглушка, надо переделать
+const Footer = () =>{
   return (
     <div className='footer'>
       <div className='footer__container'>

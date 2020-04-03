@@ -28,7 +28,6 @@ const SmallLayer = ({_id, title, fileName}) =>{
   const history = useHistory();
 
   const handleClick = (e) =>{
-    // _onCreateNews(title, description,file)
     e.stopPropagation();
     history.push(`/news/${_id}`);
   };

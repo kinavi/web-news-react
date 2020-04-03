@@ -1,6 +1,6 @@
 import {Router} from 'express';
 
-import {dispatchAndRespond, respondAction} from '../services/dispatch';
+import {respondAction} from '../services/dispatch';
 
 import {getNewsByNewsIdDB} from '../mongoose/api';
 import {getNewsByIdAC} from '../../store/redusers/NewsRedusers';

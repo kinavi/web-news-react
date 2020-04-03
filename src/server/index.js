@@ -3,7 +3,6 @@ import {StaticRouter} from 'react-router-dom';
 import {renderToString} from 'react-dom/server';
 import {matchRoutes, renderRoutes} from 'react-router-config';
 import {Provider} from 'react-redux';
-// const router = Router();
 
 import express from 'express';
 import '@babel/polyfill';
@@ -40,7 +39,6 @@ const serverStore = storeFactory(true);
 const imageFileAssets = express.static('uploads');
 
 const renderer = (req, serverStore, context) =>{
-  // console.log('Store - ', serverStore.getState().Auth);
   const reactHtml = renderToString(
       <Provider store={serverStore}>
         <StaticRouter location={req.path} context={context}>
@@ -84,13 +82,6 @@ const checkUser =async (req, res, next) =>{
     } else {
       req.store.dispatch(setUserData(user.toAuthJSON()));
     }
-    // .then((user)=>{
-    //   if (!user) {
-    //     req.store.dispatch(nullUserData());
-    //   } else {
-    //     req.store.dispatch(setUserData(user.toAuthJSON()));
-    //   }
-    // });
   }
   next();
 };
@@ -118,8 +109,6 @@ app
     .use('/edit', express.static('public'))
     .use('/news', express.static('public'))
     .use('/cms', express.static('public'))
-    // .use('/cms/', express.static('public'))
-    // .use('/cms/add', express.static('public'))
     .use(imageFileAssets)
     .use('/cms', imageFileAssets)
     .use('/news', imageFileAssets)

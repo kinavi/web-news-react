@@ -42,7 +42,6 @@
 .form__btn-container{
     display: flex;
     justify-content: space-between;
-    /* margin-top: 50px; */
     height: 10%;
 }
 .form__btn{
@@ -68,7 +67,6 @@
 }
 .form__title{
     font-size: 30px;
-    /* margin-bottom: 40px; */
     letter-spacing: 0.1em;
     text-align: center;
     height: 10%;
@@ -99,7 +97,6 @@
 .form__alert{
     text-align: center;
     color: #ff0000;
-    /* margin-bottom: 20px; */
     height: 20%;
     display: flex;
     align-items: center;

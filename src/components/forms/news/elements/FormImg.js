@@ -13,6 +13,3 @@ export const Img = ({file}) =>{
     <img className='img' src={src} alt="текст"></img>
   );
 };
-
-
-//  default Img;

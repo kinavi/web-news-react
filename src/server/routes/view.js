@@ -1,8 +1,17 @@
 import {Router} from 'express';
 
-import {dispatchAndRespond, respondAction} from '../services/dispatch';
-import {viewNewsAC, loadPartNewsAC, searchByTitleAC} from '../../store/redusers/ViewRedusers';
-import {addNewsDB, editNewsDB, removeNewsDB, getAuthorDB, getAllNewsDB, getNewsByAuthorDB, getNewsByTitleDB} from '../mongoose/api';
+import {respondAction} from '../services/dispatch';
+import {
+  viewNewsAC,
+  loadPartNewsAC,
+  searchByTitleAC,
+} from '../../store/redusers/ViewRedusers';
+
+import {
+  getAllNewsDB,
+  getNewsByAuthorDB,
+  getNewsByTitleDB,
+} from '../mongoose/api';
 
 const router = Router();
 
@@ -15,6 +24,7 @@ router.post('/search', getNewsByTitleDB, (req, res) =>{
 });
 
 router.post('/', getAllNewsDB, (req, res) =>{
+  // Нужен рефакторинг
   const startIndex = req.body.length;
   const endIndex = startIndex + req.body.size;
 

@@ -9,14 +9,14 @@ passport.use(new LocalStrategy({
 }, (login, password, done) => {
   Users.findOne({login})
       .then((user) => {
-        // console.log('user 111 - ', user);
         if (!user || !user.validatePassword(password)) {
-
-          return done(null, false, {message: {'email or password': 'is invalid'}});
+          return done(null, false, {
+            message: {'email or password': 'is invalid'},
+          });
         }
 
         return done(null, user);
       }).catch(done);
 }));
 
-export {passport}
+export {passport};

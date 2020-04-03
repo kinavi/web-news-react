@@ -15,9 +15,10 @@ const CustomeEditor = ({isEdit, value, setValue}) => {
     if (value) {
       setEditorState(
           EditorState.createWithContent(
-              convertFromRaw({...value, entityMap: {}}),
+              convertFromRaw({...value, entityMap: {}}), 
+              // Баг с редактором, ошибка без entityMap: {}. Понять и исправить
           ),
-      ); // Костыль
+      );
     }
   }, []);
 

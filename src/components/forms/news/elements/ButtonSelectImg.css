@@ -1,15 +1,12 @@
 .btn__img{
     width: 30%;
-    /* text-align: left; */
     color: black;
 }
 .btn__container-img:hover{
     outline: 2px solid #786428;
     filter: brightness(80%);
 }
-.btn__layer:hover{
-    /* fill: #786428; */
-}
+
 .btn__layer{
     background: #f8dac0;;
     width: 100%;

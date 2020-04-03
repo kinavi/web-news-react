@@ -1,17 +1,18 @@
 const passport = require('passport');
 import {Router} from 'express';
-// const bodyParser = require('body-parser');
 const router = Router();
-// router.use(bodyParser.json());
+
 import {Users} from '../mongoose/index';
 import {auth} from '../services/auth';
 
-import attachCurrentUser from '../middlewares/attachCurrentUser';
-
-import {dispatchAndRespond, respondAction} from '../services/dispatch';
+import {respondAction} from '../services/dispatch';
 
 import {setUserData, nullUserData} from '../../store/redusers/AuthRedusers';
-import {alertLogin, alertPassword, allAlert} from '../../store/redusers/FormRedusers';
+import {
+  alertLogin,
+  alertPassword,
+  allAlert,
+} from '../../store/redusers/FormRedusers';
 
 // POST new user route (optional, everyone has access)
 router.post('/', auth.optional, async (req, res, next) => {
@@ -29,7 +30,7 @@ router.post('/', auth.optional, async (req, res, next) => {
   if (!!result) {
     return res.status(422).json(alertLogin('login is busy'));
   }
-  console.log('user - ', user)
+  console.log('user - ', user);
   const finalUser = new Users(user);
 
   finalUser.setPassword(user.password);
@@ -49,8 +50,6 @@ router.post('/login', auth.optional, (req, res, next) => {
     return res.status(422).json(alertPassword('password is required'));
   }
   passport.authenticate('local', {session: false}, (err, passportUser, info) => {
-    // console.log('passportUser 1- ', passportUser);
-    // console.log('info - 1', info);
     if (err) {
       return res.status(422).json(allAlert('login or password is invalid'));
       // console.log('err - ', err);
@@ -96,7 +95,6 @@ router.post('/current', auth.required, handlerError, (req, res, next) => {
         return respondAction(req, res, setUserData(user.toAuthJSON()), 200);
       });
 });
-
 
 
 export default router;

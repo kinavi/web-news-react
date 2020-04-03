@@ -1,14 +1,11 @@
 import React, {useState} from 'react';
 
-
 import './Select.css';
 
 export const Select = ({title, values, option, setOption, onSelect}) => {
   const [isVisible, setVisible] = useState(true);
-  // const [option, setOption] = useState('ALL');
 
   const handlerClick =(e)=>{
-    //
     setVisible(!isVisible);
     e.stopPropagation();
   };
@@ -46,20 +43,3 @@ export const Select = ({title, values, option, setOption, onSelect}) => {
     </div>
   );
 };
-// const mapStateToProps = (state) =>({
-
-//   // ...state.Form,
-// });
-// const mapDispatchToProps = (dispatch) =>({
-//   // setRegister(login, password) {
-//   //   dispatch(registerUser(login, password));
-//   // },
-//   // setDone() {
-//   //   dispatch(allDone());
-//   // },
-// });
-
-// export default connect(
-//     mapStateToProps,
-//     mapDispatchToProps,
-// )(Select);

@@ -1,10 +1,7 @@
 import React, {useState} from 'react';
 import {connect} from 'react-redux';
 
-// import {CustomeEditor} from '../../editor';
-// import {FormInput, ButtonSelectImg, FormHeader, FormGroupButton} from './elements';
-
-import {editNews, loadFile} from '../../../store/fetchs/cms';
+import {editNews} from '../../../store/fetchs/cms';
 
 import {FormContainer} from './';
 
@@ -15,7 +12,7 @@ const EditNews = (props) =>{
   const [scrollX, setScrollX] = useState(window.pageXOffset); // Надо ли?
 
   const handlerSubmit = (title, description, fileName) =>{
-    onSave(_id, title, description, fileName); // Тут баг с file
+    onSave(_id, title, description, fileName);
     setEdit(false);
     window.scrollTo(scrollX, scrollY);
   };
