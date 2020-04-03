@@ -15,7 +15,8 @@ All data taken from mongoDB. Two collections of users and news are created. Toke
 # Need to do
 The module is currently under development.
 
-- [ ] Fix bugs CSS
+- [ ] Fix bugs CSS header
+- [ ] Extend editor features
 - [ ] Extend filter features
 - [ ] Page layout 404
 - [ ] Add alerts for cms forms
