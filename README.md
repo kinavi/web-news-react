@@ -1,5 +1,9 @@
+![Main](/images/main.png)
+
 # About web-news-react
 A site for blogging or news. [Maket](https://www.figma.com/file/eSwSqNYr0bSGMhsk8ekBkPv7/News-Camp?node-id=1%3A2 )
+
+![Main](/images/main_scroll.png)
 
 # What does he have?
 - Registration, authorization.
@@ -8,9 +12,13 @@ A site for blogging or news. [Maket](https://www.figma.com/file/eSwSqNYr0bSGMhsk
 - Navigation (menu).
 - Draft. Convenient text editor.
 
+![Main](/images/cms.png)
+
 # How it works? 
 Ssr site. What allows you to load data before rendering. (The feature is currently disabled. Turns on on demand)
 All data taken from mongoDB. Two collections of users and news are created. Tokens are stored in cookies.
+
+![Main](/images/news.png)
 
 # Need to do
 The module is currently under development.
@@ -39,7 +47,6 @@ server build - `npm run build:server`
 client build - `npm run build:client`
 client start - `npm start`
 
-![Main](/images/main.png)
-![Main](/images/main_scroll.png)
-![Main](/images/cms.png)
-![Main](/images/news.png)
+
+
+
