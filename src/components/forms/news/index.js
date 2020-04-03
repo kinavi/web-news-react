@@ -45,11 +45,12 @@ const FormContainer = ({
   return (
     <div className="cms__form">
       <FormHeader>
-        <ButtonSelectImg value={_file} setValue={setFile}/>
+        <ButtonSelectImg value={_file} setValue={setFile} fileName={fileName}/>
         <FormInput value={_title} setValue={setTitle}/>
       </FormHeader>
+      <div className='cms__title'>Описание</div>
       <CustomeEditor
-        isEdit={false}
+        isEdit={true}
         value={_description}
         setValue={setDescription}/>
       <FormGroupButton onSubmit={handlerSubmit}>

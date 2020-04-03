@@ -62,7 +62,7 @@ const CustomeEditor = ({isEdit, value, setValue}) => {
   return (
     <div className="add-form__editor editor">
       {
-        isEdit||<div className="editor__tools" role="group">
+        isEdit&&<div className="editor__tools" role="group">
           <button
             type="button"
             className="btn btn-secondary"
@@ -86,7 +86,7 @@ const CustomeEditor = ({isEdit, value, setValue}) => {
         </div>
       }
       <Editor
-        readOnly={isEdit}
+        readOnly={!isEdit}
         editorState={editorState}
         onChange={handlerChange}
         handleKeyCommand={handleKeyCommand}
