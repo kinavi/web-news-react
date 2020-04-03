@@ -1,11 +1,12 @@
 import React, {useState, useEffect} from 'react';
 import {connect} from 'react-redux';
 import {CSSTransition} from 'react-transition-group';
-import { useCookies } from 'react-cookie';
+import {useCookies} from 'react-cookie';
 
 import {Header, Home, SubHeader} from './header';
 import {Menu} from './header/menu';
-import {Title, Search} from './header/search/';
+import {Title} from './header/search/';
+import Search from './header/search';
 import {Footer} from './footer';
 import {Filter} from './header/filter';
 
@@ -21,7 +22,7 @@ const Page = ({isAuth, children, checkUser, logout}) =>{
   // const [isVisibleSearch, setVisibleSearch] = useState(true);
   // const [cookies, setCookie, removeCookie] = useCookies(['Token']);
 
-  
+
   // useEffect(()=>{
   //   console.log('cookies - ', cookies);
   //   if (!!cookies) {
@@ -61,9 +62,7 @@ const Page = ({isAuth, children, checkUser, logout}) =>{
       <div className="container-news">
         {children}
       </div>
-      <Footer>
-          Footer
-      </Footer>
+      <Footer/>
     </div>
   );
 };
