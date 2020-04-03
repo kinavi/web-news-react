@@ -20,7 +20,7 @@ const NewsPage = ({Item}) =>{
   );
 };
 const mapStateToProps = (state) =>({
-  Item: state.News,
+  Item: state.View.news,
 });
 const loadDataByDate = (store) => {
   return store.dispatch(loadNewsByDate());
@@ -30,7 +30,7 @@ export default {
       mapStateToProps,
       null,
   )(NewsPage),
-  loadDataByDate,
+  // loadDataByDate,
 };
 
 // Фигня, надо переделать

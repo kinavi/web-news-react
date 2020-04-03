@@ -1,7 +1,7 @@
 import React from 'react';
 import {useHistory} from 'react-router-dom';
 
-const BigLayer = ({_id, title, fileName}) =>{
+const BigLayer = ({_id, title, fileName, author}) =>{
 
   const history = useHistory();
 
@@ -15,7 +15,7 @@ const BigLayer = ({_id, title, fileName}) =>{
       <img className="img" src={fileName} alt=""/>
       <div className="preview__text-block">
         <div className='preview__title-content'>
-          <div className="preview__author">Author</div>
+          <div className="preview__author">{author}</div>
           <div className="preview__title">{title}</div>
         </div>
       </div>
