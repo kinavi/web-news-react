@@ -1,0 +1,17 @@
+.container-filter{
+    width: 91.5%;
+
+    color: white;
+    
+    flex-direction: row;
+    
+    display: flex;
+}
+.btn-dropping{
+    width: 8.5%;    
+    justify-content: center;
+    align-items: center;
+    outline: 2px solid #333;
+    text-transform: uppercase;
+    overflow: hidden;
+}

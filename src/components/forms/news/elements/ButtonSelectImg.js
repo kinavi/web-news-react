@@ -1,14 +1,17 @@
-import React, {useState, useRef} from 'react';
+import React, {useRef} from 'react';
 
 import {Img} from '.';
 
-export const ButtonSelectImg = ({value, setValue}) =>{
-  // const [refFileInp, setRefFileInp] = useState();
+import photo from './camera.svg';
+
+import './ButtonSelectImg.css';
+
+
+export const ButtonSelectImg = ({value, setValue, fileName}) =>{
   const input = useRef();
   return (
     <div className='btn__img'>
       <input
-        // ref={(node)=>setRefFileInp(node)}
         ref={input}
         style={{display: 'none'}}
         type="file"
@@ -17,9 +20,8 @@ export const ButtonSelectImg = ({value, setValue}) =>{
       <div className="btn__img-group">
         <div className="cms__title">Картинка</div>
         <div className='btn__container-img' onClick={()=>input.current.click()}>
-          {!!value?<Img file={value}/>:<div className='btn__layer' >Выберите картинку</div>}
+          {!!value?<Img file={value}/>:<img className='btn__layer' src={photo&&fileName} />}
         </div>
-        {/* <button className='btn' >Выберите картинку</button> */}
       </div>
     </div>
   );

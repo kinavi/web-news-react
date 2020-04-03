@@ -1,13 +1,14 @@
 import React, {useState} from 'react';
-import {connect} from 'react-redux';
+
 
 import './Select.css';
 
-const Select = ({title, values}) => {
+export const Select = ({title, values, option, setOption, onSelect}) => {
   const [isVisible, setVisible] = useState(true);
-  const [option, setOption] = useState('ALL');
+  // const [option, setOption] = useState('ALL');
 
   const handlerClick =(e)=>{
+    //
     setVisible(!isVisible);
     e.stopPropagation();
   };
@@ -21,37 +22,44 @@ const Select = ({title, values}) => {
     );
   };
 
-  const Options = ({options, setOption}) =>
-    options.map((option, i)=>
+  const Options = ({options, setOption}) => {
+    const handlerSelect = (value) =>{
+      onSelect(value);
+      setOption(value);
+    };
+    return options.map((option, i)=>
       <div
         key={i}
         className='select__options'
-        onClick={()=>setOption(option.text)}>
-        {option.text}
+        onClick={()=>handlerSelect(option)}>
+        {option}
       </div>);
+  };
+
 
   return (
     <div className='select__container' onClick={handlerClick}>
       {isVisible?
           <Title value={option}/>:
-          <Options options={values} setOption={setOption}/>
+          <Options options={values} setOption={setOption} onSelect={onSelect}/>
       }
     </div>
   );
 };
-const mapStateToProps = (state) =>({
-  // ...state.Form,
-});
-const mapDispatchToProps = (dispatch) =>({
-  // setRegister(login, password) {
-  //   dispatch(registerUser(login, password));
-  // },
-  // setDone() {
-  //   dispatch(allDone());
-  // },
-});
+// const mapStateToProps = (state) =>({
 
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps,
-)(Select);
+//   // ...state.Form,
+// });
+// const mapDispatchToProps = (dispatch) =>({
+//   // setRegister(login, password) {
+//   //   dispatch(registerUser(login, password));
+//   // },
+//   // setDone() {
+//   //   dispatch(allDone());
+//   // },
+// });
+
+// export default connect(
+//     mapStateToProps,
+//     mapDispatchToProps,
+// )(Select);

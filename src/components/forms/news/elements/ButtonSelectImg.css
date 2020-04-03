@@ -1,0 +1,29 @@
+.btn__img{
+    width: 30%;
+    /* text-align: left; */
+    color: black;
+}
+.btn__container-img:hover{
+    outline: 2px solid #786428;
+    filter: brightness(80%);
+}
+.btn__layer:hover{
+    /* fill: #786428; */
+}
+.btn__layer{
+    background: #f8dac0;;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.btn__container-img{
+    width: 100%;
+    height: 150px;
+    margin-bottom: 15px;
+    border-radius: 20px unset;
+    border: 1px solid #ccc;
+    overflow: hidden;
+    box-sizing: border-box;
+}
