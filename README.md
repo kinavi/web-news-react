@@ -38,6 +38,7 @@ server build - `npm run build:server`
 client build - `npm run build:client`
 client start - `npm start`
 
+![Main](/images/main.png)
 
 
 
