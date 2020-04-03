@@ -6,17 +6,15 @@
     outline: 2px solid #333333;
     margin-top: 2px;
     display: flex;
-    /* justify-content: space-between; */
 }
 .sub-menu__links-container{
     display: flex;
     width: 91.5%;
 }
 .sub-menu__link{
-    width: 9.2%;
+    width: 20%;
     margin-right: 2px;
     color: white;
-    /* margin-bottom: 6px; */
     text-decoration: none;
     text-transform: uppercase;
     height: 100%;

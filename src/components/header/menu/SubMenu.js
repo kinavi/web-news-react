@@ -34,12 +34,7 @@ const mapStateToProps = (state) =>({
   ...state.Auth,
 });
 const mapDispatchToProps = (dispatch) =>({
-  // setLogin(login, password) {
-  //   dispatch(loginUser(login, password));
-  // },
-  // setDone() {
-  //   dispatch(done());
-  // },
+
 });
 
 export default connect( mapStateToProps, mapDispatchToProps)(SubMenu);

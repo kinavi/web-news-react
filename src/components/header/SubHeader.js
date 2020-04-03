@@ -25,11 +25,23 @@ export const SubHeader = ({isMenu}) =>{
               <Link
                 to='/#About'
                 title='About'
-                className='sub-menu__link' >About</Link>
+                className='sub-menu__link' >ABOUT THE SITE</Link>
               <Link
                 to='/#About'
                 title='About'
-                className='sub-menu__link' >About</Link>
+                className='sub-menu__link' >VACANCIES</Link>
+              <Link
+                to='/#About'
+                title='About'
+                className='sub-menu__link' >CONTACTS</Link>
+              <Link
+                to='/#About'
+                title='About'
+                className='sub-menu__link' >REGULATIONS</Link>
+              <Link
+                to='/#About'
+                title='About'
+                className='sub-menu__link' >HELP</Link>
             </SubMenu>:
             <SubFilter/>
         }
