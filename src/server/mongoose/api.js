@@ -8,6 +8,46 @@ const getNewsByIdDB = async (req, res, next) =>{
   next();
 };
 
+const getNewsByAuthorDB = async (req, res, next) =>{
+  if (!req.body) return res.sendStatus(400);
+  req.result = await News.find({author: req.body.author})
+      .sort({dateCreate: -1});
+  next();
+};
+
+const getNewsByTitleDB = async (req, res, next) =>{
+  console.log('req.value ', req.body.value)
+  req.result = await News.find({title: req.body.value})
+      .sort({dateCreate: -1});
+
+  next();
+};
+
+const getAllNewsDB = async (req, res, next) =>{
+  req.result = await News.find({})
+      .sort({dateCreate: -1});
+
+  next();
+};
+
+const getListAuthorDB = async (req, res, next) =>{
+  req.authors = getListAuthors(req.result);
+  next();
+};
+
+const getListAuthors = (arr) =>{
+  const result = [];
+  arr.map((item)=>{
+    if (!result.includes(item.author)) {
+      result.push(item.author);
+    }
+  });
+  return result;
+};
+
+//
+
+
 
 //
 
@@ -62,4 +102,8 @@ export {
   removeNewsDB,
   getAuthorDB,
   getNewsByIdDB,
+  getNewsByAuthorDB,
+  getAllNewsDB,
+  getListAuthorDB,
+  getNewsByTitleDB
 };

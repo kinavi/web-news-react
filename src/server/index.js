@@ -40,6 +40,7 @@ const serverStore = storeFactory(true);
 const imageFileAssets = express.static('uploads');
 
 const renderer = (req, serverStore, context) =>{
+  // console.log('Store - ', serverStore.getState().Auth);
   const reactHtml = renderToString(
       <Provider store={serverStore}>
         <StaticRouter location={req.path} context={context}>
@@ -67,23 +68,29 @@ const renderer = (req, serverStore, context) =>{
 
 const authErrorHandler = (err, req, res, next) =>{
   if (err.name === 'UnauthorizedError') {
-    console.log('error name - ', err.name);
-    serverStore.dispatch(nullUserData());
+    console.log('error: UnauthorizedError - ', err.name);
+    req.store.dispatch(nullUserData());
     next();
   }
 };
 
-const checkUser = (req, res, next) =>{
+const checkUser =async (req, res, next) =>{
   if (!req.user) {
-    serverStore.dispatch(nullUserData());
+    req.store.dispatch(nullUserData());
   } else {
-    Users.findById(req.user.id).then((user)=>{
-      if (!user) {
-        serverStore.dispatch(nullUserData());
-      } else {
-        serverStore.dispatch(setUserData(user.toAuthJSON()));
-      }
-    });
+    const user = await Users.findById(req.user.id);
+    if (!user) {
+      req.store.dispatch(nullUserData());
+    } else {
+      req.store.dispatch(setUserData(user.toAuthJSON()));
+    }
+    // .then((user)=>{
+    //   if (!user) {
+    //     req.store.dispatch(nullUserData());
+    //   } else {
+    //     req.store.dispatch(setUserData(user.toAuthJSON()));
+    //   }
+    // });
   }
   next();
 };
@@ -111,8 +118,10 @@ app
     .use('/edit', express.static('public'))
     .use('/news', express.static('public'))
     .use('/cms', express.static('public'))
-    .use('/cms/add', express.static('public'))
+    // .use('/cms/', express.static('public'))
+    // .use('/cms/add', express.static('public'))
     .use(imageFileAssets)
+    .use('/cms', imageFileAssets)
     .use('/news', imageFileAssets)
     .get('*', auth.required, authErrorHandler, checkUser, (req, res, next) => {
       const routes = matchRoutes(Routes, req.path);
@@ -126,7 +135,7 @@ app
             // } else {
             //   return null;
             // }
-            return route.loadDataByDate ? route.loadDataByDate(serverStore) : null;
+            return route.loadNews ? route.loadNews(serverStore) : null;
           })
           .map((promise) => {
             if (promise) {

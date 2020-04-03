@@ -12,7 +12,6 @@ const initialState = {
   id: null,
   login: null,
   isAuth: false,
-
 };
 
 export const AuthRedusers = (state = initialState, action) =>{
