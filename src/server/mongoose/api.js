@@ -16,8 +16,8 @@ const getNewsByAuthorDB = async (req, res, next) =>{
 };
 
 const getNewsByTitleDB = async (req, res, next) =>{
-  console.log('req.value ', req.body.value)
-  req.result = await News.find({title: req.body.value})
+  // console.log('req.value ', req.body.value)
+  req.result = await News.find({title: {$regex: req.body.value}})
       .sort({dateCreate: -1});
 
   next();
@@ -106,5 +106,5 @@ export {
   getAllNewsDB,
   getListAuthorDB,
   getNewsByTitleDB,
-  getNewsByNewsIdDB
+  getNewsByNewsIdDB,
 };

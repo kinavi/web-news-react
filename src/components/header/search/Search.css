@@ -59,7 +59,7 @@
     padding-right: 7%;
     padding-left: 7%;
     border: none;
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
     letter-spacing: 0.1em;
     font-size: 18px;
     line-height: 21px;
