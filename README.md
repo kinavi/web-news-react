@@ -43,8 +43,8 @@ You must have installed [mongoDB](https://docs.mongodb.com/manual/administration
 
 url - 'mongodb://localhost:27017/web-news-react' to connect (default).
 
+client build - `npm run build:client` 
 server build - `npm run build:server`
-client build - `npm run build:client`
 client start - `npm start`
 
 
