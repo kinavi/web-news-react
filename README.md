@@ -12,7 +12,7 @@ A site for blogging or news. [Maket](https://www.figma.com/file/eSwSqNYr0bSGMhsk
 - Navigation (menu).
 - Draft. Convenient text editor.
 
-![Main](/images/cms.png)
+![Main](/images/cmsnew.png)
 
 # How it works? 
 Ssr site. What allows you to load data before rendering. (The feature is currently disabled. Turns on on demand)
