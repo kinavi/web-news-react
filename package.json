@@ -44,7 +44,7 @@
     "file-loader": "^5.0.2",
     "fs": "0.0.1-security",
     "isomorphic-fetch": "^2.2.1",
-    "jsdom": "^15.2.1",
+    "jsdom": "^16.5.0",
     "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.19",
     "mongoose": "^5.9.5",
